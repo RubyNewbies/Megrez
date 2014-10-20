@@ -1,0 +1,93 @@
+* {
+	margin: 0px;
+}
+
+body {
+	background-image: url('/images/bg.png'); 
+	/* background-color: #f5f5f5; */
+}
+
+#header {
+	height: 360px;
+	/* background-color: blue; */
+	background-image: url('/images/banner.jpg');
+	box-shadow: inset 0 -2px 8px rgba(0,0,0,0.1);
+}
+
+.container {
+	width: 1024px;
+	margin: auto;
+	/* background-color: white; */
+}
+
+.pull-left {
+	float: left;
+}
+
+.pull-right {
+	float: right;
+}
+
+#box-left {
+	margin-left: 80px;
+	margin-top: 100px;
+}
+
+h1.logo {
+	line-height: 150%;
+	font-size: 80px;
+	color: white;
+	text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+}
+
+h2.item-title {
+	text-align: center;
+}
+
+hr {
+	border-bottom: 2px solid #049cdb;
+	clear: both;
+}
+
+span.slogan {
+	color: white;
+	font-size: 30px;
+	text-shadow: 0 2px 2px rgba(0,0,0,0.8);
+}
+
+#box-right {
+	margin: 20px;
+}
+
+.col {
+	float: left;
+	padding: 20px;
+	width: 290px;
+	height: 480px;
+}
+
+#col1 {
+	margin-left: 16px;
+	/* background-color: blue; */
+}
+
+#col2 {
+	/* background-color: yellow; */ 
+}
+
+#col3 {
+	/* background-color: gray; */
+}
+
+#footer {
+	clear: both;
+}
+
+.item {
+	width: 200px;
+	height: 200px;
+	background-color: green;
+	margin-left: 45px;
+	margin-top: 10px;
+	margin-bottom: 30px;
+}
