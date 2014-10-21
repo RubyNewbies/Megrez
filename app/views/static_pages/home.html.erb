@@ -1,4 +1,7 @@
 <head>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
   <link rel="stylesheet" href="/stylesheets/homepage.css">
 </head>
 <body>
@@ -10,22 +13,28 @@
       </div>
       <div class="pull-right" id="box-right">
         <div id="login">
-          <a class="action-a white-text light-text-shadow pull-right" id="js-switch-signup">注册 <i class="fa fa-arrow-circle-right"></i></a>
-          <label class="white-text light-text-shadow">用户登陆</label>
-          <input class="form-control fit-box" type="text" placeholder="用户名或邮箱">
-          <input class="form-control fit-box" type="password" placeholder="密码">
-          <a href="#" class="btn btn-primary fit-box">登陆</a>
-          <label class="white-text light-text-shadow">
-            <input type="checkbox" value="remember_me"> 记住我
-          </label>
+          <form action="/login" method="post">
+            <a class="action-a white-text light-text-shadow pull-right" id="js-switch-signup">注册 <i class="fa fa-arrow-circle-right"></i></a>
+            <label class="white-text light-text-shadow">登录乐学网</label>
+            <input class="form-control fit-box" name="session[username]" type="text" placeholder="用户名">
+            <input class="form-control fit-box" name="session[password]" type="password" placeholder="密码">
+            <button type="submit" class="btn btn-primary fit-box">登录</button>
+            <label class="white-text light-text-shadow">
+              <input type="checkbox" value="remember_me"> 记住我
+            </label>
+          </form>
         </div>
         <div id="signup">
-        <a class="action-a white-text light-text-shadow pull-right" id="js-switch-login">登陆 <i class="fa fa-arrow-circle-right"></i></a>
-          <label class="white-text light-text-shadow">用户注册</label>
-          <input class="form-control fit-box" type="text" placeholder="用户名">
-          <input class="form-control fit-box" type="text" placeholder="电子邮件">
-          <input class="form-control fit-box" type="password" placeholder="密码">
-          <a href="#" class="btn btn-primary fit-box">注册</a>
+          <form action="/users" method="post">
+            <a class="action-a white-text light-text-shadow pull-right" id="js-switch-login">登录 <i class="fa fa-arrow-circle-right"></i></a>
+            <label class="white-text light-text-shadow">注册账号</label>
+            <input name="utf8" type="hidden" value="✓">
+            <input name="authenticity_token" type="hidden" value="">
+            <input class="form-control fit-box" name="user[username]" type="text" placeholder="用户名">
+            <input class="form-control fit-box" name="user[email]" type="text" placeholder="电子邮件">
+            <input class="form-control fit-box" name="user[password]" type="password" placeholder="密码">
+            <button type="submit" class="btn btn-primary fit-box">注册</button>
+          </form>
         </div>
       </div>
     </div>
@@ -35,17 +44,17 @@
       <div class="col" id="col1">
         <div class="grid">
           <img src="" alt="" class="item">
-          <h2 class="item-title">讨论论坛</h2>
+          <h2 class="item-title">交流空间</h2>
           <hr>
-          <p>乐学网提供了一个多功能、现代化的讨论论坛。在这里，你可以于你的授课教师、助教或者同学一同讨论课程中的难题。</p>
+          <p>这是一个供大家研习、畅聊的地方。你可以在这里展示独一无二的想法，提出疑问并获得令你满意的解答，更可以分享他人的思维精华，让互帮互助成为一种学习方式。</p>
         </div>
       </div>
       <div class="col" id="col2">
         <div class="grid">
           <img src="" alt="" class="item">
-          <h2 class="item-title">个人网盘</h2>
+          <h2 class="item-title">文件助手</h2>
           <hr>
-          <p>Megrez offers a minimal forum suport, which makes you perfomance better.</p>
+          <p>灵活、便捷地管理你的文件，人性化的分类与管理策略让作业管理与分享资料变得如此方便。</p>
         </div>
       </div>
       <div class="col" id="col3">
