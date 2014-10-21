@@ -32,6 +32,8 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 # Use Email validator
 gem 'email_validator', :require => 'email_validator/strict'
 
+# For beautiful data output
+gem 'table_print'
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 
