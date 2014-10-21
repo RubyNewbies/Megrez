@@ -113,3 +113,14 @@ a.btn {
 #signup {
 	display: none;
 }
+
+a.active-a {
+	transition: .2s all ease-in-out;
+}
+
+a.action-a:hover {
+	color: white;
+	text-decoration: none;
+	margin-right: -5px;
+	transition: .2s all ease-in-out;
+}
