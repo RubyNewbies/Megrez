@@ -77,6 +77,11 @@ a.btn {
 	margin-bottom: 15px;
 }
 
+button[type="submit"] {
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
 .col {
 	float: left;
 	padding: 20px;
@@ -115,10 +120,15 @@ a.btn {
 }
 
 a.active-a {
+	cursor: pointer;
+	cursor: hand;
+	margin-right: 0px;
 	transition: .2s all ease-in-out;
 }
 
 a.action-a:hover {
+	cursor: pointer;
+	cursor: hand;
 	color: white;
 	text-decoration: none;
 	margin-right: -5px;

@@ -23,8 +23,14 @@ gem 'uglifier', '>= 1.0.3'
 
 gem 'jquery-rails'
 
+# Using strong parameters to protect mass assignment
+gem 'strong_parameters'
+
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
+
+# Use Email validator
+gem 'email_validator', :require => 'email_validator/strict'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
