@@ -20,6 +20,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def me
+    render signed_in_user 
+  end
+
   private
 
   def user_params

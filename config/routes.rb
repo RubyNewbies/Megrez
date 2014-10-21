@@ -4,6 +4,8 @@ Megrez::Application.routes.draw do
 
   root to: 'StaticPages#home'
 
+  get '/me', controller: 'users', action: 'me'
+
   resources :users
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
