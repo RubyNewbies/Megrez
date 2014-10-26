@@ -1,14 +1,21 @@
-<div class="navbar navbar-default navbar-fixed-top">
+<div class="navbar navbar-default">
       <div class="container">
         <div class="navbar-header">
           <a href="../" class="navbar-brand">乐学网</a>
         </div>
-
+        <% if current_user %>
           <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="message"><i class="fa fa-lightbulb-o fa-lg"></i></a>
+              <ul class="dropdown-menu" aria-labelledby="download">
+                <li><a href="">消息已经处理完毕</a></li>
+              </ul>
+            </li>
+
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="download"><%= current_user.username %><span class="caret"></span></a>
               <ul class="dropdown-menu" aria-labelledby="download">
-                <li><a href="./bootstrap.min.css">bootstrap.min.css</a></li>
+                <li><a href="/center">控制中心</a></li>
                 <li><a href="./bootstrap.css">bootstrap.css</a></li>
                 <li class="divider"></li>
                 <li><a href="./variables.less">variables.less</a></li>
@@ -16,6 +23,7 @@
               </ul>
             </li>
           </ul>
+        <% end %>
         </div>
       </div>
     </div>

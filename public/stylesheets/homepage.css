@@ -15,14 +15,14 @@ body {
 	/* background-color: white; */
 }
 
-.pull-left {
+/*.pull-left {
 	float: left;
 }
 
 .pull-right {
 	float: right;
 }
-
+*/
 #box-left {
 	margin-left: 80px;
 	margin-top: 70px;
@@ -106,10 +106,24 @@ button[type="submit"] {
 	clear: both;
 }
 
+img#item-1 {
+	background-image: url('/assets/icon/bald34.png');
+	background-size: 180px 180px;
+	background-repeat:no-repeat;
+    background-position:center;
+}
+
+img#item-2 {
+	background-image: url('/assets/icon/desktop.png');
+	background-size: 180px 131px;
+	background-repeat:no-repeat;
+    background-position:center;
+}
+
 .item {
 	width: 200px;
 	height: 200px;
-	background-color: green;
+	/*background-color: green;*/
 	margin-left: 25px;
 	margin-top: 10px;
 	margin-bottom: 10px;

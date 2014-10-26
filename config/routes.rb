@@ -4,6 +4,8 @@ Megrez::Application.routes.draw do
 
   get '/me', controller: 'users', action: 'me'
 
+  get '/center', controller: 'users', action: 'center', as: :user_center
+
   get  '/signup', controller: 'users', action: 'new'
   post '/signup', controller: 'users', action: 'create'
 

@@ -8,9 +8,13 @@
 </head>
 <body>
 
-<%= render 'shared/navbar.html.erb' %>
+  <%= render 'shared/navbar.html.erb' %>
 
-<%= yield %>
+  <div class="container">
+    <%= yield %>
+  </div>
+
+  <%= render 'shared/footer.html.erb' %>
 
 </body>
 </html>
