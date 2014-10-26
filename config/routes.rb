@@ -15,5 +15,6 @@ Megrez::Application.routes.draw do
   delete '/logout', controller: 'sessions', action: 'destroy'
 
   resources :users
+  resources :courses
 
 end
