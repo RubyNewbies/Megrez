@@ -1,6 +1,6 @@
 Megrez::Application.routes.draw do
 
-  root to: 'StaticPages#home'
+  root 'static_pages#home'
 
   get '/me', controller: 'users', action: 'me'
 

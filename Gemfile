@@ -1,20 +1,28 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.16'
+gem 'rails', '4.1.6'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
 
-gem 'coffee-rails', '~> 3.2.1'
+gem 'coffee-rails'
 
 gem 'autoprefixer-rails'
-gem 'bootstrap-sass', '~> 3.2.0'
-gem 'font-awesome-sass', '~> 4.2.0'
-gem 'sprockets-rails', '=2.0.0.backport1'
-gem 'sprockets', '=2.2.2.backport2'
-gem 'sass-rails', github: 'guilleiguaran/sass-rails', branch: 'backport'
+gem 'bootstrap-sass'
+gem 'font-awesome-sass'
+gem 'sprockets-rails'
+gem 'sprockets'
+gem 'sass-rails'
+
+group :development, :test do
+  gem 'binding_of_caller'
+  gem 'better_errors'
+end
+
+ # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks                                                                                       |  Rakefile
+ gem 'turbolinks'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', :platforms => :ruby
@@ -24,7 +32,7 @@ gem 'uglifier', '>= 1.0.3'
 gem 'jquery-rails'
 
 # Using strong parameters to protect mass assignment
-gem 'strong_parameters'
+# gem 'strong_parameters'
 
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
