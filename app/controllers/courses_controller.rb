@@ -44,6 +44,9 @@ class CoursesController < ApplicationController
   def admin
   end
 
+  def wiki
+  end
+
   private
 
   def course_params

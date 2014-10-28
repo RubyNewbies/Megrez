@@ -5,9 +5,9 @@
     </a>
   </li>
   <li><a href=<%= docs_course_path(@course) %>><i class="fa fa-fw fa-files-o fa-lg"></i> 课件资料</a></li>
-  <li><a href="#"><i class="fa fa-fw fa-comments-o fa-lg"></i> 讨论专区</a></li>
-  <li><a href="#"><i class="fa fa-fw fa-edit fa-lg"></i> 课程作业</a></li>
-  <li><a href="#"><i class="fa fa-fw fa-book fa-lg"></i> 课程维基</a></li>
-  <li><a href="#"><i class="fa fa-fw fa-group fa-lg"></i> 成员</a></li>
-  <li><a href="#"><i class="fa fa-fw fa-gears fa-lg"></i> 课程管理</a></li>
+  <li><a href=<%= forum_course_path(@course) %>><i class="fa fa-fw fa-comments-o fa-lg"></i> 讨论专区</a></li>
+  <li><a href=<%= assmt_course_path(@course) %>><i class="fa fa-fw fa-edit fa-lg"></i> 课程作业</a></li>
+  <li><a href=<%= wiki_course_path(@course) %>><i class="fa fa-fw fa-book fa-lg"></i> 课程维基</a></li>
+  <li><a href=<%= members_course_path(@course) %>><i class="fa fa-fw fa-group fa-lg"></i> 成员</a></li>
+  <li><a href=<%= admin_course_path(@course) %>><i class="fa fa-fw fa-gears fa-lg"></i> 课程管理</a></li>
 </ul>

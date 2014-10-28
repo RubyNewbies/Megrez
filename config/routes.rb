@@ -21,9 +21,10 @@ Megrez::Application.routes.draw do
     member do
       get 'docs', as: :docs
       get 'assmt', as: :assmt
-      get 'forum', as: :forun
+      get 'forum', as: :forum
       get 'members', as: :members
       get 'admin', as: :admin
+      get 'wiki', as: :wiki
     end
   end
 
