@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
 
   include ActiveModel::ForbiddenAttributesProtection
 
+  has_many  :courses
+
   validates :username, presence: true, uniqueness: true, length: { maximum: 20 }
   validates :email, presence: true,
                     uniqueness: { case_sensitive: false },
@@ -19,6 +21,10 @@ class User < ActiveRecord::Base
 
   def User.encrypt(token)
     Digest::SHA1.hexdigest(token.to_s)
+  end
+
+  def course_joined_in?(course_id)
+    self.courses.any? {|c| c.id == course_id}
   end
 
   private

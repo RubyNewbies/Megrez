@@ -1,28 +1,9 @@
 <div class="row">
-  <div class="col-md-3">
-    <div id="course-info">
-      <h2 class="text-center">操作系统·2014</h4>
-      <h3 class="text-center">Operating System</h5>
-    </div>
-    <div id="teacher-info">
-      <img src="https://cms.hit.edu.cn/pluginfile.php/3392/user/icon/anomaly/f1" width="220px" height="220px" alt="">
-      <h2 class="text-center">李治军</h2>
-    </div>
-
-    <div id="action-bar">
-      <div class="list-group">
-        <a href="#" class="list-group-item active"><i class="fa fa-fw fa-lg fa-home"></i> 控制中心</a>
-        <a href="#" class="list-group-item"><i class="fa fa-fw fa-lg fa-book"></i> 课程管理</a>
-        <a href="#" class="list-group-item"><i class="fa fa-fw fa-lg fa-database"></i> 文件管理</a>
-        <a href="#" class="list-group-item"><i class="fa fa-fw fa-lg fa-cogs"></i> 账号设置</a>
-      </div>
-    </div>
+  <div id="course-info">
+    <%= render partial: 'header.html.erb' %>
   </div>
-  <div class="col-md-9">
-    <div class="jumbotron">
-      <h3>一个作业即将到期</h1>
-      <p>《操作系统》 实验三 进程的跟踪 还有</p>
-      <p><a class="btn btn-primary btn-lg">查看详情</a></p>
-    </div>
+  <div id="teacher-info">
+    <img src="https://cms.hit.edu.cn/pluginfile.php/3392/user/icon/anomaly/f1" width="220px" height="220px" alt="">
+    <h2><%= @course.user.username %></h2>
   </div>
 </div>  

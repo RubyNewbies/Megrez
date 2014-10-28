@@ -1,0 +1,14 @@
+<div class="row">
+  <%= render partial: 'header.html.erb' %>
+</div>
+
+<hr>
+
+<div class="row">
+  <div class="col-md-9">
+    <%= @course.description %>
+  </div>
+  <div class="col-md-3">
+    <%= render partial: 'stuff.html.erb' %>
+  </div>
+</div>

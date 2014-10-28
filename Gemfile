@@ -11,6 +11,7 @@ gem 'coffee-rails'
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
+gem 'bootstrap_form'
 gem 'font-awesome-sass'
 gem 'sprockets-rails'
 gem 'sprockets'
