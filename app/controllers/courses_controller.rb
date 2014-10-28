@@ -23,28 +23,44 @@ class CoursesController < ApplicationController
   def show
     @course = Course.find(params[:id])
     if current_user.course_joined_in?(@course.id)
-      render 'show.html.erb'
+      redirect_to home
     else
       render 'introduce.html.erb'
     end
   end
 
+
+  def home
+    @course = Course.find(params[:id])
+  end
+
   def destroy
+    @course = Course.find(params[:id])
   end
 
   def docs
+    @course = Course.find(params[:id])
   end
 
   def forum
+    @course = Course.find(params[:id])
   end
 
   def members
+    @course = Course.find(params[:id])
+    @members = @course.users
   end
 
   def admin
+    @course = Course.find(params[:id])
   end
 
   def wiki
+    @course = Course.find(params[:id])
+  end
+
+  def assmt
+    @course = Course.find(params[:id])
   end
 
   private
