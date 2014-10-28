@@ -1,3 +1,43 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+::-moz-selection {
+  background: rgba(0,0,0,0.1);
+}
+::selection {
+  background: rgba(0,0,0,0.1);
+}
+
+
+a.circle {
+  color: RoyalBlue;
+  font-weight: normal;
+  text-decoration: none;
+  /* color: transparent; */
+} /* IE fix: removes blue border */	
+
+
+a:hover {
+  color: CornflowerBlue;
+}
+
+.circle {
+	line-height: 0;		/* remove line-height */ 
+	border: 10px solid rgba(255,255,255,0.4);
+	border-radius: 50%;	/* relative value */
+	/*box-shadow: 0px 0px 5px rgba(0,0,0,0.4);*/
+	transition: linear 0.25s;
+  	/* height: 32px;
+  	width: 32px; */
+}
+.circle img {
+	border-radius: 50%;	/* relative value for
+				   adjustable image size */
+}
+.circle:hover {
+	color: CornflowerBlue;
+	transition: ease-out 0.2s;
+  	border: 10px solid rgba(255,255,255,0.8);
+  	-webkit-transition: ease-out 0.2s;
+}

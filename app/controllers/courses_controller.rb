@@ -2,6 +2,14 @@ class CoursesController < ApplicationController
 
   include UsersHelper
 
+  before_action :find_course,
+                only: [:show, :home, :docs, :wiki, :forum, :members, :assmt]
+
+  before_action :check_joined_in,
+                only: [:home, :docs, :wiki, :forum, :members, :assmt]
+
+  before_action :check_permission, only: [:update, :destroy, :admin]
+
   def new
     @course = Course.new
   end
@@ -23,44 +31,37 @@ class CoursesController < ApplicationController
   def show
     @course = Course.find(params[:id])
     if current_user.course_joined_in?(@course.id)
-      redirect_to home
+      redirect_to home_course_path(@course)
     else
+      @do_not_show_nav = true
       render 'introduce.html.erb'
     end
   end
 
 
   def home
-    @course = Course.find(params[:id])
   end
 
   def destroy
-    @course = Course.find(params[:id])
   end
 
   def docs
-    @course = Course.find(params[:id])
   end
 
   def forum
-    @course = Course.find(params[:id])
   end
 
   def members
-    @course = Course.find(params[:id])
     @members = @course.users
   end
 
   def admin
-    @course = Course.find(params[:id])
   end
 
   def wiki
-    @course = Course.find(params[:id])
   end
 
   def assmt
-    @course = Course.find(params[:id])
   end
 
   private
@@ -68,6 +69,20 @@ class CoursesController < ApplicationController
   def course_params
     params.require(:course).permit(:department_id, :full_name,
                                    :english_name, :key, :description)
+  end
+
+  def find_course
+    @course = Course.find(params[:id])
+  end
+
+  def check_joined_in
+    unless current_user.course_joined_in?(params[:id].to_i)
+      redirect_to course_path(@course)
+    end
+  end
+
+  def check_permission
+    true
   end
   
 end

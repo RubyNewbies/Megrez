@@ -15,6 +15,7 @@ Megrez::Application.routes.draw do
   delete '/logout', controller: 'sessions', action: 'destroy'
 
   resources :users
+  resources :courses 
 
   resources :courses do
     member do
@@ -27,7 +28,5 @@ Megrez::Application.routes.draw do
       get 'wiki', as: :wiki
     end
   end
-
-  resources :courses
 
 end
