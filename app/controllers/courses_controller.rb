@@ -9,6 +9,8 @@ class CoursesController < ApplicationController
   def create
     @course = Course.new(course_params.merge user_id: current_user.id)
     if @course.save
+      rel = {user_id: @course.user_id, course_id: @course.id}
+      @course.course_uesr_relationships.create(rel)
       redirect_to @course
     else
     end
@@ -20,7 +22,7 @@ class CoursesController < ApplicationController
 
   def show
     @course = Course.find(params[:id])
-    if current_user.course_joined_in?(params[:id])
+    if current_user.course_joined_in?(@course.id)
       render 'show.html.erb'
     else
       render 'introduce.html.erb'
@@ -28,6 +30,18 @@ class CoursesController < ApplicationController
   end
 
   def destroy
+  end
+
+  def docs
+  end
+
+  def forum
+  end
+
+  def members
+  end
+
+  def admin
   end
 
   private

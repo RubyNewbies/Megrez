@@ -2,7 +2,10 @@ class User < ActiveRecord::Base
 
   include ActiveModel::ForbiddenAttributesProtection
 
-  has_many  :courses
+  has_many  :created_courses, class_name: 'Course'
+
+  has_many  :courses, through: :course_user_relationships
+  has_many  :course_user_relationships, dependent: :destroy
 
   validates :username, presence: true, uniqueness: true, length: { maximum: 20 }
   validates :email, presence: true,
@@ -24,7 +27,7 @@ class User < ActiveRecord::Base
   end
 
   def course_joined_in?(course_id)
-    self.courses.any? {|c| c.id == course_id}
+    courses.any? {|c| c.id == course_id}
   end
 
   private

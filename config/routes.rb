@@ -17,4 +17,14 @@ Megrez::Application.routes.draw do
   resources :users
   resources :courses
 
+  resources :courses do
+    member do
+      get 'docs', as: :docs
+      get 'assmt', as: :assmt
+      get 'forum', as: :forun
+      get 'members', as: :members
+      get 'admin', as: :admin
+    end
+  end
+
 end
