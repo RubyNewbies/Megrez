@@ -125,3 +125,13 @@ a.action-a:hover {
 	margin-right: -5px;
 	transition: .2s all ease-in-out;
 }
+
+ul {
+	padding-left: 25px;
+	padding-right: 5px;
+}
+
+li {
+	line-height: 150%;
+	margin-top: 5px;
+}
