@@ -6,7 +6,7 @@ class StaticPagesController < ApplicationController
 
   def home
     if current_user
-      redirect_to current_user 
+      redirect_to '/center'
     else
       render 'home'
     end

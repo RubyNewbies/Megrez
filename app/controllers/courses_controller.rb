@@ -3,7 +3,7 @@ class CoursesController < ApplicationController
   include UsersHelper
 
   before_action :find_course,
-                only: [:show, :home, :docs, :wiki, :forum, :members, :assmt]
+                only: [:show, :home, :docs, :admin, :wiki, :forum, :members, :assmt]
 
   before_action :check_joined_in,
                 only: [:home, :docs, :wiki, :forum, :members, :assmt]
@@ -11,6 +11,7 @@ class CoursesController < ApplicationController
   before_action :check_permission, only: [:update, :destroy, :admin]
 
   def new
+    @do_not_show_nav = true
     @course = Course.new
   end
 
