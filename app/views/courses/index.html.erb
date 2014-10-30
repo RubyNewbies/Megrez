@@ -1,0 +1,8 @@
+<% @courses.each do |c| %>
+  
+  <div class="well bs-component">
+    <div><%= link_to c.full_name, c %></div>
+    <div><%= c.english_name %></div>
+  </div> 
+  
+<% end %>

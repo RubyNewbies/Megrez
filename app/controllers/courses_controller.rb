@@ -2,8 +2,7 @@ class CoursesController < ApplicationController
 
   include UsersHelper
 
-  before_action :find_course,
-                only: [:show, :home, :docs, :admin, :wiki, :forum, :members, :assmt]
+  before_action :find_course, except: [:new, :create, :index]
 
   before_action :check_joined_in,
                 only: [:home, :docs, :wiki, :forum, :members, :assmt]
@@ -19,18 +18,18 @@ class CoursesController < ApplicationController
     @course = Course.new(course_params.merge user_id: current_user.id)
     if @course.save
       rel = {user_id: @course.user_id, course_id: @course.id}
-      @course.course_uesr_relationships.create(rel)
+      @course.course_user_relationships.create(rel)
       redirect_to @course
     else
     end
   end
 
-  def index 
+  def index
+    @do_not_show_nav = true
     @courses = Course.all
   end
 
   def show
-    @course = Course.find(params[:id])
     if current_user.course_joined_in?(@course.id)
       redirect_to home_course_path(@course)
     else
@@ -63,6 +62,11 @@ class CoursesController < ApplicationController
   end
 
   def assmt
+  end
+
+  def update
+    @course.update(course_params)
+    redirect_to @course
   end
 
   private

@@ -1,6 +1,8 @@
-<% if @course.english_name.present? %>
-  <h2 class="class-full-name"><%= @course.full_name %></h2>
-  <h3 class="course-english-name"><%= @course.english_name %></h1>
-<% else %>
-  <h2 class="course-single-name"><%= @course.full_name %></h2>
+<% if @course %>
+  <% if @course.english_name.present? %>
+    <h2 class="class-full-name"><%= @course.full_name %></h2>
+    <h3 class="course-english-name"><%= @course.english_name %></h1>
+  <% else %>
+    <h2 class="course-single-name"><%= @course.full_name %></h2>
+  <% end %>
 <% end %>

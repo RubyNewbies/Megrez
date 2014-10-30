@@ -9,4 +9,12 @@ class Course < ActiveRecord::Base
     User.find(user_id)
   end
 
+  def join_user(user)
+    unless user.course_joined_in?(id)
+      rel = {user_id: user.id, course_id: id}
+      course = course_user_relationships.new(rel)
+      return course.save
+    end
+  end
+
 end
