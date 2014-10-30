@@ -2,9 +2,6 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.1.6'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
 gem 'sqlite3'
 
 gem 'coffee-rails'
@@ -12,8 +9,7 @@ gem 'coffee-rails'
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
 gem 'bootstrap_form'
-#gem 'font-awesome-sass'
-gem "font-awesome-rails"
+gem 'font-awesome-rails'
 gem 'sprockets-rails'
 gem 'sprockets'
 gem 'sass-rails'
@@ -32,11 +28,7 @@ end
 # gem 'therubyracer', :platforms => :ruby
 
 gem 'uglifier', '>= 1.0.3'
-
 gem 'jquery-rails'
-
-# Using strong parameters to protect mass assignment
-# gem 'strong_parameters'
 
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
