@@ -2,6 +2,12 @@ class User < ActiveRecord::Base
 
   include ActiveModel::ForbiddenAttributesProtection
 
+  has_attached_file :avatar, styles: { medium: "120x120>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
+
+  validates_attachment_content_type :avatar, :content_type => /\Aimage/
+  validates_attachment_file_name :avatar, :matches => [/png\Z/, /jpe?g\Z/]
+  do_not_validate_attachment_file_type :avatar
+
   has_many  :created_courses, class_name: 'Course'
 
   has_many  :courses, through: :course_user_relationships
@@ -28,10 +34,6 @@ class User < ActiveRecord::Base
 
   def course_joined_in?(course_id)
     courses.any? {|c| c.id == course_id}
-  end
-
-  def avatar
-    
   end
 
   private

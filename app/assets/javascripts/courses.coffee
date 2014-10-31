@@ -19,7 +19,7 @@ $ ->
                 ["style", ["style"]],
                 ["fontsize", ["fontsize"]],
                 ["color", ["color"]],
-                #["style", ["bold", "italic", "underline", "clear"]],
+                ["style", ["bold", "italic", "underline", "clear"]],
                 ["para", ["ul", "ol", "paragraph"]],
                 ["height", ["height"]],
                 ["help", ["help"]]

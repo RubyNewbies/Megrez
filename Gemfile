@@ -31,7 +31,7 @@ gem 'uglifier', '>= 1.0.3'
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
-gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'bcrypt-ruby', '3.1.2'
 
 # Use Email validator
 gem 'email_validator', :require => 'email_validator/strict'
@@ -42,6 +42,8 @@ gem 'table_print'
 # Try to use summer note for rich text-editor
 gem 'summernote-rails'
 
+# Use paperclip to deal with file uploading
+gem 'paperclip'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
