@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def center
+  def dashboard
     @user = signed_in_user
   end
 
