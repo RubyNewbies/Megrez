@@ -38,6 +38,11 @@ gem 'email_validator', :require => 'email_validator/strict'
 
 # For beautiful data output
 gem 'table_print'
+
+# Try to use summer note for rich text-editor
+gem 'summernote-rails'
+
+
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 

@@ -30,6 +30,10 @@ class User < ActiveRecord::Base
     courses.any? {|c| c.id == course_id}
   end
 
+  def avatar
+    
+  end
+
   private
 
   def create_remember_token

@@ -8,7 +8,7 @@
     <%= f.select :department_id, [['计算机科学与技术', 1], ['软件工程', 2]],{ label: '所属专业' } %>
 
     <%= f.text_field :key, label: '选课密码', placeholder: '留空即可开放选课' %>
-    <%= f.text_area :description, label: '课程描述', rows: 6, placeholder: '简要课程描述。' %>
+    <%= f.text_area :description, label: '课程描述', id: 'course_description', placeholder: '简要课程描述。' %>
 
     <%= f.submit class: 'btn btn-primary pull-right', value: '开设课程' %>
 

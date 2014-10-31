@@ -30,7 +30,7 @@ class CoursesController < ApplicationController
   end
 
   def show
-    if current_user.course_joined_in?(@course.id)
+    if current_user && current_user.course_joined_in?(@course.id)
       redirect_to home_course_path(@course)
     else
       @do_not_show_nav = true
