@@ -7,8 +7,12 @@ gem 'sqlite3'
 gem 'coffee-rails'
 
 gem 'autoprefixer-rails'
+
+# Bootstrap resources
 gem 'bootstrap-sass'
 gem 'bootstrap_form'
+gem 'bootstrap-select-rails'
+
 gem 'font-awesome-rails'
 gem 'sprockets-rails'
 gem 'sprockets'

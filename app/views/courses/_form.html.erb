@@ -5,7 +5,7 @@
     <%= f.text_field :full_name, label: '课程全名', placeholder: '课程全名' %>
     <%= f.text_field :english_name, label: '课名英文', placeholder: 'Course English name(Optional)' %>
 
-    <%= f.select :department_id, [['计算机科学与技术', 1], ['软件工程', 2]],{ label: '所属专业' } %>
+    <%= f.select :department_id, [['计算机科学与技术', 1], ['软件工程', 2]], { label: '所属专业' }, { class: 'selectpicker'} %>
 
     <%= f.text_field :key, label: '选课密码', placeholder: '留空即可开放选课' %>
     <%= f.text_area :description, label: '课程描述', id: 'course_description', placeholder: '简要课程描述。' %>

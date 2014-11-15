@@ -11,8 +11,10 @@
  *= require_self
  *= require font-awesome
  *= require summernote
+ *= require bootstrap-select
  *= require_tree .
  */
+
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
