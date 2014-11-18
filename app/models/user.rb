@@ -32,8 +32,31 @@ class User < ActiveRecord::Base
     Digest::SHA1.hexdigest(token.to_s)
   end
 
-  def course_joined_in?(course_id)
-    courses.any? {|c| c.id == course_id}
+  def creator_of_course?(course_id)
+    course = Course.find(course_id)
+    course.creator_id == id
+  end
+
+  def joined_in_course?(course_id)
+    course_user_relationships.where(course_id: course_id, user_id: id).first
+  end
+
+  def join_in_course(course_id)
+    course_user_relationships.create(course_id: course_id, user_id: id)
+  end
+
+  def leave_out_course(course_id)
+
+    # if creator leaves out the course, the course will be delete
+    if creator_of_course?(course_id)
+      delete
+    elsif joined_in_course?(course_id)
+      course_user_relationships.where(course_id: course_id, user_id: id).
+                                first.try(:delete)
+    else
+      false
+    end
+
   end
 
   private

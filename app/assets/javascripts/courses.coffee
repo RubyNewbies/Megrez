@@ -4,6 +4,11 @@
 
 $ ->
 
+  # $('button#join_course').click ->
+  #   $(this).attr('disabled', true)
+  #   $(this).html("<i class='fa fa-fw fa-spin fa-spinner'></i> 加入中...")
+  #   $.post
+
   # to set summernote object
   # You should change '#post_content' to your textarea input id
   summer_note = $('#course_description')

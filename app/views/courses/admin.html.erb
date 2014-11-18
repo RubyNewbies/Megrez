@@ -1,1 +1,5 @@
-<%= render partial: 'form.html.erb' %>
+<% if current_user.id == @course.creator.id %>
+  <%= render partial: 'form.html.erb' %>
+<% else %>
+  <a href=<%= leave_course_path(@course) %> class="btn btn-danger" data-method="delete" data-confirm='你真的打算退出此门课程？'><i class="fa fa-fw fa-times"></i> 退出选课</a>
+<% end %>

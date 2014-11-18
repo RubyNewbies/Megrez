@@ -2,6 +2,7 @@ class CoursesController < ApplicationController
 
   include UsersHelper
 
+  before_action :signed_in_user, only: [:join, :leave]
   before_action :find_course, except: [:new, :create, :index]
 
   before_action :check_joined_in,
@@ -30,7 +31,7 @@ class CoursesController < ApplicationController
   end
 
   def show
-    if current_user && current_user.course_joined_in?(@course.id)
+    if current_user && current_user.joined_in_course?(@course.id)
       redirect_to home_course_path(@course)
     else
       @do_not_show_nav = true
@@ -69,6 +70,22 @@ class CoursesController < ApplicationController
     redirect_to @course
   end
 
+  def join
+    unless current_user.joined_in_course?(params[:id])
+      current_user.join_in_course(params[:id])
+    end
+    redirect_to @course
+  end
+
+  def leave
+    if current_user.joined_in_course?(params[:id])
+      current_user.leave_out_course(params[:id])
+      redirect_to @course
+    else
+      redirect_to @course, error: '你还没有加入此课程。'
+    end
+  end
+
   private
 
   def course_params
@@ -81,13 +98,14 @@ class CoursesController < ApplicationController
   end
 
   def check_joined_in
-    unless current_user.course_joined_in?(params[:id].to_i)
+    unless current_user.joined_in_course?(params[:id].to_i)
       redirect_to course_path(@course)
     end
   end
 
   def check_permission
     true
+    # current_user.id == creator.id
   end
   
 end

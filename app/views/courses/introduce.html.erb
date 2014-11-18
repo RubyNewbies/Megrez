@@ -1,4 +1,17 @@
 <div class="row">
+  <div id="course-info" class="col-md-9">
+    <%= render partial: 'header.html.erb' %>
+  </div>
+  <div class="col-md9">
+    <a id="join_course" class="btn btn-primary btn-lg"
+       data-course-id=<%= @course.id %> data-method='post'
+       href=<%= join_course_path(@course.id) %>><i class="fa fa-fw fa-space-shuttle"></i> 加入课程</a>
+  </div>
+</div>
+
+<hr>
+
+<div class="row">
   <div class="col-md-9">
     <%= @course.description.html_safe %>
   </div>

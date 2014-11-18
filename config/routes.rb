@@ -26,6 +26,9 @@ Megrez::Application.routes.draw do
       get 'members', as: :members
       get 'admin', as: :admin
       get 'wiki', as: :wiki
+
+      post 'join', as: :join
+      delete 'leave', as: :leave
     end
   end
 
