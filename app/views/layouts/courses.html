@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>乐学网 - 哈工大交互式网络教学平台</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <%= render 'shared/navbar.html.erb' %>
+
+  <div class="container">
+    <div class="row">
+      <div id="course-info">
+        <%= render partial: 'header.html.erb' %>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <%= render partial: 'nav.html.erb' %>
+    </div>
+    <hr>
+    <%= yield %>
+  </div>
+
+  <div class="container">
+    <%= render 'shared/footer.html.erb' %>
+  </div>
+
+</body>
+</html>

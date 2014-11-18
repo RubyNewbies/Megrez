@@ -35,7 +35,7 @@ class CoursesController < ApplicationController
       redirect_to home_course_path(@course)
     else
       @do_not_show_nav = true
-      render 'introduce.html.erb'
+      render 'introduce.html.erb', layout: 'application'
     end
   end
 
