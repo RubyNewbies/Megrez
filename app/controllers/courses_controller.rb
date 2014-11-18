@@ -28,6 +28,7 @@ class CoursesController < ApplicationController
   def index
     @do_not_show_nav = true
     @courses = Course.all
+    render 'index.html.erb', layout: 'application'
   end
 
   def show
@@ -50,6 +51,7 @@ class CoursesController < ApplicationController
   end
 
   def forum
+    render 'forum.html.erb', layout: false
   end
 
   def members
