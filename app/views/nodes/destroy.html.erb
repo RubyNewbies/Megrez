@@ -1,2 +1,9 @@
-<h1>Nodes#destroy</h1>
-<p>Find me in app/views/nodes/destroy.html.erb</p>
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <h1>删除讨论区</h1>
+
+    <p><%= @info %></p>
+
+    <%= link_to '返回', node_path(id: @node.id), class: 'btn btn-primary' %>
+  </div>
+</div>

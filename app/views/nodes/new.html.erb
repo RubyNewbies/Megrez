@@ -1,2 +1,20 @@
-<h1>Nodes#new</h1>
-<p>Find me in app/views/nodes/new.html.erb</p>
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+
+    <h1>新建讨论区</h1>
+    <%= form_for @node do |f| %>
+      <%= f.label :name, '名称：' %>
+      <%= f.text_field :name, class: 'form-control', placeholder: '名称' %>
+      <%= f.label :icon, '图标：' %>
+      <%= f.text_field :icon, class: 'form-control', placeholder: '图标' %>
+      <%= f.hidden_field :course_id, value: params[:current_course] %>
+      <%= f.hidden_field :father_id, value: params[:current_father] %>
+      <%= f.hidden_field :child_count, value: 0 %>
+      <br>
+      <%= f.submit '提交', disable_with: '正在创建', class: 'btn btn-primary form-control' %>
+    <% end %>
+    <br>
+    <%= link_to '返回', forum_course_path(id: params[:current_course]), class: 'btn btn-primary' %>
+
+  </div>
+</div>

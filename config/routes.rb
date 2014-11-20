@@ -1,13 +1,5 @@
 Megrez::Application.routes.draw do
 
-  get 'nodes/new'
-
-  get 'nodes/show'
-
-  get 'nodes/edit'
-
-  get 'nodes/destroy'
-
   root 'static_pages#home'
 
   get '/me', controller: 'users', action: 'me'
@@ -39,5 +31,8 @@ Megrez::Application.routes.draw do
       delete 'leave', as: :leave
     end
   end
+
+  resources :nodes
+  resources :topics
 
 end

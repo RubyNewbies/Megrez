@@ -1,2 +1,30 @@
-<h1>Nodes#show</h1>
-<p>Find me in app/views/nodes/show.html.erb</p>
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <img src="<%= @node.icon %>" alt="img" class="img-circle" width="32px" height="32px">
+        <%= @node.name %>
+        <%= link_to '修改', edit_node_path(id: params[:id]), class: 'btn btn-primary' %>
+        <%= link_to '删除', node_path(id: params[:id]), method: :delete, class: 'btn btn-primary' %>
+        <%= link_to '返回', forum_course_path(id: @node.course_id), class: 'btn btn-primary' %>
+      </div>
+    </div>
+    
+    <% if @node.father_id != -1 %>
+      <% topics = @node.topics %>
+      <% if topics %>
+        <ul>
+          <% topics.each do |t| %>
+            <li><%= link_to t.title, topic_path(t) %></li>
+          <% end %>
+        </ul>
+      <% end %>
+      <hr>
+      <div>
+        <%= @topic = Topic.new; render partial: 'topics/form', locals: {node_id: @node.id} %>
+      </div>
+    <% end %>
+
+  </div>
+</div>
