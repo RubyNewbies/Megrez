@@ -1,0 +1,15 @@
+标题: <%= @topic.title %>
+内容: <%= @topic.body %>
+
+<hr>
+
+<ul>
+  <% @topic.replies.each do |r| %>
+    <li><%= r.body %></li>
+  <% end %>
+</ul>  
+
+<hr>
+回复
+
+<%= @reply = Reply.new; render partial: 'replies/form.html.erb', locals: {topic_id: @topic.id} %>

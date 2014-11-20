@@ -1,0 +1,17 @@
+<%= form_for(@topic) do |f| %>
+  <div class="form-group">
+    <%= f.hidden_field :node_id, value: @node.id %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :title, '标题' %>
+    <%= f.text_field :title %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :source, '内容' %> 
+    <%= f.text_area :source %>
+  </div>
+
+  <%= f.submit "提交", disable_with: '上传中...' %>
+<% end %>

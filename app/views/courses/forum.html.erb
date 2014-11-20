@@ -27,12 +27,36 @@
     </div>
     <hr>
     <div class="row">
-      <div class="col-md-4 forum-sidebar">
+      <div class="col-md-4">
         <div class="btn-group btn-breadcrumb">
             <a href="#" class="btn btn-default"><i class="glyphicon glyphicon-home"></i></a>
             <a href="#" class="btn btn-default">Snippets</a>
             <a href="#" class="btn btn-default">Breadcrumbs</a>
         </div>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-4">
+        <% if @nodes %>
+          <% @nodes.each do |node| %>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <i class="fa fa-fw fa-lg fa-comments-o"></i>
+                <%= link_to node.name, node_path(id: node.id) %>
+                <%= link_to '新建小讨论区', new_node_path(current_course: params[:id], current_father: node.id), class: 'btn btn-default' %>
+              </div>
+              <% if node.child_count > 0 %>
+                <ul class="list-group">
+                  <% node.children.each do |sub| %>
+                    <li class="list-group-item"><%= link_to sub.name, node_path(id: sub.id) %></li>
+                  <% end %>
+                </ul>
+              <% end %>
+            </div>
+          <% end %>
+        <% end %>
+        <%= link_to '新建大讨论区', new_node_path(current_course: params[:id], current_father: -1), class: 'btn btn-primary' %>
       </div>
       <div class="col-md-8 forum-content modal">
         <div class="modal-dialog">

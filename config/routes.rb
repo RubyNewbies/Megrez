@@ -32,4 +32,7 @@ Megrez::Application.routes.draw do
     end
   end
 
+  resources :nodes
+  resources :topics
+
 end
