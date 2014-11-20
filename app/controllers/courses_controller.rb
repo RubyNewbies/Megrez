@@ -11,8 +11,8 @@ class CoursesController < ApplicationController
   before_action :check_permission, only: [:update, :destroy, :admin]
 
   def new
-    @do_not_show_nav = true
     @course = Course.new
+    render 'new.html.erb', layout: 'application'
   end
 
   def create

@@ -5,6 +5,8 @@ class Course < ActiveRecord::Base
   has_many :course_user_relationships, dependent: :destroy
   has_many :users, through: :course_user_relationships
 
+  has_many :nodes
+
   def creator
     User.find(user_id)
   end

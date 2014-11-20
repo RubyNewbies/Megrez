@@ -1,0 +1,15 @@
+<% @assignment ||= Assignment.new %>
+
+<%= bootstrap_form_for(@assignment, layout: :horizontal) do |f| %>
+  <fieldset>
+    <legend>添加作业</legend>
+    
+    <%= f.text_field :title, label: '作业标题', placeholder: '作业标题' %>
+    <%= f.text_area :description, label: '作业描述', placeholder: '作业描述' %>
+
+    <%= f.datapicker :due_to, label: '截止日期' %>
+
+    <%= f.submit class: 'btn btn-primary pull-right', value: '布置作业' %>
+
+  </fieldset>
+<% end %> 
