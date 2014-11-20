@@ -1,5 +1,35 @@
-<% if current_user.id == @course.creator.id %>
-  <%= render partial: 'form.html.erb' %>
-<% else %>
-  <a href=<%= leave_course_path(@course) %> class="btn btn-danger" data-method="delete" data-confirm='你真的打算退出此门课程？'><i class="fa fa-fw fa-times"></i> 退出选课</a>
-<% end %>
+  <div class="row">
+
+<div class="sidebar-nav col-md-3">
+    <div class="well" >
+    <ul class="nav nav-list"> 
+      <li class="nav-header">主选项</li>        
+      <li><a href="index"><i class="icon-home"></i> 课程信息</a></li>
+      <li><a href="#"><i class="icon-envelope"></i> 作业管理</a></li>
+      <li><a href="#"><i class="icon-envelope"></i> 统计信息</a></li>
+      <li><a href="#"><i class="icon-share"></i> Logout</a></li>
+    </ul>
+  </div>
+</div>
+
+  <!-- 
+    <div class="col-md-2">
+      <ul class="nav nav-pills nav-stacked">
+          <%= active_link_to fa_icon('home', text: ' 课程信息', class: 'fa-fw fa-lg'), home_course_path(@course), wrap_tag: :li %>
+
+          <hr>
+
+          <% if current_user.id == @course.creator.id %>
+            <li><a href=<%= course_path(@course) %> class="btn btn-danger" data-method="delete" data-confirm='你真的打算删除此门课程？'><i class="fa fa-fw fa-times"></i> 删除课程</a></li>
+          <% else %>
+            <li><a href=<%= leave_course_path(@course) %> class="btn btn-danger" data-method="delete" data-confirm='你真的打算退出此门课程？'><i class="fa fa-fw fa-times"></i> 退出选课</a></li>
+          <% end %>
+
+      </ul>
+
+    </div> -->
+    <div class="col-md-8 well bs-component">
+      <%= render partial: 'form.html.erb' %>
+    </div>
+  </div>
+

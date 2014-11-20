@@ -45,6 +45,12 @@ class CoursesController < ApplicationController
   end
 
   def destroy
+    if check_permission
+      @course.delete
+      # Should send some email or message to notify?
+      redirect_to '/', success: '成功删除。'
+    else
+    end
   end
 
   def docs
