@@ -52,6 +52,7 @@ class CoursesController < ApplicationController
 
   def forum
     render 'forum.html.erb', layout: false
+    @nodes = Node.where(course_id: params[:id], father_id: -1)
   end
 
   def members

@@ -1,5 +1,13 @@
 Megrez::Application.routes.draw do
 
+  get 'nodes/new'
+
+  get 'nodes/show'
+
+  get 'nodes/edit'
+
+  get 'nodes/destroy'
+
   root 'static_pages#home'
 
   get '/me', controller: 'users', action: 'me'

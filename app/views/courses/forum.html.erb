@@ -33,6 +33,28 @@
             <a href="#" class="btn btn-default">Snippets</a>
             <a href="#" class="btn btn-default">Breadcrumbs</a>
         </div>
+        <% if @nodes %>
+          <% @nodes.each do |node| %>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <img src="<%= node.icon %>" alt="img" class="img-circle" width="32px" height="32px">
+                <%= link_to node.name, node_path(id: node.id) %>
+                <%= link_to 'new', new_node_path(current_father: node.id), class: 'pull-right' %>
+              </div>
+              <% if node.child_count > 0 %>
+                <ul class="list-group">
+                  <% node.children.each do |sub| %>
+                    <li class="list-group-item">
+                      <img src="<%= sub.icon %>" alt="img" class="img-circle" width="32px" height="32px">
+                      <%= link_to sub.name, node_path(id: sub.id) %>
+                    </li>
+                  <% end %>
+                </ul>
+              <% end %>
+            </div>
+          <% end %>
+        <% end %>
+        <%= link_to 'new', new_node_path(current_father: -1), class: 'btn btn-primary' %>
       </div>
       <div class="col-md-8 forum-content modal">
         <div class="modal-dialog">
