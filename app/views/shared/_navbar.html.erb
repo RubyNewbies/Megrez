@@ -15,13 +15,55 @@
             </li>
 
             <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="download"><%= current_user.username %><span class="caret"></span></a>
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="download"><strong><%= current_user.username %></strong><span class="caret"></span></a>
               <ul class="dropdown-menu" aria-labelledby="download">
-                <li><a href="/courses/new" style="color:red">开设课程</a></li>
-                <li><a href="/dashboard">控制中心</a></li>
-                <li class="divider"></li>
-                <li><a href="./variables.less">variables.less</a></li>
-                <li><a href="/logout" data-method="delete">退出</a></li>
+                <li>
+                  <div style="width: 300px;padding: 10px">
+                    <div class="row">
+                      <div class="col-md-4">
+                        <p class="text-center">
+                          <span class="glyphicon glyphicon-user" style="font-size: 96px"></span>
+                        </p>
+                      </div>
+                      <div class="col-md-8">
+                        <p class="test-left"><%= current_user.username %></p>
+                        <p class"test-left"><%= current_user.realname %></p>
+                        <p class"test-left"><%= current_user.email %></p>
+                        <p class"test-left">
+                          <a href="<%= edit_user_path(id: current_user.id) %>" class="btn btn-primary btn-block btn-sm">修改个人信息</a>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <a href="/courses/new" class="btn btn-default btn-block" style="color:red">开设课程</a>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <a href="/dashboard" class="btn btn-default btn-block">控制中心</a>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <a href="./variables.less" class="btn btn-default btn-block">variables.less</a>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <a href="/logout" class="btn btn-danger btn-block" data-method="delete">退出</a>
+                    </div>
+                  </div>
+                </li>
               </ul>
             </li>
           </ul>

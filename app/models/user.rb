@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 
-  include ActiveModel::ForbiddenAttributesProtection
+  #include ActiveModel::ForbiddenAttributesProtection
 
   has_attached_file :avatar, styles: { medium: "220x220>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
 

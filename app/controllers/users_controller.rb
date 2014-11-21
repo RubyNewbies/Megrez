@@ -10,6 +10,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def edit
+    @user = current_user
+  end
+
   def dashboard
     @user = signed_in_user
   end
@@ -24,6 +28,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def update
+    @user = current_user
+    @user.update(user_params)
+    redirect_to dashboard_path
+  end
+
   def me
     render signed_in_user 
   end
@@ -31,6 +41,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :password, :email)
+    params.require(:user).permit(:username, :realname, :password, :email)
   end
+
 end
