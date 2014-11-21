@@ -1,7 +1,11 @@
 class NodesController < ApplicationController
+
   def new
     @node = Node.new
-    render 'new.html.erb', layout: false
+    respond_to do |respond|
+      respond.html { render 'new.html.erb', layout: false }
+      respond.partial { render partial: 'new.html.erb' }
+    end
   end
 
   def create
@@ -16,6 +20,16 @@ class NodesController < ApplicationController
 
   def show
     @node = Node.find(params[:id])
+  end
+
+  def index
+    @course = Course.find_by_id(params[:course_id])
+    @nodes = @course.try(:direct_nodes)
+
+    respond_to do |respond|
+      respond.html { render 'index.html.erb' }
+      respond.partial { render partial: 'index.html.erb' }
+    end
   end
 
   def edit

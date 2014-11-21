@@ -27,4 +27,8 @@ class Course < ActiveRecord::Base
     "#{full_name} · #{creator.username}"
   end
 
+  def direct_nodes
+    nodes.where(father_id: -1)
+  end
+
 end

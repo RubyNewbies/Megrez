@@ -1,8 +1,8 @@
 module CoursesHelper
 
-  def join_button_for_user(user)
-    if user.coures_joined_in?(model.id)
-    end
+  def build_select_values(course)
+    return [[]] unless course
+    [["无", -1]] + course.direct_nodes.map {|n| [n.name, n.id] }
   end
 
 end

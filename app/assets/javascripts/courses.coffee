@@ -39,5 +39,9 @@ $ ->
     summer_note.val summer_note.code()
     true
 
-  $('a#new_node').click ->
-    $('#forum-sidebar').load($(this).attr('data_href'))
+  $('button#new_node').click ->
+    history.pushState
+      path: this.path, '', $(this).attr('data-href').replace('.partial', '')
+    $.get $(this).attr('data-href'), (data) ->
+      $('#forum-content').html(data)
+    #$('#forum-content').load($(this).attr('data_href'))

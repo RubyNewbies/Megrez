@@ -10,4 +10,8 @@ class Node < ActiveRecord::Base
     Node.where(father_id: id)
   end
 
+  def father
+    Node.find_by_id(father_id)
+  end
+
 end

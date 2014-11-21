@@ -33,28 +33,14 @@
             <a href="#" class="btn btn-default">讨论专区</a>
         </div>
         <div class="forum-sidevar-content">
-          <% @nodes.each do |node| %>
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <i class="fa fa-fw fa-lg fa-comments-o"></i>
-                  <%= link_to node.name, node_path(id: node.id) %>
-                  <%= link_to fa_icon('plus'), new_node_path(current_course: params[:id], current_father: node.id), class: 'btn btn-sm btn-default pull-right' %>
-              </div>
-              <% if node.child_count > 0 %>
-                <ul class="list-group">
-                  <% node.children.each do |sub| %>
-                    <li class="list-group-item"><%= link_to sub.name, node_path(id: sub.id) %></li>
-                  <% end %>
-                </ul>
-              <% end %>
-            </div>
-          <% end %>
+          <%= render partial: 'nodes/index.html.erb' %>
         </div>
         <div class="forum-sidebar-footer">
-          
 
+          <button id='new_node' class='btn btn-primary btn-block' data-href=<%= new_course_node_path(course_id: params[:id], father_id: -1, format: 'partial') %> >
+            新建讨论区
+          </button>
 
-          <%= link_to '新建大讨论区', '#', id: 'new_node', class: 'btn btn-primary btn-block', data_href: new_node_path(current_course: params[:id], current_father: -1) %>
         </div>
       </div>
 
