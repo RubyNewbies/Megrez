@@ -27,24 +27,18 @@
     </div>
     <hr>
     <div class="row">
-      <div class="col-md-4">
-        <div class="btn-group btn-breadcrumb">
-            <a href="#" class="btn btn-default"><i class="glyphicon glyphicon-home"></i></a>
-            <a href="#" class="btn btn-default">Snippets</a>
-            <a href="#" class="btn btn-default">Breadcrumbs</a>
+      <div id="forum-sidebar" class="col-md-3 forum-sidebar-wrap">
+        <div class="forum-sidebar-header btn-group btn-breadcrumb">
+            <a href=<%= forum_course_path %> class="btn btn-default"><i class="glyphicon glyphicon-home"></i></a>
+            <a href="#" class="btn btn-default">讨论专区</a>
         </div>
-      </div>
-    </div>
-    <br>
-    <div class="row">
-      <div class="col-md-4">
-        <% if @nodes %>
+        <div class="forum-sidevar-content">
           <% @nodes.each do |node| %>
             <div class="panel panel-default">
               <div class="panel-heading">
                 <i class="fa fa-fw fa-lg fa-comments-o"></i>
-                <%= link_to node.name, node_path(id: node.id) %>
-                <%= link_to '新建小讨论区', new_node_path(current_course: params[:id], current_father: node.id), class: 'btn btn-default' %>
+                  <%= link_to node.name, node_path(id: node.id) %>
+                  <%= link_to fa_icon('plus'), new_node_path(current_course: params[:id], current_father: node.id), class: 'btn btn-sm btn-default pull-right' %>
               </div>
               <% if node.child_count > 0 %>
                 <ul class="list-group">
@@ -55,15 +49,29 @@
               <% end %>
             </div>
           <% end %>
-        <% end %>
-        <%= link_to '新建大讨论区', new_node_path(current_course: params[:id], current_father: -1), class: 'btn btn-primary' %>
-      </div>
-      <div class="col-md-8 forum-content modal">
-        <div class="modal-dialog">
-          asdf
+        </div>
+        <div class="forum-sidebar-footer">
+          
+
+
+          <%= link_to '新建大讨论区', '#', id: 'new_node', class: 'btn btn-primary btn-block', data_href: new_node_path(current_course: params[:id], current_father: -1) %>
         </div>
       </div>
+
+      <div class="col-md-8 forum-content-wrap paper has-shadow">
+        <div id="forum-content" class="forum-content">
+          <h1>hi every one</h1>
+
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum consequatur sed nam! Aliquam ea animi expedita possimus molestias quos, veniam aliquid consequatur, numquam, suscipit ab! Saepe pariatur magni, nemo sapiente.</p>
+
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur voluptate odit illo quos culpa nobis maxime ducimus quia nisi magni nostrum rem, totam. Facilis sunt dolore, nostrum necessitatibus tenetur ut.</p>
+
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium dolore, harum totam enim, tempore dicta distinctio doloremque consequuntur fuga quidem commodi, itaque iste et aperiam error earum nulla quis quibusdam.</p>
+        </div>
+      </div>
+
     </div>
+
   </div>
 
   <div class="container">

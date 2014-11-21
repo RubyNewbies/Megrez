@@ -1,20 +1,27 @@
-<div class="row">
-  <div class="col-md-8 col-md-offset-2">
 
-    <h1>新建讨论区</h1>
-    <%= form_for @node do |f| %>
-      <%= f.label :name, '名称：' %>
-      <%= f.text_field :name, class: 'form-control', placeholder: '名称' %>
-      <%= f.label :icon, '图标：' %>
-      <%= f.text_field :icon, class: 'form-control', placeholder: '图标' %>
-      <%= f.hidden_field :course_id, value: params[:current_course] %>
-      <%= f.hidden_field :father_id, value: params[:current_father] %>
-      <%= f.hidden_field :child_count, value: 0 %>
-      <br>
-      <%= f.submit '提交', disable_with: '正在创建', class: 'btn btn-primary form-control' %>
-    <% end %>
-    <br>
-    <%= link_to '返回', forum_course_path(id: params[:current_course]), class: 'btn btn-primary' %>
 
+
+
+<% father = Node.find_by_id(params[:current_father]) %>
+
+<div class="forum-sidebar-header btn-group btn-breadcrumb">
+  <a href=<%= forum_course_path(params[:current_course]) %> class="btn btn-default"><i class="glyphicon glyphicon-home"></i></a>
+  <%= link_to(father.name, node_path(father)) if father %>
+  <a href="#" class="btn btn-default">新建讨论区</a>
+</div>
+
+<div class="forum-sidebar-content">
+  <%= bootstrap_form_for(@node, layout: :horizontal) do |f| %>
+    <%= f.text_field :name, label: '名称', class: 'form-control', placeholder: '名称' %>
+    <%= f.text_field :icon, label: '图标', class: 'form-control', placeholder: '图标' %>
+    <%= f.hidden_field :course_id, value: params[:current_course] %>
+    <%= f.hidden_field :father_id, value: params[:current_father] %>
+  <% end %>
+</div>
+
+<div class="forum-sidebar-footer">
+  <div class="btn-group btn-group-justified">
+    <%= link_to (fa_icon 'arrow-circle-left', text: ' 返回', class: 'fa-fw'), forum_course_path(id: params[:current_course]), class: 'btn btn-default btn-block' %>
+    <%= link_to (fa_icon 'arrow-circle-right', text: '添加 ', class: 'fa-fw', right: true), forum_course_path(id: params[:current_course]), class: 'btn btn-primary btn-block' %>
   </div>
 </div>

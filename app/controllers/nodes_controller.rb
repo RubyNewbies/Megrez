@@ -1,6 +1,7 @@
 class NodesController < ApplicationController
   def new
     @node = Node.new
+    render 'new.html.erb', layout: false
   end
 
   def create
@@ -40,6 +41,8 @@ class NodesController < ApplicationController
        @info = '你无法删除这个讨论区，因为其中包含其他讨论区！'
     end
   end
+
+  private
 
   def node_params
     params.require(:node).permit(:name, :icon, :course_id, :father_id, :child_count )

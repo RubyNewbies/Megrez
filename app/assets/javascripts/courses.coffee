@@ -38,3 +38,6 @@ $ ->
     # alert $('#post_content').code()
     summer_note.val summer_note.code()
     true
+
+  $('a#new_node').click ->
+    $('#forum-sidebar').load($(this).attr('data_href'))
