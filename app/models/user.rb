@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
   before_create :create_remember_token
 
   has_secure_password
-  validates :password, length: { in: 6..20  }
+  validates :password, length: { in: 6..20 }, on: :create
 
   def User.new_remember_token
     SecureRandom.urlsafe_base64
