@@ -30,10 +30,11 @@ class NodesController < ApplicationController
 
   def show
     @node = Node.find(params[:id])
+    @topics = Topic.where(node_id: @node.id)
 
-    # respond_to do |respond|
-    #   respond.js {}
-    # end
+    respond_to do |respond|
+      respond.js {}
+    end
   end
 
   def index

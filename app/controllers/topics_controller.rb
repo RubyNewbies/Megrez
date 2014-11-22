@@ -15,7 +15,7 @@ class TopicsController < ApplicationController
   end
 
   def index
-    @topics = Topic.all
+    @topics = Topic.where
   end
 
   def show

@@ -1,7 +1,12 @@
+<div>
+  <h3>帖子列表<span><%= link_to '发布新帖', '#', class: 'btn btn-primary pull-right' %></span></h3>
+</div>
+
+<hr>
+
 <ul>
   <% @topics.each do |e| %>
     <%= link_to e.title, e %>
-    <%= e.body[0..100] %>
     <%= link_to 'delete', topic_path(e), method: 'delete', confirm: 'do you sure want to delete this?' %>
   <% end %>
 </ul>
