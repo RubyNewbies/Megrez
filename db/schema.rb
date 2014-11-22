@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141121072022) do
+ActiveRecord::Schema.define(version: 20141122040659) do
 
   create_table "assignments", force: true do |t|
     t.integer  "course_id"
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 20141121072022) do
     t.string   "icon"
     t.integer  "father_id"
     t.integer  "course_id"
-    t.integer  "child_count"
+    t.integer  "child_count", default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
