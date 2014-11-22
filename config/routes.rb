@@ -21,8 +21,8 @@ Megrez::Application.routes.draw do
 
   resources :courses do
 
-    resources :nodes
-    resources :topics
+    resources :nodes, path: '/forum/nodes'
+    resources :topics, path: '/forum/topics'
 
     member do
       get 'home', as: :home

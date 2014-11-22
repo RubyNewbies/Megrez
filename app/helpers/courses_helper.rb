@@ -5,4 +5,11 @@ module CoursesHelper
     [["无", -1]] + course.direct_nodes.map {|n| [n.name, n.id] }
   end
 
+  def ajax_node_to(*arg)
+    arg[2] ||= {}
+    #arg[2]['data-node-id'] = params[:id]
+    arg[2]['data-ajax-node-link'] = true
+    link_to(*arg)
+  end
+
 end

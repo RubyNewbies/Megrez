@@ -14,4 +14,11 @@ class Node < ActiveRecord::Base
     Node.find_by_id(father_id)
   end
 
+  def delete
+    if father
+      father.decrement!(:child_count)
+      super
+    end
+  end
+
 end

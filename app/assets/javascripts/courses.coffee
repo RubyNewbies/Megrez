@@ -40,8 +40,18 @@ $ ->
     true
 
   $('button#new_node').click ->
+    #$("<i class='fa fa-fw fa-spinner></i> '").prependTo($(this))
     history.pushState
-      path: this.path, '', $(this).attr('data-href').replace('.partial', '')
+      path: this.path, '', $(this).attr('data-href').replace('.js', '')
     $.get $(this).attr('data-href'), (data) ->
-      $('#forum-content').html(data)
-    #$('#forum-content').load($(this).attr('data_href'))
+      console.log data
+      eval(data)
+
+  $(document).on 'click', 'a#add_node', ->
+    #form = $(this).closest('form')
+    $(this).closest('form').submit()
+    #alert form.attr('action')
+    #$.post form.attr('action'),
+    #  form.serialize(),
+    #  (data) -> eval(data)
+    false
