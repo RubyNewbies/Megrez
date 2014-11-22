@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
       redirect_to '/dashboard'
     else
       flash[:error] = '账号/密码错误！'
-      render 'new'
+      render :new, layout: 'static_pages'
     end
   end
 

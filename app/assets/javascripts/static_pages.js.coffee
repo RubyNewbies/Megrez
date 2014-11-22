@@ -15,3 +15,8 @@ $ ->
   $('input[name="authenticity_token"]')
     .val($('meta[name="csrf-token"]').attr('content'))
   
+  $('#showkey').mousedown ->
+    $('input[name="user[password]"]').attr('type', 'text')
+
+  $('#showkey').mouseup ->
+    $('input[name="user[password]"]').attr('type', 'password')

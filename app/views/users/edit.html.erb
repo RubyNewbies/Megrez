@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col-md-3">
+    <%= render partial: 'info.html.erb' %>
+  </div>
+  <div class="col-md-9">
+    <%= bootstrap_form_for(@user, layout: :horizontal) do |f| %>
+      <legend>个人信息</legend>
+      <%= f.text_field :username, label: '昵称' %>
+      <%= f.text_field :realname, label: '姓名' %>
+      <%= f.text_field :email, label: '电子邮箱' %>
+      <%= f.submit '修改', class: 'btn btn-default form-control' %>
+    <% end %>
+    <br>
+    <%= link_to '返回', dashboard_path, class: 'btn btn-primary form-control' %>
+  </div>
+</div>
