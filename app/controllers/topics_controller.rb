@@ -2,6 +2,9 @@ class TopicsController < ApplicationController
 
   def new
     @topic = Topic.new
+    respond_to do |respond|
+      respond.js
+    end
   end
 
   def create

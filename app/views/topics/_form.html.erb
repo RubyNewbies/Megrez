@@ -1,17 +1,8 @@
-<%= form_for(@topic) do |f| %>
-  <div class="form-group">
-    <%= f.hidden_field :node_id, value: @node.id %>
-  </div>
-  
-  <div class="form-group">
-    <%= f.label :title, '标题' %>
-    <%= f.text_field :title %>
-  </div>
-  
-  <div class="form-group">
-    <%= f.label :source, '内容' %> 
-    <%= f.text_area :source %>
-  </div>
+<% @topic ||= Topic.new %>
 
-  <%= f.submit "提交", disable_with: '上传中...' %>
+<%= bootstrap_form_for(@topic, url: new_course_topic_path, layout: :horizontal) do |f| %>
+    <%= f.hidden_field :node_id, value: @node.id %>
+    <%= f.text_field :title, label: '标题', placeholder: '帖子标题' %>
+    <%= f.text_area :source, label: '内容', placeholder: '帖子内容' %>
+    <%= f.submit "提交", disable_with: '上传中...' %>
 <% end %>

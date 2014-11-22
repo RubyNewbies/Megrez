@@ -15,10 +15,7 @@ Megrez::Application.routes.draw do
   delete '/logout', controller: 'sessions', action: 'destroy'
 
   resources :users
-
-  resources :nodes
-  resources :topics
-
+  
   resources :courses do
 
     resources :nodes, path: '/forum/nodes'
