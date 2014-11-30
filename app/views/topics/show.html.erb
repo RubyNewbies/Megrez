@@ -1,15 +1,36 @@
-标题: <%= @topic.title %>
-内容: <%= @topic.body %>
+<div class="row">
 
-<hr>
+  <!-- start sidebar -->
+  <div id="forum-sidebar" class="col-md-3 forum-sidebar-wrap">
+    
+    <div class="forum-sidebar-header btn-group btn-breadcrumb">
+      <a href=<%= forum_course_path(id: params[:course_id]) %> class="btn btn-default"><i class="glyphicon glyphicon-home"></i></a>
+      <a href="#" class="btn btn-default">讨论专区</a>
+    </div>
 
-<ul>
-  <% @topic.replies.each do |r| %>
-    <li><%= r.body %></li>
-  <% end %>
-</ul>  
+    <div id="forum-sidebar-content" class="forum-sidebar-content">
+      <%= render partial: 'topics/index.html.erb' %>
+    </div>
+    
+    <div class="forum-sidebar-footer">
+      <button id='new_node' class='btn btn-primary btn-block' data-href=<%= new_course_node_path(father_id: -1, format: 'js') %> >
+      新建讨论区
+      </button>
+    </div>
 
-<hr>
-回复
+  </div>
+  <!-- end sidebar -->
 
-<%= @reply = Reply.new; render partial: 'replies/form.html.erb', locals: {topic_id: @topic.id} %>
+  <!-- start content -->
+  <div class="col-md-8 forum-content-wrap paper has-shadow">
+    <div id="forum-content" class="forum-content">
+      <%= render partial: 'topics/show.html.erb' %>
+    </div>
+  </div>
+  <!-- end content -->
+
+</div>
+
+  
+
+

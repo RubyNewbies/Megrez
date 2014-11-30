@@ -6,11 +6,13 @@
 
       <%= f.text_field :title, label: '标题', class: 'form-control', placeholder: '名称' %>
 
+      <%= f.select :node_id, build_node_select_values(@course), { label: '所属讨论区', selected: params[:node_id] }, { class: 'selectpicker' } %>
+
       <%= f.text_area :source, label: '内容', class: 'form-control', placeholder: '帖子内容', rows: 8 %>
 
       <div class="btn-group btn-group-justified">
-        <%= link_to (fa_icon 'arrow-circle-left', text: ' 返回', class: 'fa-fw'), 'javascript:window.history.forward();', class: 'btn btn-default btn-block' %>
-        <%= link_to (fa_icon 'arrow-circle-right', text: '添加 ', class: 'fa-fw', right: true), '#', id: 'add_topic', class: 'btn btn-block btn-default' %>
+        <%= link_to (fa_icon 'arrow-circle-left', text: ' 返回', class: 'fa-fw'), 'javascript:window.history.backward();', class: 'btn btn-default btn-block' %>
+        <%= link_to (fa_icon 'arrow-circle-right', text: '添加 ', class: 'fa-fw', right: true), course_topics_path, id: 'add_topic', class: 'btn btn-block btn-default' %>
       </div>
     </fieldset>
   <% end %>

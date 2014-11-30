@@ -10,8 +10,9 @@
 	margin-top: 0px;
 }
 
-.forum-content, .forum-sidebar {
-	height: 500px;
+.forum-sidebar {
+	height: 100%;
+	overflow: scroll;
 }
 
 .forum-sidebar-wrap {

@@ -9,3 +9,7 @@ $ ->
 
 $(window).bind "popstate", ->
   $.get(document.location.href)
+
+$(document).on 'click', 'a#add_topic', ->
+  $(this).closest('form').submit()
+  false

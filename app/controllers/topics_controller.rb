@@ -12,13 +12,13 @@ class TopicsController < ApplicationController
   end
 
   def create
-    body = topic_params[:source]
-    @topic = Topic.new(topic_params.merge body: body)
+    @topic = Topic.new(topic_params)
+    @node = Node.find_by_id(params[:node_id])
     if @topic.save
 
       respond_to do |respond|
         respond.html { redirect_to @topic }
-        respond.js   { render 'show.js.erb' }
+        respond.js   { render 'topics/show.js.erb' }
       end
     else
       respond_to do |respond|
@@ -34,6 +34,8 @@ class TopicsController < ApplicationController
 
   def show
     @topic = Topic.find(params[:id])
+    @course = Course.find_by_id(params[:course_id])
+    @node = @topic.node
   end
 
   def destroy

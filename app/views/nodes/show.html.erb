@@ -1,30 +1,22 @@
 <div class="row">
-  <div class="col-md-8 col-md-offset-2">
-
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <img src="<%= @node.icon %>" alt="img" class="img-circle" width="32px" height="32px">
-        <%= @node.name %>
-        <%= link_to '修改', edit_course_node_path(id: params[:id]), class: 'btn btn-primary' %>
-        <%= link_to '删除', course_node_path(id: params[:id]), method: :delete, class: 'btn btn-primary' %>
-        <%= link_to '返回', forum_course_path(id: @node.course_id), class: 'btn btn-primary' %>
-      </div>
+  <div id="forum-sidebar" class="col-md-3 forum-sidebar-wrap">
+    <div class="forum-sidebar-header btn-group btn-breadcrumb">
+      <a href=<%= forum_course_path(id: params[:course_id]) %> class="btn btn-default"><i class="fa fa-fw fa-lg fa-home"></i></a>
+      <a href="#" class="btn btn-default">讨论专区</a>
     </div>
-    
-    <% if @node.father_id != -1 %>
-      <% topics = @node.topics %>
-      <% if topics %>
-        <ul>
-          <% topics.each do |t| %>
-            <li><%= link_to t.title, topic_path(t) %></li>
-          <% end %>
-        </ul>
-      <% end %>
-      <hr>
-      <div>
-        <%= @topic = Topic.new; render partial: 'topics/form', locals: {node_id: @node.id} %>
-      </div>
-    <% end %>
-
+    <div id="forum-sidebar-content" class="forum-sidebar-content">
+      <%= render partial: 'topics/index.html.erb' %>
+    </div>
+    <div class="forum-sidebar-footer">
+      <button id='new_node' class='btn btn-primary btn-block' data-href=<%= new_course_node_path(course_id: params[:course_id], father_id: -1, format: 'partial') %> >
+      新建讨论区
+      </button>
+    </div>
   </div>
+  <div class="col-md-8 forum-content-wrap paper has-shadow">
+    <div id="forum-content" class="forum-content">
+      <%= render partial: 'nodes/description.html.erb' %>
+    </div>
+  </div>
+</div>
 </div>

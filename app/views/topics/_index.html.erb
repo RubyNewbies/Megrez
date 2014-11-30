@@ -1,6 +1,3 @@
-<ul>
-  <% @node.topics.each do |t| %>
-    <%= link_to t.title, t %>
-    <%= link_to 'delete', course_topic_path(t), method: 'delete', confirm: 'do you sure want to delete this?' %>
-  <% end %>
-</ul>
+<% @node.topics.reverse.each do |t| %>
+  <%= ajax_node_to t.title, course_topic_path(id: t.id), class: 'btn btn-default btn-block' %>
+<% end %>
