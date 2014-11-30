@@ -1,16 +1,44 @@
-  <div class="row">
+<div class="row">
 
-<div class="sidebar-nav col-md-3">
-    <div class="well" >
-    <ul class="nav nav-list"> 
-      <li class="nav-header">主选项</li>        
-      <li><a href="index"><i class="icon-home"></i> 课程信息</a></li>
-      <li><a href="#"><i class="icon-envelope"></i> 作业管理</a></li>
-      <li><a href="#"><i class="icon-envelope"></i> 统计信息</a></li>
-      <li><a href="#"><i class="icon-share"></i> Logout</a></li>
-    </ul>
+  <div class="col-md-3">
+    <div class="panel-group" id="mainlist">
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <p class="panel-title">
+            <a data-toggle="collapse" data-parent="#mainlist" href="#collapseOne">
+              <span class="glyphicon glyphicon-th-large"></span>总览
+            </a>
+          </p>
+        </div>
+        <div class="panel-collapse collapse in" id="collapseOne">
+          <table class="table">
+            <tr><td><span class="glyphicon glyphicon-book"></span><a href="#">课程信息</a></td></tr>
+            <tr><td><span class="glyphicon glyphicon-pencil"></span><a href="#">作业管理</a></td></tr>
+            <tr><td><span class="glyphicon glyphicon-list-alt"></span><a href="#">统计信息</a></td></tr>
+            <tr><td><span class="glyphicon glyphicon-off"></span><a href="#">登出</a></td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <p class="panel-title">
+            <a data-toggle="collapse" data-parent="#mainlist" href="#collapseTwo">
+              <span class="glyphicon glyphicon-th-large"></span>成绩管理
+            </a>
+          </p>
+        </div>
+        <div class="panel-collapse collapse in" id="collapseTwo">
+          <table class="table">
+            <tr><td><span class="glyphicon glyphicon-tasks"></span><a href="#">设置标准</a></td></tr>
+            <tr><td><span class="glyphicon glyphicon-tower"></span><a href="#">评分</a></td></tr>
+            <tr><td><span class="glyphicon glyphicon-list"></span><a href="#">查看报表</a></td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
 
   <!-- 
     <div class="col-md-2">
@@ -28,8 +56,8 @@
       </ul>
 
     </div> -->
-    <div class="col-md-8 well bs-component">
-      <%= render partial: 'form.html.erb' %>
-    </div>
+  <div class="col-md-8 well bs-component">
+    <%= render partial: 'form.html.erb' %>
   </div>
+</div>
 

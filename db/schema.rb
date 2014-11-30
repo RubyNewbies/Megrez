@@ -82,8 +82,8 @@ ActiveRecord::Schema.define(version: 20141122045441) do
     t.string   "username"
     t.string   "email"
     t.string   "password_digest"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "remember_token"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
