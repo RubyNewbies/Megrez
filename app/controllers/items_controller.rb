@@ -19,4 +19,9 @@ class ItemsController < ApplicationController
 
   def destroy
   end
+
+  def item_params
+    params.require(:node).permit(:name, :weight, :father_id)
+  end
+  
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141122045441) do
+ActiveRecord::Schema.define(version: 20141130030422) do
 
   create_table "assignments", force: true do |t|
     t.integer  "course_id"
@@ -43,6 +43,16 @@ ActiveRecord::Schema.define(version: 20141122045441) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+  end
+
+  create_table "items", force: true do |t|
+    t.string   "name"
+    t.integer  "weight"
+    t.integer  "father_id"
+    t.integer  "course_id"
+    t.integer  "child_count"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "nodes", force: true do |t|
@@ -93,5 +103,13 @@ ActiveRecord::Schema.define(version: 20141122045441) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["username"], name: "index_users_on_username", unique: true
+
+  create_table "values", force: true do |t|
+    t.integer  "item_id"
+    t.integer  "user_id"
+    t.float    "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
