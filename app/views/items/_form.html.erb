@@ -1,0 +1,8 @@
+<%= bootstrap_form_for @item, url: course_items_path, layout: :horizontal do |f| %>
+  <%= f.text_field :name, label: '名称', class: 'form-control', placeholder: '名称' %>
+  <%= f.number_field :weight, label: '权重', class: 'form-control', placeholder: '权重' %>
+  <%= f.hidden_field :father_id, value: '-1' %>
+  <%= f.hidden_field :course_id, value: params[:course_id] %>
+  <br>
+  <%= f.submit, '创建', class: 'form-control' %>
+<% end %>

@@ -59,6 +59,15 @@ class User < ActiveRecord::Base
 
   end
 
+  def final(course_id)
+    fathers = Item.where(father_id: -1, course_id: course_id)
+    res = fathers.inject(0) do |memo, item|
+      val = item.count(id)
+      memo + (val.nil? ? 0 : val)
+    end
+    [res, 100].min.round(2)
+  end
+
   private
 
   def create_remember_token

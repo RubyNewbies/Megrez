@@ -16,13 +16,14 @@ Megrez::Application.routes.draw do
 
   resources :users
   
+  resources :values
+
   resources :courses do
 
     resources :nodes, path: '/forum/nodes'
     resources :topics, path: '/forum/topics'
 
     resources :items, path: 'admin/items'
-    resources :values, path: 'admin/values'
 
     member do
       get 'home', as: :home
@@ -32,12 +33,10 @@ Megrez::Application.routes.draw do
       get 'members', as: :members
       get 'admin', as: :admin
       get 'wiki', as: :wiki
-      
+      get 'grade', as: :grade
       post 'join', as: :join
       delete 'leave', as: :leave
     end
-
-    
 
   end
 

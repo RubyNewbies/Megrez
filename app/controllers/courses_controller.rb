@@ -68,6 +68,11 @@ class CoursesController < ApplicationController
   def admin
   end
 
+  def grade
+    @course = Course.find(params[:id])
+    @users = @course.users
+  end
+
   def wiki
   end
 

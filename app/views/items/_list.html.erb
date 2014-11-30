@@ -1,0 +1,11 @@
+<tr>
+  <td><%= index %></td>
+  <td>
+    <%= sub ? "┣▶" : "" %>
+    <%= link_to sheet.name, edit_course_item_path(course_id: sheet.course_id, id: sheet.id) %></td>
+  <td><%= sub ? "┣▶" : "" %><%= sheet.weight %>%</td>
+  <td>
+    <%= link_to 'view', course_item_path(course_id: sheet.course_id, id: sheet.id) %>
+    <%= link_to 'edit', edit_course_item_path(course_id: sheet.course_id, id: sheet.id) %>
+    <%= link_to 'delete', course_item_path(course_id: sheet.course_id, id: sheet.id), method: 'delete' %></td>
+</tr>

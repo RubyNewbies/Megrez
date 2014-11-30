@@ -32,7 +32,7 @@
         <div class="panel-collapse collapse in" id="collapseTwo">
           <table class="table">
             <tr><td><span class="glyphicon glyphicon-tasks"></span><a href="<%= course_items_path(course_id: params[:id]) %>">设置分数项</a></td></tr>
-            <tr><td><span class="glyphicon glyphicon-tower"></span><a href="<%= grade_course_path(id: params[:id]) %>">评分</a></td></tr>
+            <tr><td><span class="glyphicon glyphicon-tower"></span><a href="<% grade_course_path(id: params[:id]) %>">评分</a></td></tr>
             <tr><td><span class="glyphicon glyphicon-list"></span><a href="#">查看报表</a></td></tr>
           </table>
         </div>
@@ -41,24 +41,39 @@
     </div>
   </div>
 
-  <!-- 
-    <div class="col-md-2">
-      <ul class="nav nav-pills nav-stacked">
-          <%= active_link_to fa_icon('home', text: ' 课程信息', class: 'fa-fw fa-lg'), home_course_path(@course), wrap_tag: :li %>
+  <div class="col-md-9">
+    <hr>
+    <div class="row">
+      <div class="col-md-12">
+        <% if @users %>
+          <table class="table table-striped table-hover ">
+            <thead>
+              <tr>
+                <th>序号</th>
+                <th>用户名</th>
+                <th>姓名</th>
+                <th>成绩</th>
+                <th>选项</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @users.each_with_index do |user, index| %>
+                <tr>
+                  <td><%= index %></td>
+                  <td><%= user.username %></td>
+                  <td><%= user.realname %></td>
+                  <td><%= user.final(params[:id]).nil? ? 'Ungrade' : user.final(params[:id]) %></td>
+                  <td>
+                    <%= link_to (fa_icon 'envelope-o', text: 'Notifier', class: 'fa-fw'), '#', data: { confirm: "Do you want to send an email to #{user.email}?" }, class: 'btn btn-primary' %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        <% end %>
+      </div>
+    </div>
+  </div>
 
-          <hr>
-
-          <% if current_user.id == @course.creator.id %>
-            <li><a href=<%= course_path(@course) %> class="btn btn-danger" data-method="delete" data-confirm='你真的打算删除此门课程？'><i class="fa fa-fw fa-times"></i> 删除课程</a></li>
-          <% else %>
-            <li><a href=<%= leave_course_path(@course) %> class="btn btn-danger" data-method="delete" data-confirm='你真的打算退出此门课程？'><i class="fa fa-fw fa-times"></i> 退出选课</a></li>
-          <% end %>
-
-      </ul>
-
-    </div> -->
-  <!--<div class="col-md-8 well bs-component">
-    <%= yield %>
-  </div>-->
 </div>
 
