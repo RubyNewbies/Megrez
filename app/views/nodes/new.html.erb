@@ -1,57 +1,22 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>乐学网 - 哈工大交互式网络教学平台</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-
-  <%= render 'shared/navbar.html.erb' %>
-
-  <div class="container">
-    <div class="row">
-      <div id="course-info">
-        <%= render partial: 'courses/header.html.erb' %>
-      </div>
+<div class="row">
+  <div id="forum-sidebar" class="col-md-3 forum-sidebar-wrap">
+    <div class="forum-sidebar-header btn-group btn-breadcrumb">
+      <a href=<%= forum_course_path(id: params[:course_id]) %> class="btn btn-default"><i class="fa fa-fw fa-lg fa-home"></i></a>
+      <a href="#" class="btn btn-default">讨论专区</a>
     </div>
-    <hr>
-    <div class="row">
-      <%= render partial: 'courses/nav.html.erb' %>
+    <div id="forum-sidebar-content" class="forum-sidebar-content">
+      <%= render partial: 'nodes/index.html.erb' %>
     </div>
-    <hr>
-    <div class="row">
-      <div id="forum-sidebar" class="col-md-3 forum-sidebar-wrap">
-        <div class="forum-sidebar-header btn-group btn-breadcrumb">
-            <a href=<%= forum_course_path(id: params[:course_id]) %> class="btn btn-default"><i class="fa fa-fw fa-lg fa-home"></i></a>
-            <a href="#" class="btn btn-default">讨论专区</a>
-        </div>
-        <div id="forum-sidebar-content" class="forum-sidebar-content">
-          <%= render partial: 'nodes/index.html.erb' %>
-        </div>
-        <div class="forum-sidebar-footer">
-
-          <button id='new_node' class='btn btn-primary btn-block' data-href=<%= new_course_node_path(course_id: params[:course_id], father_id: -1, format: 'partial') %> >
-            新建讨论区
-          </button>
-
-        </div>
-      </div>
-
-      <div class="col-md-8 forum-content-wrap paper has-shadow">
-        <div id="forum-content" class="forum-content">
-          <%= render partial: 'nodes/new.html.erb' %>
-        </div>
-      </div>
-
+    <div class="forum-sidebar-footer">
+      <button id='new_node' class='btn btn-primary btn-block' data-href=<%= new_course_node_path(course_id: params[:course_id], father_id: -1, format: 'partial') %> >
+      新建讨论区
+      </button>
     </div>
-
   </div>
-
-  <div class="container">
-    <%= render 'shared/footer.html.erb' %>
+  <div class="col-md-8 forum-content-wrap paper has-shadow">
+    <div id="forum-content" class="forum-content">
+      <%= render partial: 'nodes/new.html.erb' %>
+    </div>
   </div>
-
-</body>
-</html>
+</div>
+</div>

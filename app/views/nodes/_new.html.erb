@@ -1,13 +1,16 @@
-  <% course = Course.find_by_id(params[:course_id])  %>
-
   <%= bootstrap_form_for(@node, url: course_nodes_path, remote: true, layout: :horizontal, remote: true) do |f| %>
     <fieldset>
       <legend>新建讨论区</legend>
 
       <%= f.hidden_field :course_id, value: params[:course_id] %>
+
       <%= f.text_field :name, label: '名称', class: 'form-control', placeholder: '名称' %>
-      <%= f.select :father_id, build_select_values(course), { label: '父节点' }, { class: 'selectpicker'} %>
+
+      <%= f.select :father_id, build_select_values(@course), { label: '父节点' }, { class: 'selectpicker'} %>
+
       <%= f.text_field :icon, label: '图标', class: 'form-control', placeholder: '图标' %>
+
+      <%= f.text_area :description, label: '描述', class: 'form-control', placeholder: '讨论区功能简介或者版规', rows: 10 %>
 
       <div class="btn-group btn-group-justified">
         <%= link_to (fa_icon 'arrow-circle-left', text: ' 返回', class: 'fa-fw'), forum_course_path(id: params[:course_id]), class: 'btn btn-default btn-block' %>
