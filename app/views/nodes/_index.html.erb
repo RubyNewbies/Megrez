@@ -9,7 +9,10 @@
     <% unless node.children.empty? %>
       <ul class="list-group">
         <% node.children.each do |sub| %>
-          <li class="list-group-item"><%= ajax_node_to sub.name, course_node_path(course_id: @course.id, id: sub.id) %></li>
+          <li class="list-group-item">
+            <%= ajax_node_to sub.name, course_node_path(course_id: @course.id, id: sub.id) %>
+            <%= ajax_node_to fa_icon('trash'), new_course_node_path(@course, father_id: node.id), class: 'pull-right' %>
+          </li>
         <% end %>
       </ul>
     <% end %>

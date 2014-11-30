@@ -1,0 +1,18 @@
+  <%= bootstrap_form_for(@topic, url: course_topics_path, remote: true, layout: :horizontal, remote: true) do |f| %>
+    <fieldset>
+      <legend>发布新帖</legend>
+
+      <%= f.hidden_field :course_id, value: params[:course_id] %>
+
+      <%= f.text_field :title, label: '标题', class: 'form-control', placeholder: '名称' %>
+
+      <%= f.text_area :source, label: '内容', class: 'form-control', placeholder: '帖子内容', rows: 8 %>
+
+      <div class="btn-group btn-group-justified">
+        <%= link_to (fa_icon 'arrow-circle-left', text: ' 返回', class: 'fa-fw'), 'javascript:window.history.forward();', class: 'btn btn-default btn-block' %>
+        <%= link_to (fa_icon 'arrow-circle-right', text: '添加 ', class: 'fa-fw', right: true), '#', id: 'add_topic', class: 'btn btn-block btn-default' %>
+      </div>
+    </fieldset>
+  <% end %>
+
+  

@@ -9,7 +9,7 @@ module CoursesHelper
   def ajax_node_to(*arg)
     arg[2] ||= {}
     #arg[2]['data-node-id'] = params[:id]
-    #arg[2]['data-ajax-node-link'] = true
+    arg[2]['data-ajax-node-link'] = true
     arg[2][:remote] = true
     link_to(*arg)
   end

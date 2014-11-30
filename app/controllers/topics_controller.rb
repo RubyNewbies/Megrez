@@ -2,7 +2,11 @@ class TopicsController < ApplicationController
 
   def new
     @topic = Topic.new
+    @course = Course.find_by_id(params[:course_id])
+    @node = Node.find_by_id(params[:node_id])
+    @topics = @node.try(:topics) || []
     respond_to do |respond|
+      respond.html { render 'topics/new.html.erb', layout: 'courses'}
       respond.js
     end
   end
@@ -11,9 +15,16 @@ class TopicsController < ApplicationController
     body = topic_params[:source]
     @topic = Topic.new(topic_params.merge body: body)
     if @topic.save
-      redirect_to @topic
+
+      respond_to do |respond|
+        respond.html { redirect_to @topic }
+        respond.js   { render 'show.js.erb' }
+      end
     else
-      render 'new'
+      respond_to do |respond|
+        respond.html { render 'topics/new.html.erb' }
+        respond.js   { render 'topics/new.js.erb' }
+      end
     end
   end
 

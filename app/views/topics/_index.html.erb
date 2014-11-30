@@ -1,12 +1,6 @@
-<div>
-  <h3>帖子列表<span><%= link_to '发布新帖', new_course_topic_path(params[:course_id]), class: 'btn btn-primary pull-right', remote: true, method: 'get' %></span></h3>
-</div>
-
-<hr>
-
 <ul>
-  <% @topics.each do |e| %>
-    <%= link_to e.title, e %>
-    <%= link_to 'delete', topic_path(e), method: 'delete', confirm: 'do you sure want to delete this?' %>
+  <% @node.topics.each do |t| %>
+    <%= link_to t.title, t %>
+    <%= link_to 'delete', course_topic_path(t), method: 'delete', confirm: 'do you sure want to delete this?' %>
   <% end %>
 </ul>

@@ -66,7 +66,7 @@ class NodesController < ApplicationController
 
     respond_to do |respond|
       respond.js
-      respond.html
+      respond.html { render 'nodes/show.html.erb', layout: 'courses' }
     end
   end
 
@@ -76,7 +76,6 @@ class NodesController < ApplicationController
 
     respond_to do |respond|
       respond.html { render 'index.html.erb' }
-      respond.partial { render partial: 'index.html.erb' }
     end
   end
 
