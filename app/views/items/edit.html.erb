@@ -1,9 +1,9 @@
 <div class="row">
-
+  
   <div class="col-md-3">
     <%= render 'sidelist.html.erb' %>
   </div>
-
+  
   <div class="col-md-9">
     <%= bootstrap_form_for @item, url: course_item_path, layout: :horizontal do |f| %>
       <legend><h1 class="text-center">修改分数项</h1></legend>
@@ -12,42 +12,43 @@
       <%= f.submit '修改', class: 'btn btn-primary' %>
       <hr>
       <div class="row">
-        <div class="col-md-8">
-          <% if @item.is_sub? %>
-            <button type="button" id="new-item" class="btn btn-danger disabled">Cant Create Sub-Sub item</button>
-          <% else %>
-            <button type="button" id="new-item" class="btn btn-primary">新建子分数项</button>
-            <hr>
-            <legend><h3 class="text-center">所有子项权重之和必须为100%</h3></legend>
+        
+        <div class="col-md-9">
+          <% if !@item.is_sub? %>
+            <input type="hidden" id="item-id" value="<%= params[:id] %>">
+            <input type="hidden" id="course-id" value="<%= params[:course_id] %>">
+            <legend>所有子项权重之和必须为100%</legend>
             <table class="table table-striped table-hover ">
               <thead>
                 <tr>
-                  <th>序号</th>
                   <th>名称</th>
                   <th>权重</th>
                   <th>选项</th>
                 </tr>
               </thead>
               <tbody id="form-tbody">
-                <% @children.each_with_index do |sheet, index| %>
+                <% @children.each do |sheet| %>
                   <tr>
-                  <td><%= index %></td>
-                  <td><%= link_to sheet.name, edit_course_item_path(course_id: sheet.course_id, id: sheet.id) %></td>
-                  <td><%= sheet.weight %></td>
-                  <td>
-                    <%= link_to 'view', course_item_path(course_id: sheet.course_id, id: sheet.id) %>
-                    <%= link_to 'edit', edit_course_item_path(course_id: sheet.course_id, id: sheet.id) %>
-                    <%= link_to 'delete', course_item_path(course_id: sheet.course_id, id: sheet.id), method: 'delete' %></td>
+                    <td><%= link_to sheet.name, edit_course_item_path(course_id: sheet.course_id, id: sheet.id) %></td>
+                    <td><%= sheet.weight %></td>
+                    <td><%= link_to '删除', course_item_path(course_id: sheet.course_id, id: sheet.id), method: :delete %></td>
                   </tr>
                 <% end %>
               </tbody>
             </table>
           <% end %>
         </div>
+
+        <div class="col-md-3">
+          <% if @item.is_sub? %>
+            <button type="button" id="new-item" class="btn btn-danger btn-block disabled">无法新建子分数项</button>
+          <% else %>
+            <button type="button" id="new-item" class="btn btn-primary btn-block">新建子分数项</button>
+          <% end %>
+        </div>
+      
       </div>
     <% end %>
-
-    <div id="for-form"></div>
-
   </div>
+
 </div>

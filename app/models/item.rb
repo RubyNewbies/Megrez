@@ -3,7 +3,7 @@ class Item < ActiveRecord::Base
   belongs_to :course
 
   def father
-    father_id == -1 ? nil : Item.find(id: father_id)
+    father_id == -1 ? nil : Item.where(id: father_id).first
   end
 
   def children
@@ -24,7 +24,7 @@ class Item < ActiveRecord::Base
 
   def count(user_id)
     if has_sub?
-      res = children.inject(0) { |mem, node| mem + item.count(user_id) }
+      res = children.inject(0) { |mem, item| mem + item.count(user_id) }
       res * weight / 100.0
     else
       val = binding_value(user_id)

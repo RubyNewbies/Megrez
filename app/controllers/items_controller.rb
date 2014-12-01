@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
 
   def index
-    @items = Item.where(course_id: params[:course_id])
+    @items = Item.where(course_id: params[:course_id], father_id: -1)
   end
 
   def new
