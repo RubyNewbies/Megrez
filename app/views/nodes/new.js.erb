@@ -1,1 +1,2 @@
+history.pushState({}, '', "<%= request.url %>")
 $("#forum-content").html("<%= escape_javascript(render partial: 'nodes/new.html.erb') %>");

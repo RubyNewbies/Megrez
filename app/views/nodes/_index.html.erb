@@ -3,15 +3,15 @@
   <div class="panel panel-default">
     <div class="panel-heading">
       <i class="fa fa-fw fa-lg fa-comments-o"></i>
-        <%= ajax_node_to node.name, course_node_path(course_id: @course.id, id: node.id) %>
-        <%= ajax_node_to fa_icon('plus'), new_course_node_path(@course, father_id: node.id), class: 'btn btn-sm btn-default pull-right' %>
+        <%= link_to node.name, course_node_path(course_id: @course.id, id: node.id), remote: true %>
+        <%= link_to fa_icon('plus'), new_course_node_path(@course, father_id: node.id), class: 'btn btn-sm btn-default pull-right', remote: true %>
     </div>
     <% unless node.children.empty? %>
       <ul class="list-group">
         <% node.children.each do |sub| %>
           <li class="list-group-item">
-            <%= ajax_node_to sub.name, course_node_path(course_id: @course.id, id: sub.id) %>
-            <%= ajax_node_to fa_icon('trash'), new_course_node_path(@course, father_id: node.id), class: 'pull-right' %>
+            <%= link_to sub.name, course_node_path(course_id: @course.id, id: sub.id), remote: true %>
+            <%= link_to fa_icon('trash'), new_course_node_path(@course, father_id: node.id), class: 'pull-right', remote: true %>
           </li>
         <% end %>
       </ul>
