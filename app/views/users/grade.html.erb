@@ -32,7 +32,7 @@
         <div class="panel-collapse collapse in" id="collapseTwo">
           <table class="table">
             <tr><td><span class="glyphicon glyphicon-tasks"></span><a href="<%= course_items_path(course_id: params[:id]) %>"> 设置分数项</a></td></tr>
-            <tr><td><span class="glyphicon glyphicon-tower"></span><a href="<% grade_course_path(id: params[:id]) %>"> 评分</a></td></tr>
+            <tr><td><span class="glyphicon glyphicon-tower"></span><a href="<%= grade_course_path(id: params[:id]) %>"> 评分</a></td></tr>
             <tr><td><span class="glyphicon glyphicon-list"></span><a href="#"> 查看报表</a></td></tr>
           </table>
         </div>
@@ -42,34 +42,44 @@
   </div>
 
   <div class="col-md-9">
-    <hr>
-    <% if @users %>
-      <table class="table table-striped table-hover ">
-        <thead>
-          <tr>
-            <th>序号</th>
-            <th>用户名</th>
-            <th>姓名</th>
-            <th>成绩</th>
-            <th>选项</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @users.each_with_index do |user, index| %>
-            <tr>
-              <td><%= index + 1 %></td>
-              <td><%= user.username %></td>
-              <td><%= user.realname %></td>
-              <td><%= user.final(params[:id]).nil? ? 'Ungrade' : user.final(params[:id]) %></td>
-              <td>
-                <%= link_to (fa_icon 'edit', text: '评分', class: 'fa-fw'), "grade/#{user.id}" %> 
-                <%= link_to (fa_icon 'envelope-o', text: '发送邮件通知', class: 'fa-fw'), '#', data: { confirm: "Do you want to send an email to #{user.email}?" } %>
-              </td>
-            </tr>
+    <legend>学生信息</legend>
+    <table class="table table-striped table-hover ">
+      <thead>
+        <tr>
+          <th>用户名</th>
+          <th>姓名</th>
+          <th>电子邮箱</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= @user.username %></td>
+          <td><%= @user.realname %></td>
+          <td><%= @user.email %></td>
+        </tr>
+      </tbody>
+    </table>
+    <legend>评分</legend>
+    <% @items.each_with_index do |item, index| %>
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <p class="panel-title"><%= "#{index + 1}. #{item.name} (#{item.weight}%)" %></p>
+        </div>
+        <div class="panel-body">
+          <% unless item.children.empty? %>
+            <% item.children.each do |s| %>
+              <%= render partial: 'values/item.html.erb', locals: {n: s} %>
+            <% end %>
+          <% else %>
+            <%= render partial: 'values/item.html.erb', locals: {n: item} %>
           <% end %>
-        </tbody>
-      </table>
+        </div>
+      </div>
     <% end %>
+    <div class="text-center">
+      <%= link_to (fa_icon 'arrow-left', text: '返回', class: 'fa-fw'), grade_course_path(id: params[:id]), class: 'btn btn-primary' %>
+      <%= link_to (fa_icon 'envelope-o', text: '发送邮件通知', class: 'fa-fw'), '#', data: { confirm: "Do you want to send an email to #{@user.email}?" }, class: 'btn btn-primary' %>
+    </div>
   </div>
 
 </div>

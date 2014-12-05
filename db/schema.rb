@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 20141130030422) do
     t.integer  "weight"
     t.integer  "father_id"
     t.integer  "course_id"
-    t.integer  "child_count", default: 0
+    t.integer  "child_count"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

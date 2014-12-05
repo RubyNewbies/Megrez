@@ -42,6 +42,13 @@ class UsersController < ApplicationController
     render signed_in_user 
   end
 
+  def grade
+    @course = Course.find(params[:id])
+    @user = User.find(params[:user_id])
+    @items = Item.where(course_id: params[:id], father_id: -1)
+    render 'grade.html.erb', layout: 'courses'
+  end
+
   private
 
   def user_params

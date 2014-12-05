@@ -33,9 +33,11 @@ Megrez::Application.routes.draw do
       get 'members', as: :members
       get 'admin', as: :admin
       get 'wiki', as: :wiki
-      get 'grade', path: 'admin/grade'
+      get 'grade', path: '/admin/grade'
       post 'join', as: :join
       delete 'leave', as: :leave
+
+      get 'grade', controller: 'users', path: '/admin/grade/:user_id'
     end
 
   end

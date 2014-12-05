@@ -1,0 +1,19 @@
+<% v = Value.where(item_id: n.id, user_id: params[:user_id]).first_or_create %>
+
+<div class="row form-group">
+  <div class="col-md-3  text-right">
+  <label class="control-label"><%= "#{n.name} (#{n.weight}%)" %></label>    
+  </div>
+  <div class="col-md-7">
+    
+    <div class="input-group">
+      <span id="status" class="input-group-addon"><%= fa_icon 'clock-o', class: 'fa-fw' %></span>
+      <span class="ajax-input">
+        <input class="form-control" type="number" value="<%= v.value %>" data-score-item data-value-id=<%= v.id %> >
+      </span>
+      <span class="input-group-btn">
+        <button class="btn btn-default useless" type="button" tabindex="-1">提交</button>
+      </span>
+  </div>
+  </div>
+</div>

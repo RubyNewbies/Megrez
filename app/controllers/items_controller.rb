@@ -10,6 +10,7 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
+    @item.child_count = 0
     respond_to do |format|
       if @item.save
         @item.father.increment!(:child_count) if @item.father
