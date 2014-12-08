@@ -1,0 +1,38 @@
+<div class="panel-group" id="mainlist">
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <p class="panel-title">
+        <a data-toggle="collapse" data-parent="#mainlist" href="#collapseOne">
+          <span class="fa fa-fw fa-th-large"></span> 总览
+        </a>
+      </p>
+    </div>
+    <div class="panel-collapse collapse in" id="collapseOne">
+      <table class="table">
+        <tr><td><span class="fa fa-fw fa-book"></span><a href="#"> 课程信息</a></td></tr>
+        <tr><td><span class="fa fa-fw fa-pencil"></span><a href="#"> 作业管理</a></td></tr>
+        <tr><td><span class="fa fa-fw fa-list-alt"></span><a href="#"> 统计信息</a></td></tr>
+        <tr><td><span class="fa fa-fw fa-remove"></span><a href="#"> 登出</a></td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <p class="panel-title">
+        <a data-toggle="collapse" data-parent="#mainlist" href="#collapseTwo">
+          <span class="fa fa-fw fa-sitemap"></span> 成绩管理
+        </a>
+      </p>
+    </div>
+    <div class="panel-collapse collapse in" id="collapseTwo">
+      <table class="table">
+        <tr><td><span class="fa fa-fw fa-tasks"></span><a id="set-item" href="<%= course_items_path(course_id: cid) %>"> 设置分数项</a></td></tr>
+        <tr><td><span class="fa fa-fw fa-flag"></span><a id="grade-student" href="<%= grade_course_path(id: cid) %>"> 评分</a></td></tr>
+        <tr><td><span class="fa fa-fw fa-list"></span><a id="final-report" href="<%= final_course_path(id: cid) %>"> 查看报表</a></td></tr>
+      </table>
+    </div>
+  </div>
+
+</div>

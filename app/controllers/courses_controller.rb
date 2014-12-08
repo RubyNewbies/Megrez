@@ -73,6 +73,11 @@ class CoursesController < ApplicationController
     @users = @course.users
   end
 
+  def final
+    @course = Course.find(params[:id])
+    @users = @course.users
+  end
+
   def wiki
   end
 

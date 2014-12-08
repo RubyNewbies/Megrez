@@ -13,7 +13,6 @@
             <th>用户名</th>
             <th>姓名</th>
             <th>成绩</th>
-            <th>选项</th>
           </tr>
         </thead>
         <tbody>
@@ -23,10 +22,6 @@
               <td><%= user.username %></td>
               <td><%= user.realname %></td>
               <td><%= user.final(params[:id]).nil? ? 'Ungrade' : user.final(params[:id]) %></td>
-              <td>
-                <%= link_to (fa_icon 'edit', text: '评分', class: 'fa-fw'), "grade/#{user.id}" %> 
-                <%= link_to (fa_icon 'envelope-o', text: '发送邮件通知', class: 'fa-fw'), '#', data: { confirm: "Do you want to send an email to #{user.email}?" } %>
-              </td>
             </tr>
           <% end %>
         </tbody>
@@ -35,4 +30,3 @@
   </div>
 
 </div>
-

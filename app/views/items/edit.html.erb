@@ -1,7 +1,7 @@
 <div class="row">
   
   <div class="col-md-3">
-    <%= render 'sidelist.html.erb' %>
+    <%= render partial: 'courses/sidelist.html.erb', locals: {cid: params[:course_id]} %>
   </div>
   
   <div class="col-md-9">
