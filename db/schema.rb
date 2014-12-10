@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141122045441) do
+ActiveRecord::Schema.define(version: 20141130062935) do
 
   create_table "assignments", force: true do |t|
     t.integer  "course_id"
@@ -45,12 +45,43 @@ ActiveRecord::Schema.define(version: 20141122045441) do
     t.integer  "user_id"
   end
 
+  create_table "folders", force: true do |t|
+    t.string   "name"
+    t.integer  "parent_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "groups", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "groups_users", id: false, force: true do |t|
+    t.integer  "group_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "nodes", force: true do |t|
     t.string   "name"
     t.string   "icon"
     t.integer  "father_id"
     t.integer  "course_id"
     t.integer  "child_count", default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "permissions", force: true do |t|
+    t.integer  "folder_id"
+    t.integer  "group_id"
+    t.boolean  "can_create"
+    t.boolean  "can_read"
+    t.boolean  "can_update"
+    t.boolean  "can_delete"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -62,6 +93,17 @@ ActiveRecord::Schema.define(version: 20141122045441) do
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "share_links", force: true do |t|
+    t.string   "emails"
+    t.string   "link_token"
+    t.datetime "link_expires_at"
+    t.integer  "user_file_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "message"
+    t.integer  "user_id"
   end
 
   create_table "topics", force: true do |t|
@@ -77,18 +119,34 @@ ActiveRecord::Schema.define(version: 20141122045441) do
     t.integer  "course_id"
   end
 
+  create_table "user_files", force: true do |t|
+    t.string   "attachment_file_name"
+    t.string   "attachment_content_type"
+    t.string   "attachment_fingerprint"
+    t.integer  "attachment_file_size"
+    t.datetime "attachment_updated_at"
+    t.integer  "folder_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: true do |t|
     t.string   "realname"
     t.string   "username"
     t.string   "email"
     t.string   "password_digest"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "remember_token"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.boolean  "is_admin"
+    t.string   "reset_password_token"
+    t.datetime "reset_password_token_expires_at"
+    t.string   "signup_token"
+    t.string   "signup_token_expires_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

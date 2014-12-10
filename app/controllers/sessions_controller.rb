@@ -24,4 +24,16 @@ class SessionsController < ApplicationController
     redirect_to root_path
   end
 
+  private
+
+  def log_failed_sign_in_attempt(date, username, ip)
+    Rails.logger.error(
+      "\nFAILED SIGN IN ATTEMPT:\n" +
+      "=======================\n" +
+      " Date: #{date}\n" +
+      " Username: #{username}\n" +
+      " IP address: #{ip}\n\n"
+    )
+  end
+
 end

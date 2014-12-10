@@ -14,6 +14,8 @@ Megrez::Application.routes.draw do
 
   delete '/logout', controller: 'sessions', action: 'destroy'
 
+  #get  '/folders', controller: 'folders', action: 'index'
+
   resources :users
   
   resources :courses do
@@ -33,10 +35,42 @@ Megrez::Application.routes.draw do
       post 'join', as: :join
       delete 'leave', as: :leave
     end
-
-    
-
   end
 
+  resources :clipboard, :only => [:create, :destroy] do
+    post :copy, :on => :member
+    post :move, :on => :member
+    put :reset, :on => :member
+  end
+
+  resources :files, :except => [:index, :new, :create]
+  resources :permissions, :only => :update_multiple do
+    put :update_multiple, :on => :collection
+  end
+
+  resources :folders, :shallow => true, :except => [:new, :create] do
+    resources :folders, :only => [:new, :create]
+    resources :files, :only => [:new, :create]
+  end
+
+  resources :folders do
+    collection do
+      delete :destroy_multiple
+    end
+  end
+
+  resources :files do
+    collection do
+      delete :destroy_multiple
+      post :zip_download
+    end
+    member do
+      get :preview
+    end
+  end
+
+  resources :files, :shallow => :true, :only => :show do
+    resources :share_links, :only => [:new, :create]
+  end
 
 end

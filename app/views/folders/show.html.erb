@@ -1,0 +1,103 @@
+<% content_for :title, @folder.name -%>
+
+<h1><%= content_for :title %></h1>
+<% unless @folder.is_root? -%>
+<p>
+  <ol class="breadcrumb">
+    <%= breadcrumbs(@folder) %>
+    <li><%= @folder.name %></li>
+  </ol>
+</p>
+<% end -%>
+<p>
+
+  <span class="folder_menu"><%= fa_icon "folder" %> <%= link_to t(:create_a_new_folder), new_folder_folder_path(@folder) %></span>
+  <span class="folder_menu"><%= fa_icon "upload" %> <%= link_to t(:upload_a_file), new_folder_file_path(@folder) %></span>
+
+  <span class="folder_menu" id="permissions_link"><span><%= fa_icon "lock" %> <%= link_to t(:permissions), '#', :class => 'permissions_link' %></span></span>
+
+  <span class="folder_menu" id="clipboard_link"><span><%= fa_icon "clipboard" %> <%= link_to t(:clipboard), '#', :class => 'clipboard_link' %></span></span>
+</p>
+
+<div id="files_and_folders">
+  <%= form_tag({controller: "folders", action: "show"}, method: "get", class: "form-inline search") do %>
+    <%= select_tag(:ty, options_for_select([['All', 1], ['Music', 2], ['Document', 3], ['Code', 4], ['Video', 5], ['Picture', 6], ['Others', 7] ], @lastty), :class => 'form-control input-sm') %>
+    <%= submit_tag 'Filter', :class => 'btn btn-primary btn-sm' %>
+
+    <%= text_field_tag :q, params[:q], :class => 'form-control input-sm' %>
+    <%= submit_tag 'search', :class => 'btn btn-primary btn-sm' %>
+  <% end %>
+  <table class="table table-hover">
+    <thead><tr>
+      <th></th>
+      <th></th>
+      <th><%= sortable "attachment_file_name", "Name" %></th>
+      <th><%= sortable "attachment_content_type", "Type" %></th>
+      <th><%= sortable "attachment_file_size", "Size" %></th>
+      <th><%= sortable "updated_at", "Date Modified" %></th>
+      <th></th>
+    </tr></thead>
+  <tbody>
+  <% unless @folder.is_root? -%>
+    <tr class="<%= cycle('even','odd') %>">
+      <td></td>
+      <td><%= fa_icon('folder-open-o') %></td>
+      <td class="file_name">&uarr; <%= link_to t(:up), @folder.parent, :title => @folder.parent.name %></td>
+      <td class="file_type"><%= t(:folder) %></td>
+      <td class="file_size">--</td>
+      <td class="file_modified">--</td>
+      <td></td>
+    </tr>
+  <% end -%>
+  <% @folder.children.each do |folder| -%>
+   
+    <tr class="<%= cycle('even','odd') %>">
+      <td></td>
+      <td><%= fa_icon('folder-open-o') %></td>
+      <td class="file_name"><%= link_to folder.name, folder %></td>
+      <td class="file_type"><%= t(:folder) %></td>
+      <td class="file_size">--</td>
+      <td class="file_modified"><%= l folder.updated_at, :format => :short %></td>
+      <td>
+      
+        <%= link_to fa_icon("edit"), edit_folder_path(folder), :title => t(:edit) %>&nbsp;
+        <%= link_to fa_icon("remove"), folder, :method => :delete, :data => { :confirm => t(:are_you_sure) }, :title => t(:delete_item) %>&nbsp;
+      
+        <%= link_to fa_icon("clipboard"),
+          { :controller => :clipboard, :action => :create, :id => folder.id, :type => 'folder', :folder_id => @folder, :authenticity_token => form_authenticity_token },
+          :method => :post, :title => t(:add_to_clipboard)
+        %>
+      </td>
+    </tr>
+  <% end -%>
+
+  <% @files.each do |file| -%>
+    <tr class="<%= cycle('even','odd') %>">
+      <td></td>
+      <td><%= file_icon(file) %></td>
+      <td class="file_name"><%= link_to file.attachment_file_name, file_path(file), :title => "#{t(:download)} #{file.attachment_file_name}" %></td>
+      <td class="file_type"><%= file.filetype_to_human %></td>
+      <td class="file_size"><%= number_to_human_size(file.attachment_file_size, :locale => I18n.locale) %></td>
+      <td class="file_modified"><%= l file.updated_at, :format => :short %></td>
+      <td>
+
+        <%= link_to fa_icon("edit"), edit_file_path(file), :title => t(:edit) %>&nbsp;
+
+        <%= link_to fa_icon("remove"), file_path(file), :method => :delete, :data => { :confirm => t(:are_you_sure) }, :title => t(:delete_item) %>&nbsp;
+      <%= link_to fa_icon("clipboard"),
+        { :controller => :clipboard, :action => :create, :id => file.id, :type => 'file', :folder_id => @folder, :authenticity_token => form_authenticity_token }, :method => :post, :title => t(:add_to_clipboard) %>&nbsp;
+      <%= link_to fa_icon("search"), { :controller => :files, :action => :preview, :id => file.id }, :rel => "shadowbox;width=808;height=606", :title => t(:preview) %>
+
+      </td>
+    </tr>
+  <% end -%>
+  </tbody>
+  </table>
+</div>
+<div id="permissions" style="display:none;">
+  <%= render 'permissions/form' %>
+</div>
+
+<div id="clipboard" style="display:none;">
+  <%= render 'clipboard/show' %>
+</div>

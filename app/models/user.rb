@@ -1,6 +1,9 @@
 class User < ActiveRecord::Base
 
   #include ActiveModel::ForbiddenAttributesProtection
+  has_and_belongs_to_many :groups
+  has_many :share_links  
+
 
   has_attached_file :avatar, styles: { medium: "220x220>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
 
@@ -23,6 +26,94 @@ class User < ActiveRecord::Base
 
   has_secure_password
   validates :password, length: { in: 6..20 }, on: :create
+
+  after_create :create_root_folder_and_admins_group
+
+  %w{create read update delete}.each do |method|
+    define_method "can_#{method}" do |folder|
+      has_permission = false
+
+      Permission.where(:group_id => groups, :folder_id => folder.id).each do |permission|
+        has_permission = permission.send("can_#{method}")
+        break if has_permission
+      end
+
+      has_permission
+    end
+  end
+
+  # def password
+  #   @password
+  # end
+
+  # def password=(new_password)
+  #   @password = new_password
+  #   self.password_digest = new_password
+  # end
+
+  # def member_of_admins?
+  #   groups.admins_group.present?
+  # end
+
+  # def refresh_reset_password_token
+  #   self.reset_password_token = SecureRandom.hex(10)
+  #   self.reset_password_token_expires_at = 1.hour.from_now
+  #   self.dont_clear_reset_password_token = true
+  #   save(:validate => false)
+  # end
+
+  # def refresh_remember_token
+  #   self.remember_token = SecureRandom.base64(32)
+  #   save(:validate => false)
+  # end
+
+  # def forget_me
+  #   self.remember_token = nil
+  #   save(:validate => false)
+  # end
+
+  # def username_is_blank?
+  #   self.username.blank?
+  # end
+
+  # def self.authenticate(username, password)
+  #   return nil if username.blank? || password.blank?
+  #   user = find_by_username(username) or return nil
+  #   hash = Digest::SHA256.hexdigest(user.password_salt + password)
+  #   hash == user.hashed_password ? user : nil
+  # end
+
+  # def self.no_admin_yet?
+  #   find_by_is_admin(true).blank?
+  # end
+
+  # private
+
+  # def set_signup_token
+  #   self.signup_token = SecureRandom.hex(10)
+  #   self.signup_token_expires_at = 2.weeks.from_now
+  # end
+
+  # def clear_signup_token
+  #   unless self.username.blank?
+  #     self.signup_token = nil
+  #     self.signup_token_expires_at = nil
+  #   end
+  # end
+
+  # def clear_reset_password_token
+  #   self.reset_password_token = nil
+  #   self.reset_password_token_expires_at = nil
+  # end
+
+  def create_root_folder_and_admins_group
+    Folder.create(:name => 'Root folder')
+    groups << Group.create(:name => 'Admins')
+  end
+
+  # def dont_destroy_admin
+  #   raise "Can't delete original admin user" if is_admin
+  # end
 
   def User.new_remember_token
     SecureRandom.urlsafe_base64
