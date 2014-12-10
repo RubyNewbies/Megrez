@@ -1,19 +1,72 @@
-<div class="row">
-  <div class="col-md-3">
-    <%= render 'sidelist' %>
-  </div>
-  <div class="col-md-9">
-    <legend><%= @assignment.title %><br>截止到：<%= @assignment.due_to %></legend>
-    <p style="white-space:pre-line"><%= @assignment.description %></p>
-    <hr>
-    <% if @assignfile.source %>
-      <p>已经提交：<%= @assignfile.source %></p>
-    <% else %>
-      <p>尚未提交</p>
-    <% end %>
-    <hr>
-    <%= link_to '交作业', submit_course_assignment_path(course_id: params[:course_id], id: params[:id]) %>
-    <%= link_to '修改作业内容', edit_course_assignment_path(course_id: params[:course_id], id: params[:id]) %>
-    <%= link_to '返回', course_assignments_path(course_id: params[:course_id]) %>
-  </div>
-</div>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>乐学网 - 哈工大交互式网络教学平台</title>
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+    <script>
+      function startTime()
+      {
+        var now = new Date()
+        var end = <%= @assignment.due_to - DateTime.parse("1970-1-1") %>
+        var left = Math.floor(end - now.getTime() / 1000.0)
+        var day = Math.floor(left / 86400)
+        left = left % 86400
+        var hour = Math.floor(left / 3600)
+        left = left % 3600
+        var min = Math.floor(left / 60)
+        left = left % 60
+
+        document.getElementById('countdown').innerHTML = day+"天"+hour+"小时"+min+"分"+left+"秒"
+        t=setTimeout('startTime()', 500)
+      }
+    </script>
+  </head>
+
+  <body onload="startTime()">
+
+    <%= render 'shared/navbar.html.erb' %>
+
+    <% @course = Course.find(params[:course_id]) %>
+
+    <div class="container">
+      <div class="row">
+        <div id="course-info">
+          <%= render partial: 'courses/header.html.erb' %>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <%= render partial: 'courses/nav.html.erb' %>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-md-3">
+          <%= render 'sidelist' %>
+        </div>
+        <div class="col-md-9">
+          <legend><p><%= @assignment.title %> <span id="countdown" style="color: #f00"></span></p></legend>
+          <p>开始于：<br>结束于：<%= @assignment.end_time %></p>
+          <hr>
+          <p style="white-space:pre-line"><%= @assignment.description %></p>
+          <hr>
+          <% if @assignfile.source %>
+            <p>已经提交：<%= @assignfile.source %></p>
+          <% else %>
+            <p>尚未提交</p>
+          <% end %>
+          <hr>
+          <%= link_to '交作业', submit_course_assignment_path(course_id: params[:course_id], id: params[:id]) %>
+          <%= link_to '修改作业内容', edit_course_assignment_path(course_id: params[:course_id], id: params[:id]) %>
+          <%= link_to '返回', course_assignments_path(course_id: params[:course_id]) %>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <%= render 'shared/footer.html.erb' %>
+    </div>
+
+  </body>
+</html>

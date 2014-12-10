@@ -12,6 +12,7 @@ class AssignmentsController < ApplicationController
   def show
     @assignment = Assignment.find(params[:id])
     @assignfile = Assignfile.where(assignment_id: @assignment.id, user_id: current_user.id).first
+    render 'show', layout: false
   end
 
   def destroy
