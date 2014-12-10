@@ -7,9 +7,17 @@ class Reply < ActiveRecord::Base
   belongs_to  :topic
 
   before_save :render_body
+  after_save  :trigger_topic_update_time
 
   def render_body
     self.body = markdown(source).html_safe
+  end
+
+  def trigger_topic_update_time
+    topic = topic()
+    if topic
+      topic.update_attribute(:updated_at, Time.now)
+    end
   end
 
 end

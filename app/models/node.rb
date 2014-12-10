@@ -4,7 +4,7 @@ class Node < ActiveRecord::Base
 
   belongs_to :course
   
-  has_many  :topics
+  has_many  :topics, -> { order "updated_at DESC" }
 
   def children
     Node.where(father_id: id)

@@ -65,7 +65,7 @@ class NodesController < ApplicationController
   def show
     @node = Node.find(params[:id])
     @course = Course.find(params[:course_id])
-    @topics = Topic.where(node_id: params[:id])
+    @topics = Topic.where(node_id: params[:id]).order('updated_at DESC')
 
     respond_to do |respond|
       respond.js
