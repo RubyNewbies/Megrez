@@ -30,6 +30,10 @@ class AssignmentsController < ApplicationController
     redirect_to course_assignments_path(course_id: params[:course_id])
   end
 
+  def submit
+    @assignment = Assignment.find(params[:id])
+  end
+
   def assignment_params
     params.require(:assignment).permit(:title, :description, :course_id, :due_to)
   end

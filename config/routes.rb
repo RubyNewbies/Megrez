@@ -23,7 +23,11 @@ Megrez::Application.routes.draw do
     resources :nodes, path: '/forum/nodes'
     resources :topics, path: '/forum/topics'
 
-    resources :assignments
+    resources :assignments do
+      member do
+        get 'submit'
+      end
+    end
 
     resources :items, path: '/admin/items'
 
