@@ -18,6 +18,8 @@ Megrez::Application.routes.draw do
   
   resources :values
 
+  resources :assignfiles
+
   resources :courses do
 
     resources :nodes, path: '/forum/nodes'
