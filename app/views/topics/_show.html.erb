@@ -1,12 +1,12 @@
 <h2><%= @topic.title %></h2>
 <hr>
 <div><%= @topic.body.html_safe %></div>
-<div>
+<div id="replies">
   <% @topic.replies.each do |r| %>
-    <%= render r %>
+    <%= render partial: 'replies/reply.html.erb', locals: {r: r} %>
   <% end %>
 </div>
 
 <div>
-  <textarea name="quick_reply" id="quick_reply" data-course-id=<%= params[:course_id]  %> ></textarea>
+  <%= render partial: 'replies/quick.html.erb' %>
 </div>

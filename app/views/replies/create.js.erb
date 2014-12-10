@@ -1,0 +1,3 @@
+history.pushState({}, '', "<%= request.url %>")
+$("#replies").append("<%= j render partial: 'replie.html.erb', locals: {r: @reply} %>")
+$("textarea#content_source").val("") 

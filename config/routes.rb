@@ -21,7 +21,11 @@ Megrez::Application.routes.draw do
   resources :courses do
 
     resources :nodes, path: '/forum/nodes'
-    resources :topics, path: '/forum/topics'
+    resources :topics, path: '/forum/topics' do
+      member do 
+        post 'new_replies', controller: 'replies', action: 'create'
+      end
+    end
 
     resources :items, path: '/admin/items'
 
