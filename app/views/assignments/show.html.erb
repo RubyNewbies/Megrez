@@ -4,7 +4,14 @@
   </div>
   <div class="col-md-9">
     <legend><%= @assignment.title %><br>截止到：<%= @assignment.due_to %></legend>
-    <p style="white-space:pre-line"><%= link_to '交作业', submit_course_assignment_path(course_id: params[:course_id], id: params[:id]) %><br><%= @assignment.description %></p>
+    <p style="white-space:pre-line"><%= @assignment.description %></p>
+    <hr>
+    <% if @assignfile.source %>
+      <p>已经提交：<%= @assignfile.source %></p>
+    <% else %>
+      <p>尚未提交</p>
+    <% end %>
+    <hr>
     <%= link_to '交作业', submit_course_assignment_path(course_id: params[:course_id], id: params[:id]) %>
     <%= link_to '修改作业内容', edit_course_assignment_path(course_id: params[:course_id], id: params[:id]) %>
     <%= link_to '返回', course_assignments_path(course_id: params[:course_id]) %>

@@ -1,5 +1,7 @@
 class AssignmentsController < ApplicationController
 
+  include UsersHelper
+
   def index
   end
 
@@ -9,6 +11,7 @@ class AssignmentsController < ApplicationController
 
   def show
     @assignment = Assignment.find(params[:id])
+    @assignfile = Assignfile.where(assignment_id: @assignment.id, user_id: current_user.id).first
   end
 
   def destroy
@@ -32,6 +35,7 @@ class AssignmentsController < ApplicationController
 
   def submit
     @assignment = Assignment.find(params[:id])
+    @assignfile = Assignfile.where(assignment_id: @assignment.id, user_id: current_user.id).first_or_create
   end
 
   def assignment_params
