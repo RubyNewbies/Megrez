@@ -3,20 +3,7 @@
   <!-- start sidebar -->
   <div id="forum-sidebar" class="col-md-3 forum-sidebar-wrap">
     
-    <div class="forum-sidebar-header btn-group btn-breadcrumb">
-      <a href=<%= forum_course_path(id: params[:course_id]) %> class="btn btn-default"><i class="glyphicon glyphicon-home"></i></a>
-      <a href="#" class="btn btn-default">讨论专区</a>
-    </div>
-
-    <div id="forum-sidebar-content" class="forum-sidebar-content">
-      <%= render partial: 'topics/index.html.erb' %>
-    </div>
-    
-    <div class="forum-sidebar-footer">
-      <button id='new_node' class='btn btn-primary btn-block' data-href=<%= new_course_node_path(father_id: -1, format: 'js') %> >
-      新建讨论区
-      </button>
-    </div>
+    <%= render partial: 'topics/sidebar.html.erb' %>
 
   </div>
   <!-- end sidebar -->
