@@ -1,0 +1,21 @@
+<div class="row">
+
+  <div class="col-md-3">
+    <%= render partial: 'courses/sidelist.html.erb', locals: {cid: params[:course_id]} %>
+  </div>
+
+  <div class="col-md-9 bs-component">
+    <div class="row">
+      <div class="col-md-12">
+        <%= bootstrap_form_for @item, url: course_items_path, layout: :horizontal do |f| %>
+          <legend><h1 class="text-center">新建分数项</h1></legend>
+          <%= f.text_field :name, label: '名称', class: 'form-control', placeholder: '名称' %>
+          <%= f.number_field :weight, label: '权重', class: 'form-control', placeholder: '权重' %>
+          <%= f.hidden_field :father_id, value: '-1' %>
+          <%= f.hidden_field :course_id, value: params[:course_id] %>
+          <%= f.submit '创建', class: 'btn btn-primary' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

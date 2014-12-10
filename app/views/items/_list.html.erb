@@ -1,0 +1,17 @@
+<tr>
+  <td><%= index %></td>
+  <td>
+    <% if sub %>
+      <span class="fa fa-fw fa-caret-right"></span>
+    <% end %>
+    <%= link_to sheet.name, edit_course_item_path(course_id: sheet.course_id, id: sheet.id) %></td>
+  <td>
+    <% if sub %>
+      <span class="fa fa-fw fa-caret-right"></span>
+    <% end %>
+    <%= sheet.weight %>%
+  </td>
+  <td>
+    <%= link_to '删除', course_item_path(course_id: sheet.course_id, id: sheet.id), method: 'delete' %>
+  </td>
+</tr>
