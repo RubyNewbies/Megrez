@@ -1,0 +1,11 @@
+<div class="row">
+  <div class="col-md-3">
+    <%= render 'sidelist' %>
+  </div>
+  <div class="col-md-9">
+    <legend><%= @assignment.title %><br>截止到：<%= @assignment.due_to %></legend>
+    <p style="white-space:pre-line"><%= @assignment.description %></p>
+    <%= link_to '修改作业内容', edit_course_assignment_path(course_id: params[:course_id], id: params[:id]) %>
+    <%= link_to '返回', course_assignments_path(course_id: params[:course_id]) %>
+  </div>
+</div>

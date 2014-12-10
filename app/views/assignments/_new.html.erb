@@ -1,0 +1,14 @@
+<%= form_for @assignment, url: course_assignments_path(course_id: params[:course_id]) do |f| %>
+  <legend>添加作业</legend>
+  <%= f.label :title, '作业标题' %>
+  <%= f.text_field :title, placeholder: '作业标题', class: 'form-control' %>
+  <br>
+  <%= f.label :title, '作业描述' %>
+  <%= f.text_area :description, placeholder: '作业描述', class: 'form-control' %>
+  <br>
+  <%= f.label :title, '截止日期' %>
+  <%= f.datetime_select :due_to %>
+  <br>
+  <br>
+  <%= f.submit '布置作业', class: 'btn btn-primary' %>
+<% end %>

@@ -1,0 +1,8 @@
+<% @assignments = Assignment.where(course_id: params[:course_id]) %>
+<div class="list-group">
+  <% @assignments.each do |assignment| %>
+    <%= link_to assignment.title, course_assignment_path(course_id: params[:course_id], id: assignment.id), class: 'list-group-item' %>
+  <% end %>
+</div>
+
+<%= link_to '建立一个作业', new_course_assignment_path(course_id: params[:course_id]), class: 'btn btn-primary btn-block' %>
