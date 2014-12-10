@@ -1,42 +1,24 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>乐学网 - 哈工大交互式网络教学平台</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
 
-  <%= render 'shared/navbar.html.erb' %>
-
-  <div class="container">
-    <div class="row">
-      <div id="course-info">
-        <%= render partial: 'courses/header.html.erb' %>
-      </div>
-    </div>
-    <hr>
-    <div class="row">
-      <%= render partial: 'courses/nav.html.erb' %>
-    </div>
-    <hr>
     <div class="row">
       <div id="forum-sidebar" class="col-md-3 forum-sidebar-wrap">
         <div class="forum-sidebar-header btn-group btn-breadcrumb">
-            <a href=<%= forum_course_path %> class="btn btn-default"><i class="glyphicon glyphicon-home"></i></a>
-            <a href="#" class="btn btn-default">讨论专区</a>
+            <a href=<%= forum_course_path %> class="btn btn-default"><i class="fa fa-fw fa-lg fa-home"></i></a>
+            <a href=<%= forum_course_path %> class="btn btn-default">讨论专区</a>
         </div>
         <div id="forum-sidebar-content" class="forum-sidebar-content">
           <%= render partial: 'nodes/index.html.erb' %>
         </div>
         <div class="forum-sidebar-footer">
 
-          <button id='new_node' class='btn btn-primary btn-block' data-href=<%= new_course_node_path(course_id: params[:id], father_id: -1, format: 'js') %> >
-            新建讨论区
-          </button>
+          <div class="btn-group btn-group-justified">
+            <% if current_user && current_user.creator_of_course?(params[:id]) %>
+              <%= link_to '新建分区', new_course_node_path(course_id: params[:id], father_id: -1), class: 'btn btn-default', remote: true %>
+            <% end %>
+            <%= link_to '发布新帖', new_course_topic_path(course_id: params[:id], node_id: -1), class: 'btn btn-default', remote: true %>
+          </div>
 
         </div>
+
       </div>
 
       <div class="col-md-8 forum-content-wrap paper has-shadow">
@@ -54,10 +36,3 @@
     </div>
 
   </div>
-
-  <div class="container">
-    <%= render 'shared/footer.html.erb' %>
-  </div>
-
-</body>
-</html>

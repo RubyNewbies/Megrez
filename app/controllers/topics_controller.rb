@@ -1,12 +1,14 @@
 class TopicsController < ApplicationController
 
+  layout 'forums'
+
   def new
     @topic = Topic.new
     @course = Course.find_by_id(params[:course_id])
     @node = Node.find_by_id(params[:node_id])
     @topics = @node.try(:topics) || []
     respond_to do |respond|
-      respond.html { render 'topics/new.html.erb', layout: 'courses'}
+      respond.html { render 'topics/new.html.erb' }
       respond.js
     end
   end

@@ -1,12 +1,15 @@
 class NodesController < ApplicationController
 
+  layout 'forums'
+
+
   def new
     @node = Node.new
     @course = Course.find_by_id(params[:course_id])
     @nodes = @course.direct_nodes
 
     respond_to do |respond|
-      respond.html { render 'new.html.erb', layout: 'courses' }
+      respond.html { render 'new.html.erb' }
       respond.js 
     end
   end
@@ -66,7 +69,7 @@ class NodesController < ApplicationController
 
     respond_to do |respond|
       respond.js
-      respond.html { render 'nodes/show.html.erb', layout: 'courses' }
+      respond.html { render 'nodes/show.html.erb' }
     end
   end
 
