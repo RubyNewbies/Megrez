@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141130030422) do
+ActiveRecord::Schema.define(version: 20141211145434) do
 
   create_table "assignments", force: true do |t|
     t.integer  "course_id"
@@ -65,6 +65,16 @@ ActiveRecord::Schema.define(version: 20141130030422) do
     t.datetime "updated_at"
     t.text     "description"
   end
+
+  create_table "notifications", force: true do |t|
+    t.integer  "user_id"
+    t.string   "content"
+    t.boolean  "unread",     default: true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "notifications", ["user_id"], name: "index_notifications_on_user_id"
 
   create_table "replies", force: true do |t|
     t.integer  "user_id"

@@ -2,6 +2,8 @@ Megrez::Application.routes.draw do
 
   root 'static_pages#home'
 
+  get '/u/:username', controller: 'users', action: 'profile' 
+
   get '/me', controller: 'users', action: 'me'
 
   get '/dashboard', controller: 'users', action: 'dashboard'

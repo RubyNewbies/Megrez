@@ -18,6 +18,10 @@ class UsersController < ApplicationController
     @user = current_user
   end
 
+  def profile 
+    @user = User.where(username: params[:username]).first
+  end
+
   def dashboard
     @user = signed_in_user
   end
