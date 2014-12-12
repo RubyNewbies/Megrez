@@ -14,10 +14,9 @@ class TopicsController < ApplicationController
   end
 
   def create
-    @topic = Topic.new(topic_params)
+    @topic = Topic.new(topic_params.merge user_id: current_user.id)
     @node = Node.find_by_id(params[:node_id])
     if @topic.save
-
       respond_to do |respond|
         respond.html { redirect_to @topic }
         respond.js   { render 'topics/show.js.erb' }
