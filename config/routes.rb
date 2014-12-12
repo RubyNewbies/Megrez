@@ -3,7 +3,7 @@ Megrez::Application.routes.draw do
   root 'static_pages#home'
 
   get '/me', controller: 'users', action: 'me'
-
+  get '/file_exists', :to => 'files#exists'
   get '/dashboard', controller: 'users', action: 'dashboard'
 
   get  '/signup', controller: 'users', action: 'new'
@@ -61,8 +61,7 @@ Megrez::Application.routes.draw do
 
   resources :files do
     collection do
-      delete :destroy_multiple
-      post :zip_download
+      post :operation_multiple
     end
     member do
       get :preview

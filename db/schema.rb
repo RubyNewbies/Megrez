@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141130062935) do
+ActiveRecord::Schema.define(version: 20141210085521) do
 
   create_table "assignments", force: true do |t|
     t.integer  "course_id"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 20141130062935) do
     t.integer  "parent_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "course_id"
   end
 
   create_table "groups", force: true do |t|
@@ -128,6 +129,7 @@ ActiveRecord::Schema.define(version: 20141130062935) do
     t.integer  "folder_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "reference_count"
   end
 
   create_table "users", force: true do |t|

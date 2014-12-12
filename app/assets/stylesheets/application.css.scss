@@ -19,10 +19,7 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
-
-// @import "font-awesome-sprockets";
-// @import "font-awesome";
-
+@import "rails_bootstrap_forms";
 @import "font-awesome";
 
 .box {
@@ -33,11 +30,6 @@
 	margin: 0px;
 }
 
-
-@import "bootstrap-sprockets";
-@import "bootstrap";
-@import "rails_bootstrap_forms";
-@import "font-awesome";
 
 .search {float:right;}
 body { padding: 0px; margin: 0px; background-color: rgb(225,225,225); }
@@ -51,20 +43,15 @@ h3 { font-size: 13pt; margin-bottom: 0; }
 a { color: #BA303A; text-decoration: none; }
 a:hover { text-decoration: underline; }
 
-#container { min-height: 100%; position: relative; }
-#header { background-color: rgb(0,39,77); color: #FFF; border-bottom: 2px solid rgb(8,58,127); min-height: 70px; }
-#menu { background-color: rgb(0,24,49); border-bottom: 4px solid #BA303A; }
-#content { position: relative; width: 1000px; margin: 10px auto 0 auto; padding: 15px 25px 15px 25px; background-color: #FFF; border-radius: 8px; border-right: 1px solid #CCC; border-bottom: 1px solid #AAA; }
-#footer { position: absolute; bottom: 0; width: 100%; background-color: rgb(0,24,49); color: #FFF; border-top: 4px solid #BA303A; }
-#footer_spacer { height: 70px; }
+
+#content { position: relative; width: 800px; margin: 10px auto 0 auto; padding: 15px 25px 15px 25px; background-color: #ECF5FF; border-radius: 8px; border-right: 1px solid #CCC; border-bottom: 1px solid #AAA; }
+
 
 #progress p span.status { margin-left: 3px; }
 #progress p img { vertical-align: middle; margin-bottom: 4px; }
 
 .menu { margin: 0; padding: 10px 15px 7px 15px; color: #FFF; }
 .menu a, .footer a { color: #FFF; }
-.footer { margin: 0; padding: 15px; text-align: center; }
-.footer a { text-decoration: underline; }
 .table_header td { font-weight: bold; }
 .even td, .odd td, th { padding: 12px 7px 7px 7px; }
 .even { background-color: #EEE; }
@@ -77,9 +64,6 @@ a:hover { text-decoration: underline; }
 .user_name, .user_expiration { min-width: 180px; }
 .user_email { min-width: 370px; }
 .group_name, .clipboard_item { min-width: 483px; }
-.file_name { min-width: 250px; max-width: 400px; overflow: hidden; }
-.file_name a, .shared_file a { color: #000; text-decoration: underline; }
-.file_size { min-width: 100px; }
 .disabled { color: #999; }
 .permission_column { width: 75px; text-align: center; }
 .permissions_button, .back { display: inline-block; margin-top: 15px; }
@@ -113,6 +97,10 @@ span.field_with_errors input, span.field_with_errors textarea { background-color
 .folder_menu, .user_menu, .group_menu { padding: 7px 14px 7px 14px; }
 .folder_menu a, .user_menu a, .group_menu a { outline: none; }
 
-.highlight { display: inline-block; margin: -7px 0 -7px 0; padding-left: 14px; background-color: #BA303A; border-radius: 15px; }
-.highlight span { display: inline-block; height: 27px; padding: 7px 14px 0 0; }
-.highlight a { text-decoration: none; color: #FFF; outline: none; }
+.submit_to_link
+{
+    background:none;
+    border:none; 
+    padding:0;
+    cursor: pointer;
+}

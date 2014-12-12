@@ -2,7 +2,7 @@
 <head>
 </head>
 <body bgcolor="white">
-<% case @type[0] %>
+<% case @file.mime_type %>
 <% when "text" then %>
   <%= raw(coderay @file) %>
 
@@ -10,9 +10,9 @@
   <%= image_tag file_path(@file), :class => 'image_size' %>
 
 <% when "application" then %>
-  <% case @type[1] %>
+  <% case @file.mime_subtype %>
   <% when "pdf" then %>
-    <%= content_tag(:object, "", data: @file.attachment.url, type: "application/pdf", width: "800", height: "600") %>
+    <%= content_tag(:object, "", data: @file.attachment.url, type: "application/pdf", width: "790", height: "590") %>
   <% else %>
     <%= raw(coderay @file) %>
   <% end %>

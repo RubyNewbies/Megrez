@@ -13,6 +13,14 @@ class Folder < ActiveRecord::Base
   after_create :create_permissions, :unless => :is_copied_folder
   before_destroy :dont_destroy_root_folder
 
+  def tname
+    if name == 'Root folder' && !parent then
+      I18n.t(:root_folder)
+    else
+      name
+    end
+  end
+
   def copy(target_folder, originally_copied_folder = nil)
     new_folder = self.dup
     new_folder.is_copied_folder = true

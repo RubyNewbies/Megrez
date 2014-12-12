@@ -1,12 +1,12 @@
 class FoldersController < ApplicationController
-   before_action :require_existing_folder, :only => [:show, :edit, :update, :destroy]
-   before_action :require_existing_target_folder, :only => [:new, :create]
-   before_action :require_folder_isnt_root_folder, :only => [:edit, :update, :destroy]
+  before_action :require_existing_folder, :only => [:show, :edit, :update, :destroy]
+  before_action :require_existing_target_folder, :only => [:new, :create]
+  before_action :require_folder_isnt_root_folder, :only => [:edit, :update, :destroy]
 
-  # before_action :require_create_permission, :only => [:new, :create]
-  # before_action :require_read_permission, :only => :show
-  # before_action :require_update_permission, :only => [:edit, :update]
-  # before_action :require_delete_permission, :only => :destroy
+  before_action :require_create_permission, :only => [:new, :create]
+  before_action :require_read_permission, :only => :show
+  before_action :require_update_permission, :only => [:edit, :update]
+  before_action :require_delete_permission, :only => :destroy
 
   helper_method :sort_column
   helper_method :sort_direction
@@ -17,9 +17,9 @@ class FoldersController < ApplicationController
 
   # Note: @folder is set in require_existing_folder
   def show
-    @files = @folder.user_files.order(sort_column + " " + sort_direction).search(params[:q])
-    @lastty = params[:ty].to_i;
-    @files = @files.special_find(params[:ty])
+    @files = @folder.user_files.order(sort_column + " " + sort_direction).search(params[:query]).paginate :page => params[:page], :per_page => 10
+    @last_type = params[:type].to_i;
+    @files = @files.special_find(params[:type])
   end
 
   def sort_column

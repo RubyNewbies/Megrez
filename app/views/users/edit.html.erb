@@ -8,6 +8,8 @@
       <%= f.text_field :username, label: '昵称' %>
       <%= f.text_field :realname, label: '姓名' %>
       <%= f.text_field :email, label: '电子邮箱' %>
+      <%= f.label 'Avatar' %>
+      <%= file_field_tag :attachment %>
       <%= f.submit '修改', class: 'btn btn-default form-control' %>
     <% end %>
     <br>

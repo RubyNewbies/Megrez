@@ -222,6 +222,7 @@
   submit: Submit
   search: Search
   filter: Filter
+  root_folder: Root Folder
 
   your_changes_were_saved: Your changes were saved successfully.
   already_deleted: "Sorry, but this %{type} was deleted already."
@@ -248,6 +249,20 @@
   remove_from_clipboard: Remove from clipboard
   clear_clipboard: Clear clipboard
 
+  # files
+  pdf: PDF Document
+  doc: Microsoft Word Document
+  xls: Microsoft Excel Spreadsheet
+  ppt: Microsoft PowerPoint Slide
+  c: C Source
+  cpp: C++ Source
+  txt: Plain Text
+  rb: Ruby Source
+  ru: Ruby Source
+  py: Python Source
+  h: C/C++ Header
+  js: JavaScript Code
+
   # files/edit
   rename_file: Rename file
 
@@ -273,11 +288,19 @@
   date_modified: Date modified
   up: up
   edit: Edit
+  type: Type
   add_to_clipboard: Add to clipboard
   download: Download
   download_selection: Download selection
   share: Share
   preview: Preview
+  all: All
+  music: Music
+  document: Documents
+  code: Source code
+  video: Video
+  picture: Pictures
+  others: Others
 
   #groups/edit
   rename_group: Rename group

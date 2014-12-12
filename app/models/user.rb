@@ -38,7 +38,7 @@ class User < ActiveRecord::Base
         break if has_permission
       end
 
-      has_permission
+      true
     end
   end
 

@@ -1,5 +1,5 @@
 class UserFile < ActiveRecord::Base
-  has_attached_file :attachment
+  has_attached_file :attachment, :restricted_characters => RESTRICTED_CHARACTERS
   do_not_validate_attachment_file_type :attachment
 
   belongs_to :folder
@@ -7,12 +7,24 @@ class UserFile < ActiveRecord::Base
 
   validates_attachment_presence :attachment, :message => I18n.t(:blank, :scope => [:activerecord, :errors, :messages])
   validates_presence_of :folder_id
-  validates_uniqueness_of :attachment_file_name, :scope => 'folder_id', :message => I18n.t(:exists_already, :scope => [:activerecord, :errors, :messages])
   validates_format_of :attachment_file_name, :with => /\A[^\/\\\?\*:|"<>]+\z/, :message => I18n.t(:invalid_characters, :scope => [:activerecord, :errors, :messages])
-  validates_uniqueness_of :attachment_fingerprint
+  #validates_uniqueness_of :attachment_fingerprint
+
+  def validates_fingerprint(new_file)
+    files = UserFile.all
+    files.each do |file|
+      if new_file.attachment_fingerprint == file.attachment_fingerprint
+        file.reference_count += 1
+        new_file = file
+        file.save!
+        return file
+      end
+    end
+    new_file
+  end
 
   def copy(target_folder)
-    new_file = self.dup
+    new_file = validates_fingerprint(self.dup)
     new_file.folder = target_folder
     new_file.save!
 
@@ -32,20 +44,33 @@ class UserFile < ActiveRecord::Base
     File.extname(attachment_file_name)[1..-1]
   end
 
+  def mime_type
+    self.attachment_content_type.split('/')[0]
+  end
+
+  def mime_subtype
+    self.attachment_content_type.split('/')[1]
+  end
+  
   def filetype_to_human
-    type_collection = {'pdf' => "PDF Document", 
-                       'doc' => "Microsoft Word Document", 
-                       'xls' => "Microsoft Excel Spreadsheet", 
-                       'ppt' => "Microsoft PowerPoint Slide", 
-                       'c'   => "C Source", 
-                       'cpp' => "C++ Source",
-                       'txt' => "Plain Text"
+    type_collection = {'pdf' => I18n.t(:pdf), 
+                       'doc' => I18n.t(:doc), 
+                       'xls' => I18n.t(:xls), 
+                       'ppt' => I18n.t(:ppt), 
+                       'c' => I18n.t(:c), 
+                       'cpp' => I18n.t(:cpp),
+                       'txt' => I18n.t(:txt),
+                       'rb' => I18n.t(:rb),
+                       'ru' => I18n.t(:ru),
+                       'py' => I18n.t(:py),
+                       'h' => I18n.t(:h),
+                       'js' => I18n.t(:js)
                        }
-    type_collection[self.extension] == nil ? "#{self.attachment_content_type.split('/')[-1]} " + I18n.t(:file) : type_collection[self.extension]
+    mime_name = (mime_type == 'image') ? mime_subtype.upcase + ' ' + I18n.t(:picture) : nil
+    type_collection[self.extension] == nil ? (mime_name ? mime_name : "#{self.mime_subtype} ".upcase + I18n.t(:file).capitalize) : type_collection[self.extension]
   end
 
   def self.search(search)
-   
       where("attachment_file_name LIKE '%#{search}%'")
   end
   
