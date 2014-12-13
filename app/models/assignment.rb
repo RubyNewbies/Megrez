@@ -1,5 +1,8 @@
 class Assignment < ActiveRecord::Base
 
+  include PublicActivity::Model
+  tracked
+
   belongs_to :course
 
   def end_time
