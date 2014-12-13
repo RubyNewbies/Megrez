@@ -17,12 +17,15 @@ class CoursesController < ApplicationController
 
   def create
     @course = Course.new(course_params.merge user_id: current_user.id)
-    if @course.save
+    @f = Folder.create(name: @course.full_name, parent_id: 1)
+    if @course.save && @f.save
       rel = {user_id: @course.user_id, course_id: @course.id}
       @course.course_user_relationships.create(rel)
       redirect_to @course
     else
     end
+    @f.course_id = @course.id
+    @f.save
   end
 
   def index
@@ -40,7 +43,6 @@ class CoursesController < ApplicationController
     end
   end
 
-
   def home
   end
 
@@ -54,6 +56,7 @@ class CoursesController < ApplicationController
   end
 
   def docs
+    @folders = Folder.where(course_id: params[:id])
   end
 
   def forum

@@ -34,12 +34,13 @@ class FoldersController < ApplicationController
   # Note: @target_folder is set in require_existing_target_folder
   def new
     @folder = @target_folder.children.build
+    @folder.course_id = @folder.parent.course_id
   end
 
   # Note: @target_folder is set in require_existing_target_folder
   def create
     @folder = @target_folder.children.build(permitted_params.folder)
-
+    @folder.course_id = @folder.parent.course_id
     if @folder.save
       redirect_to @target_folder
     else
