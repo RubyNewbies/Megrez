@@ -46,12 +46,12 @@
           <%= render 'sidelist' %>
         </div>
         <div class="col-md-9">
-          <legend><p><%= @assignment.title %> <span id="countdown" style="color: #f00"></span></p></legend>
+          <legend><p><%= @assignment.title %> <span class="label label-warning" id="countdown"></span></p></legend>
           <p>开始于：<br>结束于：<%= @assignment.end_time %></p>
           <hr>
           <p style="white-space:pre-line"><%= @assignment.description %></p>
           <hr>
-          <% if @assignfile.source %>
+          <% if @assignfile && @assignfile.source %>
             <p>已经提交：<%= @assignfile.source %></p>
           <% else %>
             <p>尚未提交</p>
