@@ -11,7 +11,7 @@
         <% node.children.each do |sub| %>
           <li class="list-group-item">
             <%= link_to sub.name, course_node_path(course_id: @course.id, id: sub.id), remote: true %>
-            <%= link_to fa_icon('trash'), new_course_node_path(@course, father_id: node.id), class: 'pull-right', remote: true %>
+            <%= link_to fa_icon('trash'), course_node_path(course_id: @course.id, id: sub.id), method: 'delete', class: 'pull-right', remote: true, data: {confirm: '你确定更要删除该节点？'} %>
           </li>
         <% end %>
       </ul>
