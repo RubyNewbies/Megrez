@@ -53,3 +53,5 @@ gem 'paperclip'
 gem 'redcarpet'
 gem 'nokogiri'
 gem 'pygments.rb'
+
+gem 'public_activity'

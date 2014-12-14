@@ -16,9 +16,13 @@ Megrez::Application.routes.draw do
 
   delete '/logout', controller: 'sessions', action: 'destroy'
 
+  resources :activities
+
   resources :users
   
   resources :values
+
+  resources :assignfiles
 
   resources :courses do
 
@@ -26,6 +30,12 @@ Megrez::Application.routes.draw do
     resources :topics, path: '/forum/topics' do
       member do 
         post 'new_replies', controller: 'replies', action: 'create'
+      end
+    end
+
+    resources :assignments do
+      member do
+        get 'submit'
       end
     end
 

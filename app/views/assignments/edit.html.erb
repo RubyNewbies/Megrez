@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-md-3">
+    <%= render 'sidelist' %>
+  </div>
+  <div class="col-md-9">
+    <%= form_for @assignment, url: course_assignment_path(course_id: params[:course_id], id: params[:id]) do |f| %>
+      <legend>修改作业内容</legend>
+      <%= f.label :title, '作业标题' %>
+      <%= f.text_field :title, class: 'form-control' %>
+      <br>
+      <%= f.label :title, '作业描述' %>
+      <%= f.text_area :description, class: 'form-control' %>
+      <br>
+      <%= f.label :title, '截止日期' %>
+      <%= f.datetime_select :due_to %>
+      <br>
+      <br>
+      <%= f.submit '修改', class: 'btn btn-primary' %>
+      <%= link_to '返回', course_assignment_path(course_id: params[:course_id], id: @assignment.id), class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>
