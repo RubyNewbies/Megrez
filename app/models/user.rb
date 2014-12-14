@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   has_many :share_links  
 
 
-  has_attached_file :avatar, styles: { medium: "220x220>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
+  has_attached_file :avatar, styles: { medium: "220x220>", thumb: "100x100>" }, default_url: "missing.jpg"
 
   #validates_attachment_content_type :avatar, :content_type => /\Aimage/
   do_not_validate_attachment_file_type :avatar

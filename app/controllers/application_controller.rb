@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   include UsersHelper
 
   # before_action :require_admin_in_system
-  before_action :require_login
+  # before_action :require_login
 
   helper_method :clipboard, :current_user, :signed_in?, :permitted_params
 
@@ -15,10 +15,6 @@ class ApplicationController < ActionController::Base
 
   def clipboard
     session[:clipboard] ||= Clipboard.new
-  end
-
-  def current_user
-    @current_user ||= User.find_by_id(session[:user_id])
   end
 
   def signed_in?

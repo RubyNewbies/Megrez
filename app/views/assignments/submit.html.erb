@@ -3,10 +3,9 @@
     <%= render 'sidelist' %>
   </div>
   <div class="col-md-9">
-    <legend><%= current_user.username %>正在提交作业：<%= @assignment.title %></legend>
+    <legend><%= current_user.username %> 正在提交作业： <%= @assignment.title %></legend>
     <%= bootstrap_form_for @assignfile, url: assignfile_path(id: @assignfile.id), method: :patch, layout: :horizontal do |f| %>
-      <%= f.text_field :source, label: '文件地址', placeholder: '文件地址' %>
-      <%= link_to '上传一个文件', '#' %>
+      <%= f.file_field :submission, label: '上传文件' %>
       <br>
       <%= f.submit '提交' %>
     <% end %>

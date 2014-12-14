@@ -55,3 +55,7 @@ hide_elements = (elements) ->
 update_counter = (el) ->
   $('#counter').html el.value.length
   $('#counter').css 'color', if el.value.length > 255 then '#F00' else '#000'
+
+Shadowbox.init({
+  handleOversize: "resize"
+});
