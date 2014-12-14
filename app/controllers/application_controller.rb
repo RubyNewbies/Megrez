@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   # before_action :require_admin_in_system
-  # before_action :require_login
+  before_action :require_login
 
   helper_method :clipboard, :current_user, :signed_in?, :permitted_params
 
@@ -32,19 +32,13 @@ class ApplicationController < ActionController::Base
   end
 
   def require_login
+    encrypted_token = User.encrypt(cookies[:remember_token])
     if current_user.nil?
-      user = User.find_by_remember_token(cookies[:auth_token]) unless cookies[:auth_token].blank?
-
+      user = User.find_by_remember_token(encrypted_token) unless encrypted_token.blank?
       if user.nil?
-        reset_session
-        session[:user_id] = nil
-        session[:return_to] = request.fullpath
-        redirect_to new_session_url
-      else
-        user.refresh_remember_token
-        session[:user_id] = user.id
-        cookies[:auth_token] = user.remember_token
+        user = User.find_by_remember_token(cookies[:remember_token])
       end
+      session[:user_id] = user.id
     end
   end
 

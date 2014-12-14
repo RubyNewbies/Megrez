@@ -23,6 +23,8 @@ class CoursesController < ApplicationController
       @course.course_user_relationships.create(rel)
       @f.course_id = @course.id
       @f.save
+      @groups = Group.all
+      @groups << Group.create(:name => @course.full_name)
       redirect_to @course
     end
   end
@@ -54,8 +56,19 @@ class CoursesController < ApplicationController
     end
   end
 
+  def sort_column
+    column = params[:sort] == "attachment_file_size" ? "attachment_file_size" : "LOWER(#{params[:sort]})"
+    UserFile.column_names.include?(params[:sort]) ? column : "attachment_file_name"
+  end
+  
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
+
   def docs
-    @folders = Folder.where(course_id: params[:id])
+    @folder = Folder.where(course_id: params[:id])[0]
+    @files = @folder.user_files.order(sort_column + " " + sort_direction).search(params[:query]).paginate :page => params[:page], :per_page => 10
+
   end
 
   def forum

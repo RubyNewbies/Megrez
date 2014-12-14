@@ -7,8 +7,7 @@ class User < ActiveRecord::Base
 
   has_attached_file :avatar, styles: { medium: "220x220>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
 
-  validates_attachment_content_type :avatar, :content_type => /\Aimage/
-  validates_attachment_file_name :avatar, :matches => [/png\Z/, /jpe?g\Z/]
+  #validates_attachment_content_type :avatar, :content_type => /\Aimage/
   do_not_validate_attachment_file_type :avatar
 
   has_many  :created_courses, class_name: 'Course'
@@ -38,18 +37,9 @@ class User < ActiveRecord::Base
         break if has_permission
       end
 
-      true
+      has_permission
     end
   end
-
-  # def password
-  #   @password
-  # end
-
-  # def password=(new_password)
-  #   @password = new_password
-  #   self.password_digest = new_password
-  # end
 
   # def member_of_admins?
   #   groups.admins_group.present?
@@ -62,10 +52,10 @@ class User < ActiveRecord::Base
   #   save(:validate => false)
   # end
 
-  # def refresh_remember_token
-  #   self.remember_token = SecureRandom.base64(32)
-  #   save(:validate => false)
-  # end
+  def refresh_remember_token
+    self.remember_token = User.encrypt(User.new_remember_token)
+    save(:validate => false)
+  end
 
   # def forget_me
   #   self.remember_token = nil
@@ -134,6 +124,9 @@ class User < ActiveRecord::Base
 
   def join_in_course(course_id)
     course_user_relationships.create(course_id: course_id, user_id: id)
+    course_folder = Folder.find(course_id)
+    group = Group.find_by(name: Course.find(course_id).full_name)
+    Permission.update(folder_id: course_folder.id, group_id: group.id, can_read: true, can_delete: false, can_update: false, can_create: true)
   end
 
   def leave_out_course(course_id)

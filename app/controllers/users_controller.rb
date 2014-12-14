@@ -35,6 +35,7 @@ class UsersController < ApplicationController
   def update
     @user = current_user
     @user.update(user_params)
+    @user.update_attribute(:avatar, params[:user][:avatar])
     redirect_to dashboard_path
   end
 

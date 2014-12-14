@@ -12,6 +12,7 @@ class SessionsController < ApplicationController
     user = User.find_by_username(params[:session][:username])
     if user && user.authenticate(params[:session][:password])
       sign_in user
+      cookies[:auth_token] = { :value => user.remember_token, :expires => 2.weeks.from_now }
       redirect_to '/dashboard'
     else
       flash[:error] = '账号/密码错误！'
@@ -20,6 +21,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    cookies.delete :auth_token
     sign_out if signed_in?
     redirect_to root_path
   end
