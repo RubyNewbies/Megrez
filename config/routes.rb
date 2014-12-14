@@ -5,7 +5,7 @@ Megrez::Application.routes.draw do
   get '/u/:username', controller: 'users', action: 'profile', as: :profile
 
   get '/me', controller: 'users', action: 'me'
-
+  get '/file_exists', :to => 'files#exists'
   get '/dashboard', controller: 'users', action: 'dashboard'
 
   get  '/signup', controller: 'users', action: 'new'
@@ -53,10 +53,43 @@ Megrez::Application.routes.draw do
       get 'final', path: '/admin/final'
       post 'join', as: :join
       delete 'leave', as: :leave
-
       get 'grade', controller: 'users', path: '/admin/grade/:user_id'
     end
-
   end
 
+  resources :clipboard, :only => [:create, :destroy] do
+    post :copy, :on => :member
+    post :move, :on => :member
+    put :reset, :on => :member
+  end
+
+  resources :files, :except => [:index, :new, :create]
+  resources :permissions, :only => :update_multiple do
+    put :update_multiple, :on => :collection
+  end
+
+
+  resources :folders, :shallow => true, :except => [:new, :create] do
+    resources :folders, :only => [:new, :create]
+    resources :files, :only => [:new, :create]
+  end
+
+  resources :folders do
+    collection do
+      delete :destroy_multiple
+    end
+  end
+
+  resources :files do
+    collection do
+      post :operation_multiple
+    end
+    member do
+      get :preview
+    end
+  end
+
+  resources :files, :shallow => :true, :only => :show do
+    resources :share_links, :only => [:new, :create]
+  end
 end

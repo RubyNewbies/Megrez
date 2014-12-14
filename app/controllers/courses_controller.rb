@@ -17,11 +17,15 @@ class CoursesController < ApplicationController
 
   def create
     @course = Course.new(course_params.merge user_id: current_user.id)
+    @f = Folder.create(name: @course.full_name, parent_id: Folder.root.id)
     if @course.save
       rel = {user_id: @course.user_id, course_id: @course.id}
       @course.course_user_relationships.create(rel)
+      @f.course_id = @course.id
+      @f.save
+      @groups = Group.all
+      @groups << Group.create(:name => @course.full_name)
       redirect_to @course
-    else
     end
   end
 
@@ -40,7 +44,6 @@ class CoursesController < ApplicationController
     end
   end
 
-
   def home
     @activities = PublicActivity::Activity.order("created_at desc")
   end
@@ -54,7 +57,19 @@ class CoursesController < ApplicationController
     end
   end
 
+  def sort_column
+    column = params[:sort] == "attachment_file_size" ? "attachment_file_size" : "LOWER(#{params[:sort]})"
+    UserFile.column_names.include?(params[:sort]) ? column : "attachment_file_name"
+  end
+  
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
+
   def docs
+    @folder = Folder.where(course_id: params[:id])[0]
+    @files = @folder.user_files.order(sort_column + " " + sort_direction).search(params[:query]).paginate :page => params[:page], :per_page => 10
+
   end
 
   def forum

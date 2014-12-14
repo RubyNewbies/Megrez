@@ -21,6 +21,7 @@ gem 'sass-rails'
 gem 'active_link_to'
 
 group :development, :test do
+  gem 'factory_girl_rails'
   gem 'binding_of_caller'
   gem 'better_errors'
 end
@@ -31,7 +32,7 @@ end
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', :platforms => :ruby
 
-gem 'uglifier', '>= 1.0.3'
+gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
@@ -53,5 +54,14 @@ gem 'paperclip'
 gem 'redcarpet'
 gem 'nokogiri'
 gem 'pygments.rb'
+gem 'coderay'
 
 gem 'public_activity'
+
+gem 'will_paginate'
+gem 'dynamic_form'
+gem 'acts_as_tree'
+gem 'jquery-fileupload-rails'
+gem 'rubyzip', '>= 1.0.0' # will load new rubyzip version
+gem 'zip-zip' # will load compatibility for old rubyzip API.
+

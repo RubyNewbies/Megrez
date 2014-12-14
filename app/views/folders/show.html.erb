@@ -1,0 +1,138 @@
+<% content_for :title, @folder.tname -%>
+
+<h1><%= content_for :title %></h1>
+<% unless @folder.is_root? -%>
+<p>
+  <ol class="breadcrumb">
+    <%= breadcrumbs(@folder) %>
+    <li><%= @folder.tname %></li>
+  </ol>
+</p>
+<% end -%>
+<%= form_tag controller: "files", action: "operation_multiple" do %>
+<div>
+<p>
+<form id="form_temp" action="/">
+  <!-- DUMMY FORM TO MOCK NESTED FORM -->
+</form>
+<% if current_user.can_update(@folder) -%>
+  <span class="folder_menu"><%= fa_icon "folder" %> <%= button_to t(:create_a_new_folder), new_folder_folder_path(@folder), method: "get", class: "submit_to_link" %></span>
+  <span class="folder_menu"><%= fa_icon "upload" %> <%= button_to t(:upload_a_file), new_folder_file_path(@folder), method: "get", class: "submit_to_link" %></span>
+<% end -%>
+
+<% if current_user.can_read(@folder) -%>
+  <span class="folder_menu" id="download_multiple" style="display: none">
+    <%= fa_icon('download') %>
+    <%= submit_tag t(:download_selection), :name => 'form_1[download_multiple]', class: "submit_to_link" %>
+  </span>
+<% end -%>
+<% if current_user.can_delete(@folder) -%>
+  <span class="folder_menu" id="delete_multiple" style="display: none">
+    <%= fa_icon('remove') %>
+    <%= submit_tag t(:delete_selection), :name => 'form_1[destroy_multiple]', class: "submit_to_link" %>
+  </span>
+<% end -%>
+<% if current_user.is_admin? -%>
+  <span class="folder_menu" id="permissions_link"><span><%= fa_icon "lock" %> <%= button_to t(:permissions), '#', method: "get", :class => 'submit_to_link permissions_link' %></span></span>
+<% end -%>
+  <span class="folder_menu" id="clipboard_link"><span><%= fa_icon "clipboard" %> <%= button_to t(:clipboard), '#', method: "get", :class => 'submit_to_link clipboard_link' %></span></span>
+</p>
+<form id="form_temp" action="/">
+  <!-- DUMMY FORM TO MOCK NESTED FORM -->
+</form>
+<div id="files_and_folders">
+  <%= form_tag({controller: "folders", action: "show"}, method: "get", class: "form-inline search") do %>
+    <%= select_tag :type, options_for_select([[t(:all), 1], [t(:music), 2], [t(:document), 3], [t(:code), 4], [t(:video), 5], [t(:picture), 6], [t(:others), 7] ], @last_type), :class => 'form-control input-sm' %>
+    <%= submit_tag t(:filter), :class => 'btn btn-primary btn-sm', :name => 'form_2[filter]' %>
+
+    <%= text_field_tag :query, params[:query], :class => 'form-control input-sm' %>
+    <%= submit_tag t(:search), :class => 'btn btn-primary btn-sm', :name => 'form_2[search]' %>
+  <% end %>
+  <table class="table table-hover">
+    <thead><tr>
+      <th><input type="checkbox" onclick="toggle_checkall(this.checked);" class="chkbox"></th>
+      <th></th>
+      <th><%= sortable "attachment_file_name", t(:name) %></th>
+      <th><%= sortable "attachment_content_type", t(:type) %></th>
+      <th><%= sortable "attachment_file_size", t(:size) %></th>
+      <th><%= sortable "updated_at", t(:date_modified) %></th>
+      <th></th>
+    </tr></thead>
+  <tbody>
+  <% unless @folder.is_root? -%>
+    <tr class="<%= cycle('even','odd') %>">
+      <td></td>
+      <%= fa_icon('folder-open-o') %>
+      <td class="file_name">&uarr; <%= link_to t(:up), @folder.parent, :title => @folder.parent.name %></td>
+      <td class="file_type"><%= t(:folder).capitalize %></td>
+      <td class="file_size">--</td>
+      <td class="file_modified">--</td>
+      <td></td>
+    </tr>
+  <% end -%>
+  <% @folder.children.each do |folder| -%>
+    <% if current_user.can_read(@folder) -%>
+    <tr class="odd" onmouseover="display_options(this);" onmouseout="hide_options(this);" onclick="item_click(this);">
+      <td onclick="stop_bubble(this.id);"><%= check_box_tag "folders_id[]", folder.id, false, {:class => "chkbox", :onclick => "check_click();"} %></td>
+      <td><%= fa_icon('folder-open-o') %></td>
+      <td class="file_name"><%= link_to folder.tname, folder %></td>
+      <td class="file_type"><%= t(:folder).capitalize %></td>
+      <td class="file_size">--</td>
+      <td class="file_modified"><%= l folder.updated_at.localtime, :format => :short %></td>
+      <td class="options" onclick="stop_bubble(this.id);">
+      <% if current_user.can_update(@folder) -%>
+        <%= link_to fa_icon("edit"), edit_folder_path(folder), :title => t(:edit), :class => 'options', :style => 'color:#FFF' %>&nbsp;
+      <% end -%>
+      <% if current_user.can_delete(@folder) -%>
+        <%= link_to fa_icon("remove"), folder, :method => :delete, :data => { :confirm => t(:are_you_sure) }, :title => t(:delete_item), :class => 'options', :style => 'color:#FFF' %>&nbsp;
+      <% end -%>
+        <%= link_to fa_icon("clipboard"),
+          { :controller => :clipboard, :action => :create, :id => folder.id, :type => 'folder', :folder_id => @folder, :authenticity_token => form_authenticity_token },
+          :method => :post, :title => t(:add_to_clipboard), :class => 'options', :style => 'color:#FFF'
+        %>
+      </td>
+    </tr>
+    <% end -%>
+  <% end -%>
+
+  <% @files.each do |file| -%>
+    <% if current_user.can_read(@folder) -%>
+    <tr class="odd" onmouseover="display_options(this);" onmouseout="hide_options(this);" onclick="item_click(this);">
+      <td onclick="stop_bubble(this.id);"><%= check_box_tag "id[]", file.id, false, {:class => "chkbox", :onclick => "check_click();"} %></td>
+      <td><%= file_icon(file) %></td>
+      <td class="file_name"><%= link_to file.attachment_file_name, file_path(file), :title => "#{t(:download)} #{file.attachment_file_name}" %></td>
+      <td class="file_type"><%= file.filetype_to_human %></td>
+      <td class="file_size"><%= number_to_human_size(file.attachment_file_size, :locale => I18n.locale) %></td>
+      <td class="file_modified"><%= l file.updated_at.localtime, :format => :short %></td>
+      <td class="options" onclick="stop_bubble(this.id);">
+      <% if current_user.can_update(@folder) -%>
+        <%= link_to fa_icon("edit"), edit_file_path(file), :title => t(:edit), :class => 'options', :style => 'color:#FFF' %>&nbsp;
+      <% end -%>
+      <% if current_user.can_delete(@folder) -%>
+        <%= link_to fa_icon("remove"), file_path(file), :method => :delete, :data => { :confirm => t(:are_you_sure) }, :title => t(:delete_item), :class => 'options', :style => 'color:#FFF' %>&nbsp;
+      <% end -%>
+      <%= link_to fa_icon("clipboard"),
+        { :controller => :clipboard, :action => :create, :id => file.id, :type => 'file', :folder_id => @folder, :authenticity_token => form_authenticity_token }, :method => :post, :title => t(:add_to_clipboard), :class => 'options', :style => 'color:#FFF' %>&nbsp;
+      <% if file.mime_type == 'image' then %>
+        <%= link_to fa_icon("search"), file.attachment.url, :rel => "shadowbox", :title => t(:preview), :class => 'options', :style => 'color:#FFF' %>
+      <% else %>
+        <%= link_to fa_icon("search"), { :controller => :files, :action => :preview, :id => file.id }, :rel => "shadowbox;width=800;height=600", :title => t(:preview), :class => 'options', :style => 'color:#FFF' %>
+      <% end %>
+      </td>
+    </tr>
+    <% end -%>
+  <% end -%>
+  </tbody>
+  </table>
+</div>
+</div>
+<% end %>
+<%= will_paginate @files %>
+<% if current_user.is_admin? -%>
+<div id="permissions" style="display:none;">
+  <%= render 'permissions/form' %>
+</div>
+<% end -%>
+<div id="clipboard" style="display:none;">
+  <%= render 'clipboard/show' %>
+</div>

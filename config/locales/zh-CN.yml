@@ -1,0 +1,505 @@
+# US English translations for Ruby on Rails
+#
+# Use this as the base for the locale file of your language.
+# see: https://github.com/svenfuchs/rails-i18n/blob/master/rails/locale/en-US.yml
+zh-CN:
+  date:
+    abbr_day_names:
+    - 周日
+    - 周一
+    - 周二
+    - 周三
+    - 周四
+    - 周五
+    - 周六
+    abbr_month_names:
+    -
+    - 1月
+    - 2月
+    - 3月
+    - 4月
+    - 5月
+    - 6月
+    - 7月
+    - 8月
+    - 9月
+    - 10月
+    - 11月
+    - 12月
+    day_names:
+    - 星期日
+    - 星期一
+    - 星期二
+    - 星期三
+    - 星期四
+    - 星期五
+    - 星期六
+    formats:
+      default: ! '%Y-%m-%d'
+      long: ! '%Y年%b%d日'
+      short: ! '%b%d日'
+    month_names:
+    -
+    - 一月
+    - 二月
+    - 三月
+    - 四月
+    - 五月
+    - 六月
+    - 七月
+    - 八月
+    - 九月
+    - 十月
+    - 十一月
+    - 十二月
+    order:
+    - :year
+    - :month
+    - :day
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        one: 大约一小时
+        other: 大约 %{count} 小时
+      about_x_months:
+        one: 大约一个月
+        other: 大约 %{count} 个月
+      about_x_years:
+        one: 大约一年
+        other: 大约 %{count} 年
+      almost_x_years:
+        one: 接近一年
+        other: 接近 %{count} 年
+      half_a_minute: 半分钟
+      less_than_x_minutes:
+        one: 不到一分钟
+        other: 不到 %{count} 分钟
+      less_than_x_seconds:
+        one: 不到一秒
+        other: 不到 %{count} 秒
+      over_x_years:
+        one: 一年多
+        other: ! '%{count} 年多'
+      x_days:
+        one: 一天
+        other: ! '%{count} 天'
+      x_minutes:
+        one: 一分钟
+        other: ! '%{count} 分钟'
+      x_months:
+        one: 一个月
+        other: ! '%{count} 个月'
+      x_seconds:
+        one: 一秒
+        other: ! '%{count} 秒'
+    prompts:
+      day: 日
+      hour: 时
+      minute: 分
+      month: 月
+      second: 秒
+      year: 年
+  errors:
+    format: ! '%{attribute}%{message}'
+    messages:
+      accepted: 必须是可被接受的
+      blank: 不能为空字符
+      present: 必须是空白
+      confirmation: 与确认值不匹配
+      empty: 不能留空
+      equal_to: 必须等于 %{count}
+      even: 必须为双数
+      exclusion: 是保留关键字
+      greater_than: 必须大于 %{count}
+      greater_than_or_equal_to: 必须大于或等于 %{count}
+      inclusion: 不包含于列表中
+      invalid: 是无效的
+      less_than: 必须小于 %{count}
+      less_than_or_equal_to: 必须小于或等于 %{count}
+      not_a_number: 不是数字
+      not_an_integer: 必须是整数
+      odd: 必须为单数
+      record_invalid: ! '验证失败: %{errors}'
+      restrict_dependent_destroy:
+        one: 由于 %{record} 需要此记录，所以无法移除记录
+        many: 由于 %{record} 需要此记录，所以无法移除记录
+      taken: 已经被使用
+      too_long:
+        one: 过长（最长为一个字符）
+        other: 过长（最长为 %{count} 个字符）
+      too_short:
+        one: 过短（最短为一个字符）
+        other: 过短（最短为 %{count} 个字符）
+      wrong_length:
+        one: 长度非法（必须为一个字符）
+        other: 长度非法（必须为 %{count} 个字符）
+      other_than: 长度非法（不可为 %{count} 个字符
+    template:
+      body: 如下字段出现错误：
+      header:
+        one: 有 1 个错误发生导致「%{model}」无法被保存。
+        other: 有 %{count} 个错误发生导致「%{model}」无法被保存。
+  helpers:
+    select:
+      prompt: 请选择
+    submit:
+      create: 新增%{model}
+      submit: 储存%{model}
+      update: 更新%{model}
+  number:
+    currency:
+      format:
+        delimiter: ! ','
+        format: ! '%u %n'
+        precision: 2
+        separator: .
+        significant: false
+        strip_insignificant_zeros: false
+        unit: CN¥
+    format:
+      delimiter: ! ','
+      precision: 3
+      separator: .
+      significant: false
+      strip_insignificant_zeros: false
+    human:
+      decimal_units:
+        format: ! '%n %u'
+        units:
+          billion: 十亿
+          million: 百万
+          quadrillion: 千兆
+          thousand: 千
+          trillion: 兆
+          unit: ''
+      format:
+        delimiter: ''
+        precision: 1
+        significant: false
+        strip_insignificant_zeros: false
+      storage_units:
+        format: ! '%n %u'
+        units:
+          byte:
+            one: Byte
+            other: Bytes
+          gb: GB
+          kb: KB
+          mb: MB
+          tb: TB
+    percentage:
+      format:
+        delimiter: ''
+    precision:
+      format:
+        delimiter: ''
+  support:
+    array:
+      last_word_connector: ! ', 和 '
+      two_words_connector: ! ' 和 '
+      words_connector: ! ', '
+  time:
+    am: 上午
+    formats:
+      default: ! '%Y年%b%d日 %A %H:%M:%S %Z'
+      long: ! '%Y年%b%d日 %H:%M'
+      short: ! '%b%d日 %H:%M'
+    pm: 下午
+
+  helpers:
+    select:
+      prompt: "请选择"
+
+    submit:
+      create: '新建 %{model}'
+      update: '更新 %{model}'
+      submit: '提交 %{model}'
+
+  errors:
+    format: "%{attribute} %{message}"
+
+    messages: &errors_messages
+      inclusion: "is not included in the list"
+      exclusion: "is reserved"
+      invalid: "is invalid"
+      confirmation: "doesn't match"
+      accepted: "must be accepted"
+      empty: "can't be empty"
+      blank: "can't be blank"
+      exists_already: 'exists already'
+      too_long: "is too long (maximum is %{count} characters)"
+      too_short: "is too short (minimum is %{count} characters)"
+      wrong_length: "is the wrong length (should be %{count} characters)"
+      not_a_number: "is not a number"
+      not_an_integer: "must be an integer"
+      greater_than: "must be greater than %{count}"
+      greater_than_or_equal_to: "must be greater than or equal to %{count}"
+      equal_to: "must be equal to %{count}"
+      less_than: "must be less than %{count}"
+      less_than_or_equal_to: "must be less than or equal to %{count}"
+      odd: "must be odd"
+      even: "must be even"
+      invalid_characters: 'cannot contain any of these characters: < > : " / \ | ? *'
+
+  activerecord:
+    errors:
+      template:
+        header:
+          one: "1 error prohibited this %{model} from being saved"
+          other: "%{count} errors prohibited this %{model} from being saved"
+        body: "There were problems with the following fields:"
+
+      messages:
+        taken: "has already been taken"
+        record_invalid: "Validation failed: %{errors}"
+        <<: *errors_messages
+
+      full_messages:
+        format: "%{attribute} %{message}"
+
+    models:
+      clipboard: 剪贴板
+      folder: 文件夹
+      group: 组
+      permission: 权限
+      share_link: 分享链接
+      user: 用户
+      user_file: 文件
+
+    attributes:
+      folder:
+        name: 名称
+      group:
+        name: 名称
+      share_link:
+        emails: Email 地址
+        expires_at: 过期
+      user:
+        email: Email
+        name: 用户名
+        password: 密码
+      user_file:
+        name: 名称
+        attachment_file_name: 文件
+
+  # APPLICATION SPECIFIC
+
+  # general
+  back: 后退
+  save: 保存
+  name: 名称
+  email: Email
+  submit: 提交
+  search: 搜索
+  filter: 过滤
+  root_folder: 根文件夹
+
+  your_changes_were_saved: 修改成功报存。
+  already_deleted: "抱歉，该%{type}已被删除。"
+
+  # admins/new
+  create_admin: 创建管理员
+  no_administrator_yet: 尚未建立管理员，在这里新建一个吧。
+  create_admin_account: 创建管理员账户
+  admin_user_created_successfully: 成功创建管理员用户，现在可以登录了。
+
+  # clipboard/_show
+  folder: 文件夹
+  file: 文件
+  this_folder: 该文件夹
+  this_file: 该文件
+  copy: 复制
+  copy_folder: 复制文件夹
+  copy_file: 复制文件
+  move: 移动
+  move_folder: 移动文件夹
+  move_file: 移动文件
+  are_you_sure: 确定吗？
+  delete_item: 删除
+  remove_from_clipboard: 从剪贴板中移除
+  clear_clipboard: 清空剪贴板
+
+  # files
+  pdf: PDF 文档
+  doc: Microsoft Word 文档
+  xls: Microsoft Excel 工作簿
+  ppt: Microsoft PowerPoint 幻灯片
+  c: C 源文件
+  cpp: C++ 源文件
+  txt: 文本文件
+  rb: Ruby 源文件
+  ru: Ruby 源文件
+  py: Python 源文件
+  h: C/C++ 头文件
+  js: JavaScript 源文件
+
+  # files/edit
+  rename_file: 重命名文件
+
+  # files/new
+  select_file: 选择文件
+  upload_file: 上传文件
+  upload: 上传
+  exists_already: 已存在
+
+  #folders/edit
+  rename_folder: 重命名文件夹
+
+  #folders/new
+  new_folder: 新建文件夹
+
+  #folders/show
+  create_a_new_folder: 创建新文件夹
+  upload_a_file: 上传文件
+  permissions: 权限
+  delete_selection: 删除选中项
+  clipboard: 剪贴板
+  size: 大小
+  type: 类型
+  date_modified: 修改时间
+  up: 上一级
+  edit: 编辑
+  add_to_clipboard: 添加到剪贴板
+  download: 下载
+  download_selection: 下载选中项
+  share: 分享
+  preview: 预览
+  all: 所有文件
+  music: 音乐
+  document: 文档
+  code: 源代码
+  video: 视频
+  picture: 图片
+  others: 其他
+
+  #groups/edit
+  rename_group: 重命名组
+
+  #groups/index
+  groups: 组
+  create_a_new_group: 创建新组
+
+  #groups/new
+  new_group: 创建新组
+
+  #permissions/form
+  create_permission: 创建
+  read_permission: 读取
+  update_permission: 更新
+  delete_permission: 删除
+  apply_changes_to_subfolders: 将更改应用到子文件夹
+
+  create: 创建
+  read: 读取
+  update: 更新
+  delete: 删除
+
+  #reset_password/edit
+  password: 密码
+  reset_password: 重置密码
+  send_email: 发送
+
+  #signup/edit
+  sign_up: 注册
+
+  #sessions
+  username: 用户名
+  remember_me: 记住我
+  sign_in: 登录
+
+  #share_links/index
+  shared_by: 分享人
+  unshare: 取消分享
+
+  #share_links/new
+  this_share_link: this share link
+  share_file: Share file
+  you_are_about_to_share_the_following_file: You are about to share the following file
+  emails_to_share_with: Email addresses of the people you wish to share this file with
+  comma_seperated: Comma seperated
+  number_of_charachters: Number of characters
+  link_expires: Expires
+  tomorrow: Tomorrow
+  three_days_from_now: Three days from now
+  one_week_from_now: A week from now
+  ten_days_from_now: Ten days from now
+  two_weeks_from_now: Two weeks from now
+  three_weeks_from_now: Three weeks from now
+  one_month_from_now: A month from now
+  two_months_from_now: Two months from now
+  three_months_from_now: Three months from now
+  half_year_from_now: A half year from now
+  share_link_could_not_be_sent: The download link could not be sent
+  are_invalid_due_to: "is invalid due to %{email}"
+  shared_successfully: The file was shared successfully.
+  shared_message: Message
+  optional: Optional
+
+  #shared/_header
+  hello: 您好
+  settings: 设置
+  sign_out: 退出登录
+
+  #shared/_menu
+  folders: 文件夹
+  users: 用户
+  shared_files: 分享的文件
+
+  #users/_form
+  member_of_these_groups: 组成员
+  confirm_password: 确认密码
+
+  #users/index
+  create_a_new_user: 创建新用户
+  active_users: 活动用户
+  invited_users: 已邀请用户
+  expiration_date: 过期时间
+  extend_expiration_date: 延长期限
+
+  #users/new
+  new_user: 新建用户
+
+  #admins/controller
+  admin_user_created_sucessfully: 成功创建管理员用户，现在可以登录了。
+
+  #application_controller
+  no_permissions_for_this_type: "您没有权限来%{method}%{type}。"
+
+
+
+  # clipboard_controller
+  added_to_clipboard: 成功添加到剪贴板
+  could_not_copy: "无法复制，存在同名%{type}。"
+  could_not_move: "无法移动，存在同名%{type}。"
+  cannot_move_to_own_subfolder: 不能移动到自身的子目录下。
+
+  # folders_controller
+  cannot_delete_root_folder: 无法删除或修改根目录
+  no_delete_permissions_for_subfolder: 您没有删除某些子文件夹的权限
+
+  # groups_controller
+  group_already_deleted: Someone else deleted this group. Your action was cancelled.
+  admins_group_cannot_be_deleted: The admins group cannot be deleted or renamed.
+
+  # reset_password_controller
+  instruction_email_sent: "An email with instructions was sent if '%{email}' exists in our system."
+  password_reset_successfully: Your password was reset successfully. You can now sign in.
+  reset_url_expired: The URL for resetting your password expired. Please try again.
+
+  # signup_controller
+  signed_up_successfully: 成功创建账户，您现在可以登录了。
+  sign_url_expired: 该注册链接已过期，请联系管理员。
+
+  # sessions_controller
+  credentials_incorrect: Username and/or password were incorrect. Try again.
+
+  # users_controller
+  user_already_deleted: Someone else deleted the user. Your action was cancelled.
+  admin_user_cannot_be_deleted: The admin user cannot be deleted.
+  edit_user: Edit user
+  account_settings: Account settings
+
+  # mailers/user_mailer
+  signup_email_subject: '[Boxroom] Sign up invitation'
+  reset_password_email_subject: '[Boxroom] Password reset instructions'
+  share_link_email_subject: '[Boxroom] %{email} shared a file with you'

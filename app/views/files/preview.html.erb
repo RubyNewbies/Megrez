@@ -1,0 +1,25 @@
+<html>
+<head>
+</head>
+<body bgcolor="white">
+<% case @file.mime_type %>
+<% when "text" then %>
+  <%= raw(coderay @file) %>
+
+<% when "image" then %>
+  <%= image_tag file_path(@file), :class => 'image_size' %>
+
+<% when "application" then %>
+  <% case @file.mime_subtype %>
+  <% when "pdf" then %>
+    <%= content_tag(:object, "", data: @file.attachment.url, type: "application/pdf", width: "790", height: "590") %>
+  <% else %>
+    <%= raw(coderay @file) %>
+  <% end %>
+
+<% else %>
+  <p>We are still working on the support of <%= @file.extension %> now :-)</p>
+<% end %>
+</body>
+
+</html>
