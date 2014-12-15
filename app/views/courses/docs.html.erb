@@ -1,14 +1,47 @@
+<% if current_user.creator_of_course?(@course.id) -%>
+  <span class="folder_menu"><%= fa_icon "folder" %> <%= button_to t(:create_a_new_folder), new_folder_folder_path(@folder), method: "get", class: "submit_to_link" %></span>
+  <span class="folder_menu"><%= fa_icon "upload" %> <%= button_to t(:upload_a_file), new_folder_file_path(@folder), method: "get", class: "submit_to_link" %></span>
+  <span class="folder_menu" id="download_multiple" style="display: none">
+    <%= fa_icon('download') %>
+    <%= submit_tag t(:download_selection), :name => 'form_1[download_multiple]', class: "submit_to_link" %>
+  </span>
+  <span class="folder_menu" id="delete_multiple" style="display: none">
+    <%= fa_icon('remove') %>
+    <%= submit_tag t(:delete_selection), :name => 'form_1[destroy_multiple]', class: "submit_to_link" %>
+  </span>
+<% end -%>
 <table class="table table-hover">
   <tr>
     <th></th>
+    <th></th>
     <th><%= t :name %></th>
+    <th><%= t :type %></th>
     <th><%= t :size %></th>
     <th><%= t :date_modified %></th>
     <th></th>
   </tr>
   <tbody>
+  <% @folder.children.each do |folder| -%>
+    <tr class="odd" onmouseover="display_options(this);" onmouseout="hide_options(this);" onclick="item_click(this);">
+      <td onclick="stop_bubble(this.id);"><%= check_box_tag "folders_id[]", folder.id, false, {:class => "chkbox", :onclick => "check_click();"} %></td>
+      <td><%= fa_icon('folder-open-o') %></td>
+      <td class="file_name"><%= link_to folder.tname, folder %></td>
+      <td class="file_type"><%= t(:folder).capitalize %></td>
+      <td class="file_size">--</td>
+      <td class="file_modified"><%= l folder.updated_at.localtime, :format => :short %></td>
+      <td class="options" onclick="stop_bubble(this.id);">
+      <% if current_user.creator_of_course?(@course.id) -%>
+        <%= link_to fa_icon("edit"), edit_folder_path(folder), :title => t(:edit), :class => 'options', :style => 'color:#FFF' %>&nbsp;
+        <%= link_to fa_icon("remove"), folder, :method => :delete, :data => { :confirm => t(:are_you_sure) }, :title => t(:delete_item), :class => 'options', :style => 'color:#FFF' %>&nbsp;
+      <% end -%>
+        <%= link_to fa_icon("clipboard"),
+          { :controller => :clipboard, :action => :create, :id => folder.id, :type => 'folder', :folder_id => @folder, :authenticity_token => form_authenticity_token },
+          :method => :post, :title => t(:add_to_clipboard), :class => 'options', :style => 'color:#FFF'
+        %>
+      </td>
+    </tr>
+  <% end -%>
   <% @files.each do |file| -%>
-    <% if current_user.can_read(@folder) -%>
     <tr class="odd" onmouseover="display_options(this);" onmouseout="hide_options(this);" onclick="item_click(this);">
       <td onclick="stop_bubble(this.id);"><%= check_box_tag "id[]", file.id, false, {:class => "chkbox", :onclick => "check_click();"} %></td>
       <td><%= file_icon(file) %></td>
@@ -17,10 +50,8 @@
       <td class="file_size"><%= number_to_human_size(file.attachment_file_size, :locale => I18n.locale) %></td>
       <td class="file_modified"><%= l file.updated_at.localtime, :format => :short %></td>
       <td class="options" onclick="stop_bubble(this.id);">
-      <% if current_user.can_update(@folder) -%>
+      <% if current_user.creator_of_course?(@course.id) -%>
         <%= link_to fa_icon("edit"), edit_file_path(file), :title => t(:edit), :class => 'options', :style => 'color:#FFF' %>&nbsp;
-      <% end -%>
-      <% if current_user.can_delete(@folder) -%>
         <%= link_to fa_icon("remove"), file_path(file), :method => :delete, :data => { :confirm => t(:are_you_sure) }, :title => t(:delete_item), :class => 'options', :style => 'color:#FFF' %>&nbsp;
       <% end -%>
       <%= link_to fa_icon("clipboard"),
@@ -32,7 +63,6 @@
       <% end %>
       </td>
     </tr>
-    <% end -%>
   <% end -%>
   </tbody>
 </table>

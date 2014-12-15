@@ -17,7 +17,7 @@ class CoursesController < ApplicationController
 
   def create
     @course = Course.new(course_params.merge user_id: current_user.id)
-    @f = Folder.create(name: @course.full_name, parent_id: Folder.root.id)
+    @f = Folder.create(name: '(Course folder)#{@course.full_name}', parent_id: Folder.root.id)
     if @course.save
       rel = {user_id: @course.user_id, course_id: @course.id}
       @course.course_user_relationships.create(rel)
