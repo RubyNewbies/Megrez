@@ -18,12 +18,15 @@ class CoursesController < ApplicationController
   def create
     @course = Course.new(course_params.merge user_id: current_user.id)
     @user_folder = Folder.find_by_name(current_user.username)
-    @f = Folder.create(name: "(Course folder)#{@course.full_name}", parent_id: @user_folder.id)
+    @course_folder = Folder.create(name: "(Course folder)#{@course.full_name}", parent_id: @user_folder.id)
+    @doc_folder = Folder.create(name: "Documents", parent_id: @course_folder.id, is_doc: true)
     if @course.save
       rel = {user_id: @course.user_id, course_id: @course.id}
       @course.course_user_relationships.create(rel)
-      @f.course_id = @course.id
-      @f.save
+      @course_folder.course_id = @course.id
+      @doc_folder.course_id = @course.id
+      @course_folder.save
+      @doc_folder.save
       @groups = Group.all
       @groups << Group.create(:name => @course.full_name)
       redirect_to @course
@@ -69,7 +72,7 @@ class CoursesController < ApplicationController
   end
 
   def docs
-    @folder = Folder.where(course_id: params[:id])[0]
+    @folder = Folder.find_by(course_id: params[:id], is_doc: true)
     @files = @folder.user_files.order(sort_column + " " + sort_direction).search(params[:query]).paginate :page => params[:page], :per_page => 10
 
   end

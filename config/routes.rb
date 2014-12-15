@@ -36,6 +36,7 @@ Megrez::Application.routes.draw do
     resources :assignments do
       member do
         get 'submit'
+        post 'upload'
       end
     end
 

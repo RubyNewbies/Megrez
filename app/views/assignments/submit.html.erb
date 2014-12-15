@@ -4,10 +4,25 @@
   </div>
   <div class="col-md-9">
     <legend><%= current_user.username %> 正在提交作业： <%= @assignment.title %></legend>
-    <%= bootstrap_form_for @assignfile, url: assignfile_path(id: @assignfile.id), method: :patch, layout: :horizontal do |f| %>
-      <%= f.file_field :submission, label: '上传文件' %>
-      <br>
-      <%= f.submit '提交' %>
+    <%= form_for [@target_folder, @file], :url => folder_files_path(@target_folder) do |f| %>
+      <p>
+        <%= hidden_field_tag :target_folder_id, @target_folder.id %>
+        <%= file_field_tag :attachment, :multiple => true, :name => 'user_file[attachment]' %>
+      </p>
+      <div id="progress">
+      </div>
     <% end %>
+
+    <script id="template-upload" type="text/x-tmpl">
+    <p>
+      <%= fa_icon 'spinner', :class => 'spinner fa-spin' %>
+      <%= fa_icon 'times', :class => 'failed', :style => 'display:none;' %>
+      <%= fa_icon 'check', :class => 'tick', :style => 'display:none;' %>
+      <span class="status">Uploading <strong>{%= o.name %}</strong>...</span>
+      <span class="percentage">0%</span>
+      <span class="exists_message red" style="display:none;"><strong><%= t(:exists_already) %></strong></span>
+    </p>
+    </script>
+
   </div>
 </div>

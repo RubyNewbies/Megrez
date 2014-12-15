@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141213133222) do
+ActiveRecord::Schema.define(version: 20141215040551) do
 
   create_table "activities", force: true do |t|
     t.integer  "trackable_id"
@@ -76,6 +76,8 @@ ActiveRecord::Schema.define(version: 20141213133222) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "course_id"
+    t.boolean  "is_doc"
+    t.boolean  "is_assignment"
   end
 
   create_table "groups", force: true do |t|

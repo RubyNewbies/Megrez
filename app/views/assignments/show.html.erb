@@ -17,8 +17,10 @@
         left = left % 3600
         var min = Math.floor(left / 60)
         left = left % 60
-
-        document.getElementById('countdown').innerHTML = day+"天"+hour+"小时"+min+"分"+left+"秒"
+        if (left >= 0)
+          document.getElementById('countdown').innerHTML = day+"天"+hour+"小时"+min+"分"+left+"秒"
+        else
+          document.getElementById('countdown').innerHTML = "已结束"
         t=setTimeout('startTime()', 500)
       }
     </script>
@@ -47,12 +49,14 @@
         </div>
         <div class="col-md-9">
           <legend><p><%= @assignment.title %> <span class="label label-warning" id="countdown"></span></p></legend>
-          <p>开始于：<br>结束于：<%= @assignment.end_time %></p>
+          <p>开始于：<%= @assignment.start_time %><br>结束于：<%= @assignment.end_time %></p>
           <hr>
           <p style="white-space:pre-line"><%= @assignment.description %></p>
           <hr>
-          <% if @assignfile && @assignfile.source %>
-            <p>已经提交：<%= @assignfile.source %></p>
+          <% if @assignment.is_submitted?(current_user) %>
+            <p>已经提交</p>
+            <p>提交的文件：</p>
+            
           <% else %>
             <p>尚未提交</p>
           <% end %>

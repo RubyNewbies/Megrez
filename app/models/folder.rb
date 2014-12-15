@@ -85,7 +85,7 @@ class Folder < ActiveRecord::Base
   end
 
   def is_user_root?(username)
-    name == username && !new_record?
+    name == username && parent == Folder.root
   end
 
   def has_children?
