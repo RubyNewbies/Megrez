@@ -1,0 +1,9 @@
+<% now = Time.now.to_i %>
+<% sub = now - dest.created_at.to_i %>
+<% day = sub / 86400 %>
+<% sub = sub % 86400 %>
+<% hour = sub / 3600 %>
+<% sub = sub % 3600 %>
+<% min = sub / 60 %>
+<% sub = sub % 60 %>
+<%= day.to_s + "天" + hour.to_s + "小时" + min.to_s + "分" + sub.to_s + "秒前" %>
