@@ -12,6 +12,10 @@ class ApplicationController < ActionController::Base
    
   helper_method :clipboard, :current_user, :signed_in?, :permitted_params
 
+  # def current_user
+  #   @current_user ||= User.find_by_id(session[:user_id])
+  # end
+
   protected
 
   def set_locale
@@ -28,7 +32,7 @@ class ApplicationController < ActionController::Base
   def clipboard
     session[:clipboard] ||= Clipboard.new
   end
-
+  
   def signed_in?
     !!current_user
   end
