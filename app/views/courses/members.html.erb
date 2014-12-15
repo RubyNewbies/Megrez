@@ -1,3 +1,10 @@
-<% @members.each do |m| %>
-  <p><%= m.username %></p>
-<% end %>
+<!--To be replaced
+<ul class="card-on">
+  <% @members.each do |m| %>
+    <li>
+      <%= image_tag m.avatar, height: 100, width: 100 %><br>
+      <%= link_to m.realname, profile_path(m.username) %>
+    </li>
+  <% end %>
+<ul>
+-->

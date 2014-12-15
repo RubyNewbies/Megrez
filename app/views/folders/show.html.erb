@@ -19,6 +19,7 @@
     <form id="form_temp" action="/">
       <!-- DUMMY FORM TO MOCK NESTED FORM -->
     </form>
+    <div class="well well-sm">
     <span class="folder_menu"><%= fa_icon "folder" %> <%= button_to t(:create_a_new_folder), new_folder_folder_path(@folder), method: "get", class: "submit_to_link" %></span>
     <span class="folder_menu"><%= fa_icon "upload" %> <%= button_to t(:upload_a_file), new_folder_file_path(@folder), method: "get", class: "submit_to_link" %></span>
 
@@ -34,6 +35,7 @@
       <span class="folder_menu" id="permissions_link"><span><%= fa_icon "lock" %> <%= button_to t(:permissions), '#', method: "get", :class => 'submit_to_link permissions_link' %></span></span>
     <% end -%>
       <span class="folder_menu" id="clipboard_link"><span><%= fa_icon "clipboard" %> <%= button_to t(:clipboard), '#', method: "get", :class => 'submit_to_link clipboard_link' %></span></span>
+    </div>
     </p>
     <form id="form_temp" action="/">
       <!-- DUMMY FORM TO MOCK NESTED FORM -->

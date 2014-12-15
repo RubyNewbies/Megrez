@@ -45,7 +45,7 @@ class FoldersController < ApplicationController
     @folder = @target_folder.children.build(permitted_params.folder)
     @folder.course_id = @folder.parent.course_id
     if @folder.save
-      redirect_to @target_folder
+      redirect_to :back
     else
       render :action => 'new'
     end
