@@ -727,6 +727,7 @@ zh-CN:
   email: 电子邮箱
   avatar: 头像
   submit_user: 修改
+  preferred_language: 语言偏好
 
   # user/dashboard
   assignment_due: 一个作业即将到期  

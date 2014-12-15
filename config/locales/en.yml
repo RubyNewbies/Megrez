@@ -643,13 +643,13 @@
   file_management: File Management
   account_setting: Account Setting
 
-  # user/edit
+  # user
   personal_information: Personal Information
   username: User name
   realname: Real name
   email: Email
   avatar: Avatar
-  submit: Submit
+  submit_user: Submit
 
   # user/dashboard
   assignment_due: An assignment is due soon

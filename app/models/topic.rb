@@ -31,7 +31,7 @@ class Topic < ActiveRecord::Base
     user = User.find(user_id)
     user_url = "<a href=\"/u/#{user.username}\">#{user.username}</a>"
     mentioned_users.each do |user|
-      notification = I18n.t(:notification)
+      notification = "#{user_url}在#{title}中提到了你。"
       puts "Create notification: " + notification
       Notification.create(user, notification)
     end
