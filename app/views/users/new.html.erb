@@ -1,5 +1,5 @@
 <head>
-  <title>乐学网 - 哈工大交互式网络教学平台</title>
+  <title><%= t :site_title %></title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -9,18 +9,20 @@
   <div class="container">
     <div class="row">
       <div class="col-md-4 col-md-offset-4">
-        <legend class="text-center">注册</legend>
+        <legend class="text-center"><%= t :sign_up %></legend>
         <form action="/users" method="post">
           <input name="utf8" type="hidden" value="✓">
           <input name="authenticity_token" type="hidden" value="">
-          <label>用户名</label>
-          <input class="form-control fit-box" name="user[username]" type="text" placeholder="用户名">
-          <label>电子邮件</label>
-          <input class="form-control fit-box" name="user[email]" type="text" placeholder="电子邮件">
-          <label>密码</label>
-          <input class="form-control fit-box" name="user[password]" type="password" placeholder="密码">
+          <label><%= t :username %></label>
+          <input class="form-control fit-box" name="user[username]" type="text" placeholder="<%= t :username %>">
+          <label><%= t :realname %></label>
+          <input class="form-control fit-box" name="user[realname]" type="text" placeholder="<%= t :realname %>">
+          <label><%= t :email %></label>
+          <input class="form-control fit-box" name="user[email]" type="text" placeholder="<%= t :email %>">
+          <label><%= t :password %></label>
+          <input class="form-control fit-box" name="user[password]" type="password" placeholder="<%= t :password %>">
           <br>
-          <button type="submit" class="btn btn-primary form-control fit-box">注册</button>
+          <button type="submit" class="btn btn-primary form-control fit-box"><%= t :sign_up %></button>
         </form>
       </div>
     </div>

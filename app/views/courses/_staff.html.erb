@@ -1,9 +1,9 @@
-<div><h3 class="text-center no-margin">教职人员</h3></div>
+<div><h3 class="text-center no-margin"><%= t :staff %></h3></div>
 <div>
 <a href="" class="circle">
   <%= image_tag @course.creator.avatar, width: 120, height: 120, class: 'img-responsive center-block' %>
 </a>
 </div>
 <div>
-  <h3 class="text-center"><%= @course.creator.username %></h3>
+  <h3 class="text-center"><%= link_to @course.creator.realname, profile_path(@course.creator.username) %></h3>
 </div>

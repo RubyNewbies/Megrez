@@ -2,7 +2,7 @@
       <div id="forum-sidebar" class="col-md-3 forum-sidebar-wrap">
         <div class="forum-sidebar-header btn-group btn-breadcrumb">
             <a href=<%= forum_course_path %> class="btn btn-default"><i class="fa fa-fw fa-lg fa-home"></i></a>
-            <a href=<%= forum_course_path %> class="btn btn-default">讨论专区</a>
+            <a href=<%= forum_course_path %> class="btn btn-default"><%= t :forum %></a>
         </div>
 
         <div id="forum-sidebar-content" class="forum-sidebar-content">
@@ -13,9 +13,9 @@
 
           <div class="btn-group btn-group-justified">
             <% if current_user && current_user.creator_of_course?(params[:id]) %>
-              <%= link_to fa_icon('plus-circle', text: '新建分区', class: 'fa-fw'), new_course_node_path(course_id: params[:id], father_id: -1), class: 'btn btn-default', remote: true %>
+              <%= link_to fa_icon('plus-circle', text: t(:new_board), class: 'fa-fw'), new_course_node_path(course_id: params[:id], father_id: -1), class: 'btn btn-default', remote: true %>
             <% end %>
-            <%= link_to fa_icon('twitch', text: '发布新帖', class: 'fa-fw', right: true), new_course_topic_path(course_id: params[:id], node_id: -1), class: 'btn btn-default', remote: true %>
+            <%= link_to fa_icon('twitch', text: t(:new_post), class: 'fa-fw', right: true), new_course_topic_path(course_id: params[:id], node_id: -1), class: 'btn btn-default', remote: true %>
           </div>
 
         </div>

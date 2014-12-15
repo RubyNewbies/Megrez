@@ -24,11 +24,15 @@ class Course < ActiveRecord::Base
   end
 
   def full_name_with_creator_name
-    "#{full_name} · #{creator.username}"
+    "#{full_name} · #{creator.realname}"
   end
 
   def direct_nodes
     nodes.where(father_id: -1)
+  end
+
+  def latest_assignments
+    Assignment.where("course_id = ? and due_to >= ?", id, Time.now).order("due_to")
   end
 
 end

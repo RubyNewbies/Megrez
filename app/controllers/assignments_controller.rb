@@ -11,7 +11,10 @@ class AssignmentsController < ApplicationController
 
   def show
     @assignment = Assignment.find(params[:id])
-    @assignfile = Assignfile.where(assignment_id: @assignment.id, user_id: current_user.id).first
+    @assignment = Assignment.find(params[:id])
+    @assignment_folder = Folder.find_by(name: "Assignment:#{@assignment.title}", course_id: params[:course_id], is_assignment: true)
+    @target_folder = Folder.find_by(name: current_user.username, parent_id: @assignment_folder.id)
+    @files = @target_folder.user_files unless @target_folder.nil?
     render 'show', layout: false
   end
 
@@ -39,7 +42,7 @@ class AssignmentsController < ApplicationController
   def submit
     @course = Course.find(params[:course_id])
     @assignment = Assignment.find(params[:id])
-    @assignment_folder = Folder.find_by(course_id: params[:course_id], is_assignment: true)
+    @assignment_folder = Folder.find_by(name: "Assignment:#{@assignment.title}", course_id: params[:course_id], is_assignment: true)
     @target_folder = Folder.find_by(name: current_user.username, parent_id: @assignment_folder.id)
     if @target_folder.nil?
       @target_folder = Folder.create(name: current_user.username, parent_id: @assignment_folder.id, is_assignment: false)

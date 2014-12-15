@@ -3,12 +3,12 @@
 <form action=<%= new_replies_course_topic_path(id: @topic.id, course_id: @course.id) %> method='POST' data-remote="true">
   <input type="hidden" name="reply[topic_id]" value=<%= params[:id] %>>
   <ul class="nav nav-tabs">
-    <li class="active"><a href="#content_edit" data-toggle="tab" aria-expanded="false">编辑</a></li>
-    <li class=""><a href="#content_preview" data-toggle="tab" aria-expanded="true">预览</a></li>
+    <li class="active"><a href="#content_edit" data-toggle="tab" aria-expanded="false"><%= t :edit %></a></li>
+    <li class=""><a href="#content_preview" data-toggle="tab" aria-expanded="true"><%= t :preview %></a></li>
   </ul>
   <div id="myTabContent" class="tab-content">
     <div class="tab-pane fade active in" id="content_edit">
-      <textarea name="reply[source]" id="content_source" rows="8" placeholder="在这里畅所欲言"></textarea>      
+      <textarea name="reply[source]" id="content_source" rows="8" placeholder="<%= t :placeholder %>"></textarea>      
     </div>
     <div class="tab-pane fade" id="content_preview">
       somethings

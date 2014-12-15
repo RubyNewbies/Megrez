@@ -57,7 +57,7 @@ class CoursesController < ApplicationController
       @course.delete
       @f.destroy
       # Should send some email or message to notify?
-      redirect_to '/', success: '成功删除。'
+      redirect_to '/', success: I18n.t(:deleted_successfully)
     else
     end
   end
@@ -122,7 +122,7 @@ class CoursesController < ApplicationController
       current_user.leave_out_course(params[:id])
       redirect_to @course
     else
-      redirect_to @course, error: '你还没有加入此课程。'
+      redirect_to @course, error: I18n.t(:not_joined_yet)
     end
   end
 

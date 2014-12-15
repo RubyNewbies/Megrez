@@ -8,15 +8,31 @@ class ApplicationController < ActionController::Base
 
   # before_action :require_admin_in_system
   # before_action :require_login
-
+  before_action :set_locale
+   
   helper_method :clipboard, :current_user, :signed_in?, :permitted_params
 
+  # def current_user
+  #   @current_user ||= User.find_by_id(session[:user_id])
+  # end
+
   protected
+
+  def set_locale
+    if current_user.nil?
+      lang = I18n.default_locale
+    elsif current_user.preferred_lang.nil?
+      lang = 'en'
+    else
+      lang = current_user.preferred_lang
+    end
+    I18n.locale = lang || I18n.default_locale
+  end
 
   def clipboard
     session[:clipboard] ||= Clipboard.new
   end
-
+  
   def signed_in?
     !!current_user
   end

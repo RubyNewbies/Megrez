@@ -1,0 +1,22 @@
+<% now = Time.now.to_i %>
+<% sub = now - dest.created_at.to_i %>
+<% day = sub / 86400 %>
+<% sub = sub % 86400 %>
+<% hour = sub / 3600 %>
+<% sub = sub % 3600 %>
+<% min = sub / 60 %>
+<% sub = sub % 60 %>
+<span class="fa fa-fw fa-clock-o"></span>
+<% unless day == 0 %>
+  <%= day.to_s + t(:days_ago) %>
+<% else %>
+  <% unless hour == 0 %>
+    <%= hour.to_s + t(:hours_ago) %>
+  <% else %>
+    <% unless min == 0 %>
+      <%= min.to_s + t(:minutes_ago) %>
+    <% else %>
+      <%= sub.to_s + t(:seconds_ago) %>
+    <% end %>
+  <% end %>
+<% end %>

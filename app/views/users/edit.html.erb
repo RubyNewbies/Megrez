@@ -4,14 +4,15 @@
   </div>
   <div class="col-md-9">
     <%= bootstrap_form_for(@user, layout: :horizontal, :html => { :multipart => true }) do |f| %>
-      <legend>个人信息</legend>
-      <%= f.text_field :username, label: '昵称' %>
-      <%= f.text_field :realname, label: '姓名' %>
-      <%= f.text_field :email, label: '电子邮箱' %>
-      <%= f.file_field :avatar, label: '头像' %>
-      <%= f.submit '修改', class: 'btn btn-default form-control' %>
+      <legend><%= t :personal_information %></legend>
+      <%= f.text_field :username, label: t(:username) %>
+      <%= f.text_field :realname, label: t(:realname) %>
+      <%= f.text_field :email, label: t(:email) %>
+      <%= f.file_field :avatar, label: t(:avatar) %>
+      <%= f.select :preferred_lang, [["English", "en"], ["中文（简体）", "zh-CN"]], { label: t(:preferred_language) }, { class: 'selectpicker'} %>
+      <%= f.submit t(:submit_user), class: 'btn btn-default form-control' %>
     <% end %>
     <br>
-    <%= link_to '返回', dashboard_path, class: 'btn btn-primary form-control' %>
+    <%= link_to t(:back), dashboard_path, class: 'btn btn-primary form-control' %>
   </div>
 </div>

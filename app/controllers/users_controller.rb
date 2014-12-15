@@ -20,10 +20,13 @@ class UsersController < ApplicationController
 
   def profile 
     @user = User.where(username: params[:username]).first
+    @enrolled_courses = Course.where(user_id: @user.id)
+    @activities = PublicActivity::Activity.order("created_at desc")
   end
 
   def dashboard
     @user = signed_in_user
+    @courses = @user.courses
   end
 
   def create
@@ -39,7 +42,8 @@ class UsersController < ApplicationController
   def update
     @user = current_user
     @user.update(user_params)
-    @user.update_attribute(:avatar, params[:user][:avatar])
+    @user.update_attribute(:avatar, params[:user][:avatar]) unless params[:user][:avatar].nil?
+    @user.update_attribute(:preferred_lang, params[:user][:preferred_lang])
     redirect_to dashboard_path
   end
 

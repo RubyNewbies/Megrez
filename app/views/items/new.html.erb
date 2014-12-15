@@ -8,12 +8,12 @@
     <div class="row">
       <div class="col-md-12">
         <%= bootstrap_form_for @item, url: course_items_path, layout: :horizontal do |f| %>
-          <legend><h1 class="text-center">新建分数项</h1></legend>
-          <%= f.text_field :name, label: '名称', class: 'form-control', placeholder: '名称' %>
-          <%= f.number_field :weight, label: '权重', class: 'form-control', placeholder: '权重' %>
+          <legend><h1 class="text-center"><%= t :new_item %></h1></legend>
+          <%= f.text_field :name, label: t(:name), class: 'form-control', placeholder: t(:name) %>
+          <%= f.number_field :weight, label: t(:weight), class: 'form-control', placeholder: t(:weight) %>
           <%= f.hidden_field :father_id, value: '-1' %>
           <%= f.hidden_field :course_id, value: params[:course_id] %>
-          <%= f.submit '创建', class: 'btn btn-primary' %>
+          <%= f.submit t(:submit), class: 'btn btn-primary' %>
         <% end %>
       </div>
     </div>

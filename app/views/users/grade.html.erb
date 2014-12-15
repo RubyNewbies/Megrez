@@ -5,13 +5,13 @@
   </div>
 
   <div class="col-md-9">
-    <legend>学生信息</legend>
+    <legend><%= t :info %></legend>
     <table class="table table-striped table-hover ">
       <thead>
         <tr>
-          <th>用户名</th>
-          <th>姓名</th>
-          <th>电子邮箱</th>
+          <th><%= t :username %></th>
+          <th><%= t :realname %></th>
+          <th><%= t :email %></th>
         </tr>
       </thead>
       <tbody>
@@ -22,7 +22,7 @@
         </tr>
       </tbody>
     </table>
-    <legend>评分</legend>
+    <legend><%= t :score %></legend>
     <% @items.each_with_index do |item, index| %>
       <div class="panel panel-primary">
         <div class="panel-heading">
@@ -40,10 +40,9 @@
       </div>
     <% end %>
     <div class="text-center">
-      <%= link_to (fa_icon 'arrow-left', text: '返回', class: 'fa-fw'), grade_course_path(id: params[:id]), class: 'btn btn-primary' %>
-      <%= link_to (fa_icon 'envelope-o', text: '发送邮件通知', class: 'fa-fw'), '#', data: { confirm: "Do you want to send an email to #{@user.email}?" }, class: 'btn btn-primary' %>
+      <%= link_to (fa_icon 'arrow-left', text: t(:back), class: 'fa-fw'), grade_course_path(id: params[:id]), class: 'btn btn-primary' %>
+      <%= link_to (fa_icon 'envelope-o', text: t(:send_email_notification), class: 'fa-fw'), '#', data: { confirm: "Do you want to send an email to #{@user.email}?" }, class: 'btn btn-primary' %>
     </div>
   </div>
 
 </div>
-

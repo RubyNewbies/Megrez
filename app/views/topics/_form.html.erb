@@ -2,7 +2,7 @@
 
 <%= bootstrap_form_for(@topic, url: new_course_topic_path, layout: :horizontal) do |f| %>
     <%= f.hidden_field :node_id, value: @node.id %>
-    <%= f.text_field :title, label: '标题', placeholder: '帖子标题' %>
-    <%= f.text_area :source, label: '内容', placeholder: '帖子内容' %>
-    <%= f.submit "提交", disable_with: '上传中...' %>
+    <%= f.text_field :title, label: t(:title), placeholder: t(:title_placeholder) %>
+    <%= f.text_area :source, label: t(:content), placeholder: t(:content_placeholder) %>
+    <%= f.submit t(:submit), disable_with: t(:uploading) %>
 <% end %>

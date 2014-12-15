@@ -3,7 +3,7 @@
     <%= render 'sidelist' %>
   </div>
   <div class="col-md-9">
-    <legend><%= current_user.username %> 正在提交作业： <%= @assignment.title %></legend>
+    <legend><%= current_user.realname %> <%= t :is_submitting %> <%= @assignment.title %></legend>
     <%= form_for [@target_folder, @file], :url => folder_files_path(@target_folder) do |f| %>
       <p>
         <%= hidden_field_tag :target_folder_id, @target_folder.id %>

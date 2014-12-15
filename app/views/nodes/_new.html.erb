@@ -1,20 +1,20 @@
   <%= bootstrap_form_for(@node, url: course_nodes_path, remote: true, layout: :horizontal, remote: true) do |f| %>
     <fieldset>
-      <legend>新建讨论区</legend>
+      <legend><%= t :new_forum %></legend>
 
       <%= f.hidden_field :course_id, value: params[:course_id] %>
 
-      <%= f.text_field :name, label: '名称', class: 'form-control', placeholder: '名称' %>
+      <%= f.text_field :name, label: t(:name), class: 'form-control', placeholder: t(:name) %>
 
-      <%= f.select :father_id, build_select_values(@course), { label: '父节点' }, { class: 'selectpicker'} %>
+      <%= f.select :father_id, build_select_values(@course), { label: t(:parent_node) }, { class: 'selectpicker'} %>
 
-      <%= f.text_field :icon, label: '图标', class: 'form-control', placeholder: '图标' %>
+      <%= f.text_field :icon, label: t(:icon), class: 'form-control', placeholder: t(:icon) %>
 
-      <%= f.text_area :description, label: '描述', class: 'form-control', placeholder: '讨论区功能简介或者版规', rows: 10 %>
+      <%= f.text_area :description, label: t(:description), class: 'form-control', placeholder: t(:desc_placeholder), rows: 10 %>
 
       <div class="btn-group btn-group-justified">
-        <%= link_to (fa_icon 'arrow-circle-left', text: ' 返回', class: 'fa-fw'), forum_course_path(id: params[:course_id]), class: 'btn btn-default btn-block' %>
-        <%= link_to (fa_icon 'arrow-circle-right', text: '添加 ', class: 'fa-fw', right: true), '#', id: 'add_node', class: 'btn btn-block btn-default' %>
+        <%= link_to (fa_icon 'arrow-circle-left', text: " #{t(:back)}", class: 'fa-fw'), forum_course_path(id: params[:course_id]), class: 'btn btn-default btn-block' %>
+        <%= link_to (fa_icon 'arrow-circle-right', text: "#{t(:add)} ", class: 'fa-fw', right: true), '#', id: 'add_node', class: 'btn btn-block btn-default' %>
       </div>
     </fieldset>
   <% end %>

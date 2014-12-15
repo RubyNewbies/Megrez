@@ -1,5 +1,47 @@
 <% if @user.nil? %>
-  用户不存在！
+  <%= t :not_exist %>
 <% else %>
-  <%= @user.username %>
+  <div class="row">
+    <div class="col-md-3">
+      <%= image_tag @user.avatar, width: 200, height: 200 %>
+      <h2><%= @user.realname %></h2>
+      <%= fa_icon 'user' %>&nbsp;&nbsp;<%= @user.username %><br>
+      <%= fa_icon 'envelope' %>&nbsp;&nbsp;<%= link_to @user.email, "mailto:#{@user.email}" %><br>
+      <%= fa_icon 'clock-o' %>&nbsp;&nbsp;<%= t(:joined_on) %>&nbsp;<%= @user.created_at.strftime('%Y-%m-%d') %><br>
+      <%= fa_icon 'send' %>&nbsp;&nbsp;<%= link_to t(:leave_message), '#' %>
+      
+    </div>
+    <div class="col-md-9">
+      <div class="col-md-7">
+        <h2><%= t :recent_activities %></h2>
+        <% @enrolled_courses.each do |course| %>
+          <% @course = course %>
+          <% @activities.each do |activity| %>
+            <% if activity.owner_id == current_user.id %>
+              <%= render_activity activity %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="col-md-5">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <p class="panel-title"><%= t :courses_enrolled %></p>
+          </div>
+          <ul class="list-group">
+            <% @enrolled_courses.each do |course| %>
+              <li class="list-group-item">
+                <%= link_to fa_icon("home", text: course.full_name, class: 'fa-fw fa-lg'), course_path(id: course.id) %>
+                <% if @user.creator_of_course?(course.id) %>
+                  <%= t :creator %>
+                <% else %>
+                  <%= t :member %>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
 <% end %>

@@ -1,16 +1,16 @@
 <div class="navbar navbar-default">
       <div class="container">
         <div class="navbar-header">
-          <a href="/" class="navbar-brand">乐学网</a>
+          <a href="/" class="navbar-brand"><%= t(:megrez) %></a>
         </div>
-        <ul class="nav navbar-nav"><li><a href="/courses">所有课程</a></li></ul>
+        <ul class="nav navbar-nav"><li><a href="/courses"><%= t(:all_courses) %></a></li></ul>
 
         <% if current_user %>
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="message"><i class="fa fa-twitch fa-lg"></i></a>
               <ul class="dropdown-menu" aria-labelledby="download">
-                <li><a href="">消息已经处理完毕</a></li>
+                <li><a href=""><%= t(:no_messages) %></a></li>
               </ul>
             </li>
 
@@ -30,16 +30,16 @@
                         <p class"test-left"><%= current_user.realname %></p>
                         <p class"test-left"><%= current_user.email %></p>
                         <p class"test-left">
-                          <a href="<%= edit_user_path(id: current_user.id) %>" class="btn btn-primary btn-block btn-sm">修改个人信息</a>
+                          <a href="<%= edit_user_path(id: current_user.id) %>" class="btn btn-primary btn-block btn-sm"><%= t(:edit_profile) %></a>
                         </p>
                       </div>
                     </div>
                   </div>
                 </li>
                 <hr style="margin-top: -10px; margin-bottom: 5px">
-                <li><a href="/courses/new" style="color:red">开设课程</a></li>
-                <li><a href="/dashboard">控制中心</a></li>
-                <li><a href="/logout"data-method="delete">退出</a></li>
+                <li><a href="/courses/new" style="color:red"><%= t(:create_course) %></a></li>
+                <li><a href="/dashboard"><%= t(:dashboard) %></a></li>
+                <li><a href="/logout"data-method="delete"><%= t(:logout) %></a></li>
               </ul>
             </li>
           </ul>

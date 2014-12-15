@@ -1,9 +1,9 @@
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
-    <h1>删除讨论区</h1>
+    <h1><%= t(:title) %></h1>
 
     <p><%= @info %></p>
 
-    <%= link_to '返回', node_path(id: @node.id), class: 'btn btn-primary' %>
+    <%= link_to t(:back), node_path(id: @node.id), class: 'btn btn-primary' %>
   </div>
 </div>

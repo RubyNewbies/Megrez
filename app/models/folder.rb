@@ -88,6 +88,14 @@ class Folder < ActiveRecord::Base
     name == username && parent == Folder.root
   end
 
+  def not_current_user?(folder, username)
+    if folder.parent.is_root?
+      return folder.name != username
+    else
+      not_current_user?(folder.parent, username)
+    end
+  end
+
   def has_children?
     children.count > 0
   end

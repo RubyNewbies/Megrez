@@ -25,4 +25,6 @@ jQuery ->
           data.context.find('.tick').show()
     stop: (e) ->
       folder = $('#target_folder_id').val()
-      window.location.href = "/folders/#{folder}"
+      window.history.go(-1)
+
+
