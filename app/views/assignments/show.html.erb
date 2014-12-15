@@ -58,7 +58,9 @@
           <% end %>
           <hr>
           <%= link_to '交作业', submit_course_assignment_path(course_id: params[:course_id], id: params[:id]) %>
-          <%= link_to '修改作业内容', edit_course_assignment_path(course_id: params[:course_id], id: params[:id]) %>
+          <% if current_user.creator_of_course?(@course.id) -%>
+            <%= link_to '修改作业内容', edit_course_assignment_path(course_id: params[:course_id], id: params[:id]) %>
+          <% end -%>
           <%= link_to '返回', course_assignments_path(course_id: params[:course_id]) %>
         </div>
       </div>

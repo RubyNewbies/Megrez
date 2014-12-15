@@ -84,6 +84,10 @@ class Folder < ActiveRecord::Base
     parent.nil? && !new_record?
   end
 
+  def is_user_root?(username)
+    name == username && !new_record?
+  end
+
   def has_children?
     children.count > 0
   end

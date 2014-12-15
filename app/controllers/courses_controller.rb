@@ -17,7 +17,8 @@ class CoursesController < ApplicationController
 
   def create
     @course = Course.new(course_params.merge user_id: current_user.id)
-    @f = Folder.create(name: '(Course folder)#{@course.full_name}', parent_id: Folder.root.id)
+    @user_folder = Folder.find_by_name(current_user.username)
+    @f = Folder.create(name: "(Course folder)#{@course.full_name}", parent_id: @user_folder.id)
     if @course.save
       rel = {user_id: @course.user_id, course_id: @course.id}
       @course.course_user_relationships.create(rel)
@@ -51,6 +52,7 @@ class CoursesController < ApplicationController
   def destroy
     if check_permission
       @course.delete
+      @f.destroy
       # Should send some email or message to notify?
       redirect_to '/', success: '成功删除。'
     else

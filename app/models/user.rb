@@ -97,8 +97,11 @@ class User < ActiveRecord::Base
   # end
 
   def create_root_folder_and_admins_group
-    Folder.create(:name => 'Root folder')
-    groups << Group.create(:name => 'Admins')
+    @root_folder = Folder.find_by_name('Root folder')
+    @admins = Group.find_by_name('Admins')
+    Folder.create(:name => 'Root folder') if @root_folder.nil? 
+    Folder.create(:name => self.username, :parent_id => Folder.root.id)
+    groups << Group.create(:name => 'Admins') if @admins.nil?
   end
 
   # def dont_destroy_admin
@@ -125,8 +128,6 @@ class User < ActiveRecord::Base
   def join_in_course(course_id)
     course_user_relationships.create(course_id: course_id, user_id: id)
     course_folder = Folder.find(course_id)
-    group = Group.find_by(name: Course.find(course_id).full_name)
-    Permission.update(folder_id: course_folder.id, group_id: group.id, can_read: true, can_delete: false, can_update: false, can_create: true)
   end
 
   def leave_out_course(course_id)

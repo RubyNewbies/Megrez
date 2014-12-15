@@ -41,10 +41,10 @@ class Group < ActiveRecord::Base
       Permission.create! do |p|
         p.group = self
         p.folder = folder
-        p.can_create = false
-        p.can_read = folder.is_root? # New groups can read the root folder
-        p.can_update = false
-        p.can_delete = false
+        p.can_create = true
+        p.can_read = true # New groups can read the root folder
+        p.can_update = true
+        p.can_delete = true
       end
     end
   end

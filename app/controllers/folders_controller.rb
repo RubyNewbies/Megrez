@@ -17,6 +17,9 @@ class FoldersController < ApplicationController
 
   # Note: @folder is set in require_existing_folder
   def show
+    if @folder.is_root?
+      @folder = Folder.find_by_name(current_user.username)
+    end
     @files = @folder.user_files.order(sort_column + " " + sort_direction).search(params[:query]).paginate :page => params[:page], :per_page => 10
     @last_type = params[:type].to_i;
     @files = @files.special_find(params[:type])
