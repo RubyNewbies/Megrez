@@ -12,6 +12,6 @@
     <%= sheet.weight %>%
   </td>
   <td>
-    <%= link_to '删除', course_item_path(course_id: sheet.course_id, id: sheet.id), method: 'delete' %>
+    <%= link_to t(:delete), course_item_path(course_id: sheet.course_id, id: sheet.id), method: 'delete' %>
   </td>
 </tr>

@@ -556,7 +556,7 @@
   new_item: New item
 
   # items/new
-  title: New item
+  title: New Item
   submit: Create
 
   # nodes
@@ -576,8 +576,8 @@
 
   # nodes/edit
   title: Edit Forum
-  name: "Name:"
-  icon: "Icon:"
+  name: "Name"
+  icon: "Icon"
   submit: Submit
   editing: Submitting
 
@@ -623,6 +623,7 @@
   slogan: "HIT Interactive Online Learning Platform"
   sign_in_alt: Log in to Megrez
   remember_me: Remember me
+  realname: Real name
   sign_up_alt: Sign up
   title_forum: Forum
   title_file: DocBox
@@ -637,13 +638,13 @@
   assign_item2: 人性化的提醒，免除记忆的烦恼，让你不再忘记作业的提交；
   assign_item3: 多元化的提交方式，从本地，从网盘，总有一种方式适合你;
 
-  # user/_info
+  # users/_info
   dashboard: Dashboard
   course_management: Course Management
   file_management: File Management
   account_setting: Account Setting
 
-  # user
+  # users
   personal_information: Personal Information
   username: User name
   realname: Real name
@@ -651,14 +652,16 @@
   avatar: Avatar
   submit_user: Submit
 
-  # user/dashboard
+  # users/dashboard
   assignment_due: An assignment is due soon
   view_details: View details
 
-  # user/profile
+  # users/profile
   not_exist: User does not exist!
+  courses_enrolled: Courses Enrolled
+  recent_activities: Recent Activities
 
-  # user/grade
+  # users/grade
   info: Student Information
   score: Scores
   send_email_notification: Send Email notification

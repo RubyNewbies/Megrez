@@ -24,7 +24,7 @@ class Course < ActiveRecord::Base
   end
 
   def full_name_with_creator_name
-    "#{full_name} · #{creator.username}"
+    "#{full_name} · #{creator.realname}"
   end
 
   def direct_nodes

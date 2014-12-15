@@ -633,7 +633,7 @@ zh-CN:
   new_item: 新建分数项
 
   # items/new
-  title: 新建分数项
+  new_item: 新建分数项
   submit: 创建
 
   # nodes
@@ -653,8 +653,8 @@ zh-CN:
 
   # nodes/edit
   title: 修改讨论区
-  name: 名称：
-  icon: 图标：
+  name: 名称
+  icon: 图标
   submit: 提交
   editing: 正在修改
 
@@ -698,6 +698,7 @@ zh-CN:
   # static_pages/home
   site_title: "乐学网 - 哈工大交互式网络教学平台"
   slogan: "哈工大交互式网络教学平台"
+  realname: 姓名
   sign_in_alt: 登录乐学网
   remember_me: 记住我
   sign_up_alt: 注册账号
@@ -714,13 +715,13 @@ zh-CN:
   assign_item2: 人性化的提醒，免除记忆的烦恼，让你不再忘记作业的提交；
   assign_item3: 多元化的提交方式，从本地，从网盘，总有一种方式适合你;
 
-  # user/_info
+  # users/_info
   dashboard: 控制中心
   course_management: 课程管理
   file_management: 文件管理
   account_setting: 账号设置
 
-  # user
+  # users
   personal_information: 个人信息
   username: 用户名
   realname: 姓名
@@ -729,14 +730,18 @@ zh-CN:
   submit_user: 修改
   preferred_language: 语言偏好
 
-  # user/dashboard
+  # users/dashboard
   assignment_due: 一个作业即将到期  
   view_details: 查看详情
 
-  # user/profile
+  # users/profile
   not_exist: 用户不存在！
+  courses_enrolled: 参与的课程
+  recent_activities: 最近活动
+  leave_message: 给我留言
+  joined_on: 加入时间：
 
-  # user/grade
+  # users/grade
   info: 学生信息
   score: 评分
   send_email_notification: 发送邮件通知

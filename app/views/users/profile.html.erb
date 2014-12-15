@@ -1,5 +1,31 @@
 <% if @user.nil? %>
   <%= t :not_exist %>
 <% else %>
-  <%= @user.username %>
+  <div class="row">
+    <div class="col-md-3">
+      <%= image_tag @user.avatar, width: 200, height: 200 %>
+      <h2><%= @user.realname %></h2>
+      <%= fa_icon 'user' %>&nbsp;&nbsp;<%= @user.username %><br>
+      <%= fa_icon 'envelope' %>&nbsp;&nbsp;<%= link_to @user.email, "mailto:#{@user.email}" %><br>
+      <%= fa_icon 'clock-o' %>&nbsp;&nbsp;<%= t(:joined_on) %>&nbsp;<%= @user.created_at.strftime('%Y-%m-%d') %><br>
+      <%= fa_icon 'send' %>&nbsp;&nbsp;<%= link_to t(:leave_message), '#' %>
+      
+    </div>
+    <div class="col-md-9">
+     
+      <div class="jumbotron">
+        <h3><%= t :courses_enrolled %></h3>
+        <p>
+          <% @enrolled_courses.each do |course| %>
+            <li><%= link_to course.full_name, course %></li>
+          <% end -%>
+        </p>
+      </div>
+      <div class="jumbotron">
+        <h3><%= t :recent_activities %></h3>
+
+      </div>
+      
+    </div>
+  </div>
 <% end %>

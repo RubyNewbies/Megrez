@@ -20,6 +20,7 @@ class UsersController < ApplicationController
 
   def profile 
     @user = User.where(username: params[:username]).first
+    @enrolled_courses = Course.where(user_id: @user.id)
   end
 
   def dashboard
