@@ -2,7 +2,7 @@ class Topic < ActiveRecord::Base
 
   include TopicsHelper
 
-  validates :title, length: { in: 1..120, too_short: "标题至少%{count}个字符", too_long: "标题至多%{count}个字符" }
+  validates :title, length: { in: 1..120  }
 
   has_one   :user
   has_many  :replies
@@ -31,7 +31,7 @@ class Topic < ActiveRecord::Base
     user = User.find(user_id)
     user_url = "<a href=\"/u/#{user.username}\">#{user.username}</a>"
     mentioned_users.each do |user|
-      notification = "#{user_url}在#{title}中提到了你。"
+      notification = I18n.t(:notification)
       puts "Create notification: " + notification
       Notification.create(user, notification)
     end

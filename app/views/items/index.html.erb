@@ -7,7 +7,7 @@
   <div class="col-md-9 bs-component">
     <div class="row">
       <div class="col-md-12">
-        <%= link_to '新建分数项', new_course_item_path(course_id: params[:course_id]), class: 'btn btn-primary' %>
+        <%= link_to t(:new_item), new_course_item_path(course_id: params[:course_id]), class: 'btn btn-primary' %>
       </div>
     </div>
     <hr>
@@ -17,10 +17,10 @@
           <table class="table table-striped table-hover ">
             <thead>
               <tr>
-                <th>序号</th>
-                <th>名称</th>
-                <th>权重</th>
-                <th>选项</th>
+                <th><%= t :nr %></th>
+                <th><%= t :name %></th>
+                <th><%= t :weight %></th>
+                <th><%= t :option %></th>
               </tr>
             </thead>
             <tbody>

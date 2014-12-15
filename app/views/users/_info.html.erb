@@ -1,11 +1,9 @@
 
     <div id="action-bar">
       <div class="list-group">
-        <a href="#" class="list-group-item active"><i class="fa fa-fw fa-lg fa-home"></i> 控制中心</a>
-        <a href="#" class="list-group-item"><i class="fa fa-fw fa-lg fa-book"></i> 课程管理</a>
-        <%= link_to fa_icon("database", text: '文件管理', class: 'fa-fw fa-lg'), '/folders', class: "list-group-item" %>
-        <a href="#" class="list-group-item"><i class="fa fa-fw fa-lg fa-cogs"></i> 账号设置</a>
+        <a href="#" class="list-group-item active"><i class="fa fa-fw fa-lg fa-home"></i> <%= t :dashboard %></a>
+        <a href="#" class="list-group-item"><i class="fa fa-fw fa-lg fa-book"></i> <%= t :course_management %></a>
+        <%= link_to fa_icon("database", text: t(:file_management), class: 'fa-fw fa-lg'), '/folders', class: "list-group-item" %>
+        <a href="#" class="list-group-item"><i class="fa fa-fw fa-lg fa-cogs"></i> <%= t :account_setting %></a>
       </div>
     </div>
-
-    

@@ -1,5 +1,5 @@
 <head>
-  <title>乐学网 - 哈工大交互式网络教学平台</title>
+  <title><%= t(:site_title) %></title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -9,35 +9,35 @@
   <div id="header">
     <div class="container">
       <div class="pull-left" id="box-left">
-        <h1 class="logo">乐学网</h1>
-        <span class="slogan">哈工大交互式网络教学平台</span>
+        <h1 class="logo"><%= t(:megrez) %></h1>
+        <span class="slogan"><%= t(:slogan) %></span>
       </div>
       <div class="pull-right" id="box-right">
         <div id="login">
           <form action="/login" method="post">
-            <a class="action-a white-text light-text-shadow pull-right" id="js-switch-signup">注册 <i class="fa fa-arrow-circle-right"></i></a>
-            <label class="white-text light-text-shadow">登录乐学网</label>
+            <a class="action-a white-text light-text-shadow pull-right" id="js-switch-signup"><%= t(:sign_up) %> <i class="fa fa-arrow-circle-right"></i></a>
+            <label class="white-text light-text-shadow"><%= t(:sign_in_alt) %></label>
             <input name="utf8" type="hidden" value="✓">
             <input name="authenticity_token" type="hidden" value="">
-            <input class="form-control fit-box" name="session[username]" type="text" placeholder="用户名">
-            <input class="form-control fit-box" name="session[password]" type="password" placeholder="密码">
-            <button type="submit" class="btn btn-primary fit-box">登录</button>
+            <input class="form-control fit-box" name="session[username]" type="text" placeholder="<%= t :username %>">
+            <input class="form-control fit-box" name="session[password]" type="password" placeholder="<%= t :password %>">
+            <button type="submit" class="btn btn-primary fit-box"><%= t(:sign_in) %></button>
             <label class="white-text light-text-shadow">
-              <input type="checkbox" value="remember_me"> 记住我
+              <input type="checkbox" value="remember_me"> <%= t(:remember_me) %>
             </label>
           </form>
         </div>
         <div id="signup">
           <form action="/users" method="post">
-            <a class="action-a white-text light-text-shadow pull-right" id="js-switch-login">登录 <i class="fa fa-arrow-circle-right"></i></a>
-            <label class="white-text light-text-shadow">注册账号</label>
+            <a class="action-a white-text light-text-shadow pull-right" id="js-switch-login"><%= t(:sign_in) %> <i class="fa fa-arrow-circle-right"></i></a>
+            <label class="white-text light-text-shadow"><%= t(:sign_up_alt) %></label>
             <input name="utf8" type="hidden" value="✓">
             <input name="authenticity_token" type="hidden" value="">
-            <input class="form-control fit-box" name="user[username]" type="text" placeholder="用户名">
-            <input class="form-control fit-box" name="user[email]" type="text" placeholder="电子邮件">
-            <input class="form-control fit-box" name="user[password]" type="password" placeholder="密码">
+            <input class="form-control fit-box" name="user[username]" type="text" placeholder="<%= t :username %>">
+            <input class="form-control fit-box" name="user[email]" type="text" placeholder="<%= t :email %>">
+            <input class="form-control fit-box" name="user[password]" type="password" placeholder="<%= t :password %>">
             <span class="glyphicon glyphicon-eye-open pull-right" id="showkey"></span>
-            <button type="submit" class="btn btn-primary fit-box">注册</button>
+            <button type="submit" class="btn btn-primary fit-box"><%= t(:sign_up) %></button>
           </form>
         </div>
       </div>
@@ -48,36 +48,36 @@
       <div class="col" id="col1">
         <div class="grid">
           <%= fa_icon 'comments-o', class: 'fa-fw item' %>
-          <h2 class="item-title">交流空间</h2>
+          <h2 class="item-title"><%= t(:title_forum) %></h2>
           <hr>
           <ul>
-            <li>一个自由研习、畅聊的地方；</li>
-            <li>在这里提出你的疑问，展示你独一无二的想法；</li>
-            <li>分享他人的思维精华，让互帮互助成为一种学习方式；</li>
+            <li><%= t(:forum_item1) %></li>
+            <li><%= t(:forum_item2) %></li>
+            <li><%= t(:forum_item3) %></li>
           </ul>
         </div>
       </div>
       <div class="col" id="col2">
         <div class="grid">
           <%= fa_icon 'files-o', class: 'fa-fw item' %>
-          <h2 class="item-title">文件助手</h2>
+          <h2 class="item-title"><%= t(:title_file) %></h2>
           <hr>
           <ul>
-            <li>灵活、便捷地管理你的文件；</li>
-            <li>人性化的分类与管理策略；</li>
-            <li>作业管理与分享资料从此变得如此方便</li>
+            <li><%= t(:file_item1) %></li>
+            <li><%= t(:file_item2) %></li>
+            <li><%= t(:file_item3) %></li>
           </ul>
         </div>
       </div>
       <div class="col" id="col3">
         <div class="grid">
           <%= fa_icon 'edit', class: 'fa-fw item', id: 'item-3' %>
-          <h2 class="item-title">作业提交</h2>
+          <h2 class="item-title"><%= t(:title_assign) %></h2>
           <hr>
           <ul>
-            <li>实时，方便的作业提交系统；</li>
-            <li>人性化的提醒，免除记忆的烦恼，让你不再忘记作业的提交；</li>
-            <li>多元化的提交方式，从本地，从网盘，总有一种方式适合你;</li>
+            <li><%= t(:assign_item1) %></li>
+            <li><%= t(:assign_item2) %></li>
+            <li><%= t(:assign_item3) %></li>
           </ul>
         </div>
       </div>

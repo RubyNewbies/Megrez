@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
       cookies[:auth_token] = { :value => user.remember_token, :expires => 2.weeks.from_now }
       redirect_to '/dashboard'
     else
-      flash[:error] = '账号/密码错误！'
+      flash[:error] = I18n.t(:failed)
       render :new, layout: 'static_pages'
     end
   end

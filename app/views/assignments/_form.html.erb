@@ -2,14 +2,14 @@
 
 <%= bootstrap_form_for(@assignment, layout: :horizontal) do |f| %>
   <fieldset>
-    <legend>添加作业</legend>
+    <legend><%= t(:add_assignment) %></legend>
     
-    <%= f.text_field :title, label: '作业标题', placeholder: '作业标题' %>
-    <%= f.text_area :description, label: '作业描述', placeholder: '作业描述' %>
+    <%= f.text_field :title, label: t(:title), placeholder: t(:title) %>
+    <%= f.text_area :description, label: t(:description), placeholder: t(:description) %>
 
-    <%= f.datapicker :due_to, label: '截止日期' %>
+    <%= f.datapicker :due_to, label: t(:due_to) %>
 
-    <%= f.submit class: 'btn btn-primary pull-right', value: '布置作业' %>
+    <%= f.submit class: 'btn btn-primary pull-right', value: t(:submit_assignment) %>
 
   </fieldset>
 <% end %> 

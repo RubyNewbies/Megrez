@@ -431,3 +431,234 @@
   signup_email_subject: '[Boxroom] Sign up invitation'
   reset_password_email_subject: '[Boxroom] Password reset instructions'
   share_link_email_subject: '[Boxroom] %{email} shared a file with you'
+
+  # courses_controller
+  deleted_successfully: Successfully deleted.
+  not_joined_yet: You have not yet joined this course.
+
+  # nodes_controller
+  deleted_successfully: Successfully deleted forum.
+  not_empty: You cannot delete this forum because it contains other forums.
+
+  # sessions_controller
+  failed_login: User name and/or password is incorrect!
+
+  # topic.rb
+  notification: "#{user_url} mentioned you in #{title}."
+
+  # assignments
+  add_assignment: Add an assignment
+  create_assignment: Create a new assignment
+  title: Assignment title
+  description: Assignment description
+  due_to: Due date
+  submit_assignment: Add assignment
+
+  # assignments/new
+  title: Assignment title
+
+  # assignments/edit
+  submit: Edit
+  title: Edit assignment
+
+  # assignments/index
+  click_to_view: Click items to the left to view assignments
+
+  # assignments/show
+  finished: Expired
+  start_at: "Start at: "
+  end_at: "End at: "
+  submitted: Already submitted
+  submissions: "Submissions: "
+  not_submitted: Not submitted
+  submit_file: Submit files
+  edit: Edit assignment
+  day: day(s)
+  hour: hour(s)
+  minute: minute(s)
+  second: second(s)
+
+  # assignments/submit
+  is_submitting: "is submitting assignment: "
+
+  # courses
+  course_info: Course information
+  full_name: Course full name
+  english_name: Course English name
+  dpt_cs: Computer Science and Technology
+  dpt_se: Software Engineering
+  dpt: Department
+  key: Password
+  key_placeholder: Make your course open to everybody by keeping it empty
+  description: Course description
+  desc_placeholder: Brief description for your course.
+  submit: Open this course
+  staff: Staff
+  join: Join this course
+
+  # course/_nav
+  home: Course Homepage
+  docs: Documentation
+  forum: Forum
+  assign: Assignments
+  wiki: Wiki
+  staff: Staff
+  admin: Administration
+
+  # course/_sidelist
+  overview: Overview
+  course_info: Course information
+  assignment_admin: Assignment management
+  stat: Statistics
+  logoff: Log out
+  grades_admin: Scores
+  set_items: Configure score items
+  grade: Scoring
+  see_final: View reports
+
+  # course/grade
+  nr: No.
+  username: User Name
+  realname: Real Name
+  grades: Scores
+  option: Options
+  edit: Edit
+  send_email_notification: Send email notification
+
+  # course/forum
+  forum: Forum
+  new_board: New board
+  new_post: New post
+
+  # course/final
+  nr: No.
+  username: User Name
+  realname: Real Name
+  grades: Scores
+
+  # items
+  name: Name
+  weight: Weight
+  nr: No.
+  option: Options
+
+  # items/_form
+  submit: Create
+
+  # items/edit
+  title: Edit score items
+  error_100: Each item's weight must add up to 100%
+  ot_available: Cannot create sub-items
+  new_item: Cannot create sub-items
+  submit: Edit
+
+  # items/index
+  new_item: New item
+
+  # items/new
+  title: New item
+  submit: Create
+
+  # nodes
+  confirm_delete: Are you sure to delete this node?
+  forum: Forum
+  new_forum: New Forum
+  new_board: New Board
+  new_post: New Post
+
+  # nodes/_new
+  name: Name
+  parent_node: Parent node
+  icon: Icon
+  description: Description
+  desc_placeholder: Introduction or regulations
+  add: Add
+
+  # nodes/edit
+  title: Edit Forum
+  name: "Name:"
+  icon: "Icon:"
+  submit: Submit
+  editing: Submitting
+
+  # nodes/destroy
+  title: Delete Forum
+
+  # public_activity/_create
+  issued_a_new_assignment: has issued a new assignment
+
+  # replies/_quick
+  edit: Edit
+  preview: Preview
+  placeholder: Speak out here!
+
+  # topics
+  forum: Forum
+  new_forum: New Forum
+  new_board: New Board
+  new_post: New Post
+  title: Title
+  title_placeholder: Title of the post
+  content: Content
+  content_placeholder: Content of the post
+  submit: Submit
+  uploading: Submitting
+  board_belong_to: Forum affiliated
+
+  # shared/_footer
+  copyrights: ©2014 RubyNewbies Team
+  recruit: Contact
+  help: Help
+
+  # shared/_navbar
+  all_courses: All Courses
+  no_messages: No incoming messages
+  edit_profile: Edit Profile
+  create_course: Create a new course
+  dashboard: Dashboard
+  logout: Log out
+
+  # static_pages/home
+  site_title: "Megrez - HIT Interactive Online Learning Platform"
+  slogan: "HIT Interactive Online Learning Platform"
+  sign_in_alt: Log in to Megrez
+  remember_me: Remember me
+  sign_up_alt: Sign up
+  title_forum: Forum
+  title_file: DocBox
+  title_assign: Assignment
+  forum_item1: 一个自由研习、畅聊的地方；
+  forum_item2: 在这里提出你的疑问，展示你独一无二的想法；
+  forum_item3: 分享他人的思维精华，让互帮互助成为一种学习方式；
+  file_item1: 灵活、便捷地管理你的文件；
+  file_item2: 人性化的分类与管理策略；
+  file_item3: 作业管理与分享资料从此变得如此方便
+  assign_item1: 实时，方便的作业提交系统；
+  assign_item2: 人性化的提醒，免除记忆的烦恼，让你不再忘记作业的提交；
+  assign_item3: 多元化的提交方式，从本地，从网盘，总有一种方式适合你;
+
+  # user/_info
+  dashboard: Dashboard
+  course_management: Course Management
+  file_management: File Management
+  account_setting: Account Setting
+
+  # user/edit
+  personal_information: Personal Information
+  username: User name
+  realname: Real name
+  email: Email
+  avatar: Avatar
+  submit: Submit
+
+  # user/dashboard
+  assignment_due: An assignment is due soon
+  view_details: View details
+
+  # user/profile
+  not_exist: User does not exist!
+
+  # user/grade
+  info: Student Information
+  score: Scores
+  send_email_notification: Send Email notification

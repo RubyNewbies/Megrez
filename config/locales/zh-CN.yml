@@ -227,8 +227,8 @@ zh-CN:
       empty: "can't be empty"
       blank: "can't be blank"
       exists_already: 'exists already'
-      too_long: "is too long (maximum is %{count} characters)"
-      too_short: "is too short (minimum is %{count} characters)"
+      too_long: "至多%{count}个字符"
+      too_short: "至少%{count}个字符"
       wrong_length: "is the wrong length (should be %{count} characters)"
       not_a_number: "is not a number"
       not_an_integer: "must be an integer"
@@ -272,10 +272,10 @@ zh-CN:
       group:
         name: 名称
       share_link:
-        emails: Email 地址
+        emails: 电子邮件地址
         expires_at: 过期
       user:
-        email: Email
+        email: 电子邮件
         name: 用户名
         password: 密码
       user_file:
@@ -285,14 +285,16 @@ zh-CN:
   # APPLICATION SPECIFIC
 
   # general
-  back: 后退
+  back: 返回
   save: 保存
   name: 名称
-  email: Email
+  email: 电子邮件
   submit: 提交
   search: 搜索
   filter: 过滤
   root_folder: 根文件夹
+  megrez: 乐学网
+  site_title: "乐学网 - 哈工大交互式网络教学平台"
 
   your_changes_were_saved: 修改成功报存。
   already_deleted: "抱歉，该%{type}已被删除。"
@@ -406,6 +408,7 @@ zh-CN:
   username: 用户名
   remember_me: 记住我
   sign_in: 登录
+  password: 密码
 
   #share_links/index
   shared_by: 分享人
@@ -503,3 +506,236 @@ zh-CN:
   signup_email_subject: '[Boxroom] Sign up invitation'
   reset_password_email_subject: '[Boxroom] Password reset instructions'
   share_link_email_subject: '[Boxroom] %{email} shared a file with you'
+
+  # courses_controller
+  deleted_successfully: 成功删除。
+  not_joined_yet: 你还没有加入此课程。
+
+  # nodes_controller
+  deleted_successfully: '删除讨论区成功！'
+  not_empty: '你无法删除这个讨论区，因为其中包含其他讨论区！'
+
+  # sessions_controller
+  failed_login: '账号/密码错误！'
+
+  # topic.rb
+  notification: "#{user_url}在#{title}中提到了你。"
+
+  # assignments
+  add_assignment: 添加作业
+  create_assignment: 建立一个作业
+  title: 作业标题
+  description: 作业描述
+  due_to: 截止日期
+  submit_assignment: 布置作业
+
+  # assignments/new
+  title: 作业标题
+
+  # assignments/edit
+  submit: 修改
+  title: 修改作业内容
+
+  # assignments/index
+  click_to_view: 点选左边的链接以查看作业
+
+  # assignments/show
+  finished: 已结束
+  start_at: 开始于：
+  end_at: 结束于：
+  submitted: 已经提交
+  submissions: 提交的文件：
+  not_submitted: 尚未提交
+  submit_file: 交作业
+  edit: 修改作业内容
+  day: 日
+  hour: 时
+  minute: 分
+  month: 月
+  second: 秒
+  year: 年
+
+  # assignments/submit
+  is_submitting: 正在提交作业：
+
+  # courses
+  course_info: 课程信息
+  full_name: 课程全名
+  english_name: 课名英文
+  dpt_cs: 计算机科学与技术
+  dpt_se: 软件工程
+  dpt: 所属专业
+  key: 选课密码
+  key_placeholder: 留空即可开放选课
+  description: 课程描述
+  desc_placeholder: 简要课程描述。
+  submit: 开设课程
+  staff: 教职人员
+  join: 加入课程
+
+  # course/_nav
+  home: 课程主页
+  docs: 课件资料
+  forum: 讨论专区
+  assign: 课程作业
+  wiki: 课程维基
+  staff: 成员
+  admin: 课程管理
+
+  # course/_sidelist
+  overview: 总览
+  course_info: 课程信息
+  assignment_admin: 作业管理
+  stat: 统计信息
+  logoff: 登出
+  grades_admin: 成绩管理
+  set_items: 设置分数项
+  grade: 评分
+  see_final: 查看报表
+
+  # course/grade
+  nr: 序号
+  username: 用户名
+  realname: 姓名
+  grades: 成绩
+  option: 选项
+  edit: 评分
+  send_email_notification: 发送邮件通知
+
+  # course/forum
+  forum: 讨论专区
+  new_board: 新建分区
+  new_post: 发布新帖
+
+  # course/final
+  nr: 序号
+  username: 用户名
+  realname: 姓名
+  grades: 成绩
+
+  # items
+  name: 名称
+  weight: 权重
+  nr: 序号
+  option: 选项
+
+  # items/_form
+  submit: 创建
+
+  # items/edit
+  title: 修改分数项
+  error_100: 所有子项权重之和必须为100%
+  not_available: 无法新建子分数项
+  new_item: 新建子分数项
+  submit: 修改
+
+  # items/index
+  new_item: 新建分数项
+
+  # items/new
+  title: 新建分数项
+  submit: 创建
+
+  # nodes
+  confirm_delete: 你确定更要删除该节点？
+  forum: 讨论空间
+  new_forum: 新建讨论区
+  new_board: 新建分区
+  new_post: 发布新帖
+
+  # nodes/_new
+  name: 名称
+  parent_node: 父节点
+  icon: 图标
+  description: 描述
+  desc_placeholder: 讨论区功能简介或者版规
+  add: 添加
+
+  # nodes/edit
+  title: 修改讨论区
+  name: 名称：
+  icon: 图标：
+  submit: 提交
+  editing: 正在修改
+
+  # nodes/destroy
+  title: 删除讨论区
+
+  # public_activity/_create
+  issued_a_new_assignment: 发布了一个新作业
+
+  # replies/_quick
+  edit: 编辑
+  preview: 预览
+  placeholder: 在这里畅所欲言
+
+  # topics
+  forum: 讨论空间
+  new_forum: 新建讨论区
+  new_board: 新建分区
+  new_post: 发布新帖
+  title: 标题
+  title_placeholder: 帖子标题
+  content: 内容
+  content_placeholder: 帖子内容
+  submit: 提交
+  uploading: 上传中...
+  board_belong_to: 所属讨论区
+
+  # shared/_footer
+  copyrights: ©2014 RubyNewbies团队
+  recruit: 招贤纳士
+  help: 使用帮助
+
+  # shared/_navbar
+  all_courses: 所有课程
+  no_messages: 消息已经处理完毕
+  edit_profile: 修改个人信息
+  create_course: 开设课程
+  dashboard: 控制中心
+  logout: 退出
+
+  # static_pages/home
+  site_title: "乐学网 - 哈工大交互式网络教学平台"
+  slogan: "哈工大交互式网络教学平台"
+  sign_in_alt: 登录乐学网
+  remember_me: 记住我
+  sign_up_alt: 注册账号
+  title_forum: 交流空间
+  title_file: 文件助手
+  title_assign: 作业提交
+  forum_item1: 一个自由研习、畅聊的地方；
+  forum_item2: 在这里提出你的疑问，展示你独一无二的想法；
+  forum_item3: 分享他人的思维精华，让互帮互助成为一种学习方式；
+  file_item1: 灵活、便捷地管理你的文件；
+  file_item2: 人性化的分类与管理策略；
+  file_item3: 作业管理与分享资料从此变得如此方便
+  assign_item1: 实时，方便的作业提交系统；
+  assign_item2: 人性化的提醒，免除记忆的烦恼，让你不再忘记作业的提交；
+  assign_item3: 多元化的提交方式，从本地，从网盘，总有一种方式适合你;
+
+  # user/_info
+  dashboard: 控制中心
+  course_management: 课程管理
+  file_management: 文件管理
+  account_setting: 账号设置
+
+  # user
+  personal_information: 个人信息
+  username: 用户名
+  realname: 姓名
+  email: 电子邮箱
+  avatar: 头像
+  submit: 修改
+
+  # user/dashboard
+  assignment_due: 一个作业即将到期  
+  view_details: 查看详情
+
+  # user/profile
+  not_exist: 用户不存在！
+
+  # user/grade
+  info: 学生信息
+  score: 评分
+  send_email_notification: 发送邮件通知

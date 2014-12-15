@@ -5,5 +5,5 @@
   <% end %>
 </div>
 <% if current_user.creator_of_course?(params[:course_id]) -%>
-  <%= link_to '建立一个作业', new_course_assignment_path(course_id: params[:course_id]), class: 'btn btn-primary btn-block' %>
+  <%= link_to t(:create_assignment), new_course_assignment_path(course_id: params[:course_id]), class: 'btn btn-primary btn-block' %>
 <% end -%>

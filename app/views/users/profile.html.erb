@@ -1,5 +1,5 @@
 <% if @user.nil? %>
-  用户不存在！
+  <%= t :not_exist %>
 <% else %>
   <%= @user.username %>
 <% end %>

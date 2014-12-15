@@ -94,11 +94,11 @@ class NodesController < ApplicationController
 
   def destroy
     @node = Node.find(params[:id])
-    @info = '删除讨论区成功！'
+    @info = I18n.t(:deleted_successfully)
     if @node.child_count <= 0
       @node.delete
     else
-      @info = '你无法删除这个讨论区，因为其中包含其他讨论区！'
+      @info = I18n.t(:not_empty)
     end
   end
 

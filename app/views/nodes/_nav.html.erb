@@ -1,7 +1,7 @@
 <a href=<%= forum_course_path(id: params[:course_id]) %> class="btn btn-default"><i class="fa fa-fw fa-lg fa-home"></i></a>
 
 <% if @node.id.nil? %>
-  <%= link_to '讨论空间', forum_course_path(id: params[:course_id]), class: 'btn btn-default' %>
+  <%= link_to t(:forum), forum_course_path(id: params[:course_id]), class: 'btn btn-default' %>
 <% else %>
   <% if @node.father %>
     <%= link_to @node.father.name, course_node_path(id: @node.father.id, course_id: @node.father.course_id), class: 'btn btn-default', remote: true %>
