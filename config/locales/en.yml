@@ -584,8 +584,15 @@
   # nodes/destroy
   title: Delete Forum
 
-  # public_activity/_create
+  # public_activity
   issued_a_new_assignment: has issued a new assignment
+  created_course: has created course
+  joined_course: has joined course
+  created_item: has created an item
+  days_ago: days ago
+  hours_ago: hours ago
+  minutes_ago: minutes ago
+  seconds_ago: seconds ago
 
   # replies/_quick
   edit: Edit
@@ -660,6 +667,8 @@
   not_exist: User does not exist!
   courses_enrolled: Courses Enrolled
   recent_activities: Recent Activities
+  leave_message: Send message
+  joined_on: Joined on
 
   # users/grade
   info: Student Information

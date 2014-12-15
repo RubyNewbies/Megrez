@@ -21,10 +21,12 @@ class UsersController < ApplicationController
   def profile 
     @user = User.where(username: params[:username]).first
     @enrolled_courses = Course.where(user_id: @user.id)
+    @activities = PublicActivity::Activity.order("created_at desc")
   end
 
   def dashboard
     @user = signed_in_user
+    @courses = @user.courses
   end
 
   def create

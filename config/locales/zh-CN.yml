@@ -661,8 +661,15 @@ zh-CN:
   # nodes/destroy
   title: 删除讨论区
 
-  # public_activity/_create
+  # public_activity
   issued_a_new_assignment: 发布了一个新作业
+  created_course: 创建了课程
+  joined_course: 加入了课程
+  created_item: 新建了一个分数项
+  days_ago: 天前
+  hours_ago: 小时前
+  minutes_ago: 分前
+  seconds_ago: 秒前
 
   # replies/_quick
   edit: 编辑
@@ -720,6 +727,8 @@ zh-CN:
   course_management: 课程管理
   file_management: 文件管理
   account_setting: 账号设置
+  create_course: 开设课程
+  joined_on: 加入时间：
 
   # users
   personal_information: 个人信息
@@ -733,6 +742,14 @@ zh-CN:
   # users/dashboard
   assignment_due: 一个作业即将到期  
   view_details: 查看详情
+  to_deadline: 即将到期
+  creator: 创建者
+  member: 成员
+  hour: 小时
+  minute: 分
+  second: 秒
+  left_time: 剩余
+  my_courses: 我的课程
 
   # users/profile
   not_exist: 用户不存在！
@@ -744,4 +761,3 @@ zh-CN:
   # users/grade
   info: 学生信息
   score: 评分
-  send_email_notification: 发送邮件通知

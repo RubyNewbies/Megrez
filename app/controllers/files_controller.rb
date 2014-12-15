@@ -119,7 +119,7 @@ class FilesController < ApplicationController
       UserFile.destroy(params[:id]) unless params[:id].blank?
       Folder.destroy(params[:folders_id]) unless params[:folders_id].blank?
       respond_to do |format|
-        format.html { redirect_to @current_folder }
+        format.html { redirect_to :back }
         format.json { head :no_content }
       end
     end

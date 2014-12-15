@@ -31,4 +31,8 @@ class Course < ActiveRecord::Base
     nodes.where(father_id: -1)
   end
 
+  def latest_assignments
+    Assignment.where("course_id = ? and due_to >= ?", id, Time.now).order("due_to")
+  end
+
 end

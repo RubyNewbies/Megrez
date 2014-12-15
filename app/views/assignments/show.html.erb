@@ -59,6 +59,7 @@
             <p><%= t(:submitted) %></p>
             <p><%= t(:submissions) %></p>
             <%= form_tag controller: "files", action: "operation_multiple" do %>
+            
             <span class="folder_menu" id="download_multiple" style="display: none">
               <%= fa_icon('download') %>
               <%= submit_tag t(:download_selection), :name => 'form_1[download_multiple]', class: "submit_to_link" %>

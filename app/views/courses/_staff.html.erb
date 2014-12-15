@@ -5,5 +5,5 @@
 </a>
 </div>
 <div>
-  <h3 class="text-center"><%= @course.creator.realname %></h3>
+  <h3 class="text-center"><%= link_to @course.creator.realname, @course.creator.username %></h3>
 </div>

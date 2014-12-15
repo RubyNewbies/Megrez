@@ -12,20 +12,36 @@
       
     </div>
     <div class="col-md-9">
-     
-      <div class="jumbotron">
-        <h3><%= t :courses_enrolled %></h3>
-        <p>
-          <% @enrolled_courses.each do |course| %>
-            <li><%= link_to course.full_name, course %></li>
-          <% end -%>
-        </p>
+      <div class="col-md-7">
+        <h2><%= t :recent_activities %></h2>
+        <% @enrolled_courses.each do |course| %>
+          <% @course = course %>
+          <% @activities.each do |activity| %>
+            <% if activity.owner_id == current_user.id %>
+              <%= render_activity activity %>
+            <% end %>
+          <% end %>
+        <% end %>
       </div>
-      <div class="jumbotron">
-        <h3><%= t :recent_activities %></h3>
-
+      <div class="col-md-5">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <p class="panel-title"><%= t :courses_enrolled %></p>
+          </div>
+          <ul class="list-group">
+            <% @enrolled_courses.each do |course| %>
+              <li class="list-group-item">
+                <%= link_to fa_icon("home", text: course.full_name, class: 'fa-fw fa-lg'), course_path(id: course.id) %>
+                <% if @user.creator_of_course?(course.id) %>
+                  <%= t :creator %>
+                <% else %>
+                  <%= t :member %>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
       </div>
-      
     </div>
   </div>
 <% end %>
