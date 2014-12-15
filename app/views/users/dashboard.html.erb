@@ -14,8 +14,8 @@
                   <div class="timeline-badge danger"><i class="fa fa-fw fa-credit-card"></i></div>
                   <div class="timeline-panel">
                     <div class="timeline-heading">
-                      <h4 class="timeline-title"><%= t :to_deadline %> <%= link_to assignment.title, course_assignment_path(course_id: course.id, id: assignment.id) %></h4>
-                      <p><small class="text-muted"><i class="fa fa-fw fa-clock-o"></i><%= t :left_time %><%= render partial: 'time.html.erb', locals: {hour: assignment.remain_hour, min: assignment.remain_minute, sec: assignment.remain_second} %></small></p>
+                      <h4 class="timeline-title"><%= t :to_deadline %> <%= link_to course.full_name, course_path(id: course.id) %>/<%= link_to assignment.title, course_assignment_path(course_id: course.id, id: assignment.id) %></h4>
+                      <p><i class="fa fa-fw fa-clock-o"></i><%= t :left_time %><%= render partial: 'time.html.erb', locals: {hour: assignment.remain_hour, min: assignment.remain_minute, sec: assignment.remain_second} %></p>
                     </div>
                     <div class="timeline-body">
                       <p></p>
@@ -37,9 +37,9 @@
               <li class="list-group-item">
                 <%= link_to fa_icon("home", text: course.full_name, class: 'fa-fw fa-lg'), course_path(id: course.id) %>
                 <% if @user.creator_of_course?(course.id) %>
-                  <%= t :creator %>
+                  <span class="badge"><%= t :creator %></span>
                 <% else %>
-                  <%= t :member %>
+                  <span class="badge"><%= t :member %></span>
                 <% end %>
               </li>
             <% end %>
