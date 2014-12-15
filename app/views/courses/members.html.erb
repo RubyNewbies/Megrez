@@ -1,3 +1,29 @@
-<% @members.each do |m| %>
-  <p><%= m.username %></p>
-<% end %>
+<div class="row">
+  <% @staff, @students = @members.partition {|e| e.creator_of_course?(params[:id]) } %>
+  
+  <div class="row">
+    <h2 class="text-center"><%= t :staff %></h2>
+    <% @staff.each do |m| %>
+      <div class="col-md-2 text-center bs-componet">
+        <div><%= image_tag m.avatar, height: 128, weight: 128, class: 'circle' %></div>
+        <div><%= link_to m.realname, profile_path(m.username) %></div>
+      </div>
+    <% end %>
+  </div>
+
+  
+  <div class="row">
+    
+  <h2 class="text-center"><%= t :student %></h2>
+  <% @students.each do |m| %>
+    <div class="col-md-2 text-center bs-componet">
+      <div><%= image_tag m.avatar, height: 128, weight: 128, class: 'circle' %></div>
+      <div><%= link_to m.realname, profile_path(m.username) %></div>
+    </div>
+  <% end %>
+
+
+  </div>
+
+
+</div>

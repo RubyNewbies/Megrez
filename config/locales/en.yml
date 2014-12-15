@@ -530,6 +530,10 @@
   new_board: New board
   new_post: New post
 
+  # course/member
+  staff: Staff
+  student: Students
+
   # course/final
   nr: No.
   username: User Name

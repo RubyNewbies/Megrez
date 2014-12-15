@@ -607,6 +607,10 @@ zh-CN:
   new_board: 新建分区
   new_post: 发布新帖
 
+  # course/member
+  staff: 教职员工
+  student: 学生
+
   # course/final
   nr: 序号
   username: 用户名
