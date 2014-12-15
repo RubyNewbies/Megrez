@@ -492,7 +492,6 @@
   key_placeholder: Make your course open to everybody by keeping it empty
   description: Course description
   desc_placeholder: Brief description for your course.
-  submit: Open this course
   staff: Staff
   join: Join this course
 
@@ -503,6 +502,7 @@
   assign: Assignments
   wiki: Wiki
   staff: Staff
+  submit: Open this course
   admin: Administration
 
   # course/_sidelist

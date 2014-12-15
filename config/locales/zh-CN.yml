@@ -569,7 +569,6 @@ zh-CN:
   key_placeholder: 留空即可开放选课
   description: 课程描述
   desc_placeholder: 简要课程描述。
-  submit: 开设课程
   staff: 教职人员
   join: 加入课程
 
@@ -581,6 +580,7 @@ zh-CN:
   wiki: 课程维基
   staff: 成员
   admin: 课程管理
+  submit: 开设课程
 
   # course/_sidelist
   overview: 总览
@@ -726,7 +726,7 @@ zh-CN:
   realname: 姓名
   email: 电子邮箱
   avatar: 头像
-  submit: 修改
+  submit_user: 修改
 
   # user/dashboard
   assignment_due: 一个作业即将到期  
