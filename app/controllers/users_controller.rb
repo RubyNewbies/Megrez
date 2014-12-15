@@ -24,6 +24,7 @@ class UsersController < ApplicationController
 
   def dashboard
     @user = signed_in_user
+    @courses = @user.courses
   end
 
   def create

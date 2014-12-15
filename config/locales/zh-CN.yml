@@ -503,3 +503,12 @@ zh-CN:
   signup_email_subject: '[Boxroom] Sign up invitation'
   reset_password_email_subject: '[Boxroom] Password reset instructions'
   share_link_email_subject: '[Boxroom] %{email} shared a file with you'
+
+  # /dashboard
+  to_deadline: 即将到期
+  creator: 创建者
+  member: 成员
+  hour: 小时
+  minute: 分
+  second: 秒
+  left_time: 剩余

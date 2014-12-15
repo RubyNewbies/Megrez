@@ -1,11 +1,20 @@
+<div class="row">
+  <img class="img-rounded" src="<%= current_user.avatar %>" style="width:200px;height:200px">
+  <hr>
+  <h3><%= current_user.username %></h3>
+  <h5><span class="fa fa-fw fa-envelope"></span> <%= current_user.email %></h5>
+  <h5><span class="fa fa-fw fa-clock-o"></span> 注册于<%= DateTime.parse(current_user.created_at.localtime.to_s).strftime('%Y-%m-%d').to_s %></h5>
+  <hr>
+</div>
 
-    <div id="action-bar">
-      <div class="list-group">
-        <a href="#" class="list-group-item active"><i class="fa fa-fw fa-lg fa-home"></i> 控制中心</a>
-        <a href="#" class="list-group-item"><i class="fa fa-fw fa-lg fa-book"></i> 课程管理</a>
-        <%= link_to fa_icon("database", text: '文件管理', class: 'fa-fw fa-lg'), '/folders', class: "list-group-item" %>
-        <a href="#" class="list-group-item"><i class="fa fa-fw fa-lg fa-cogs"></i> 账号设置</a>
-      </div>
+<div class="row">
+  <div id="action-bar">
+    <div class="list-group">
+      <%= active_link_to fa_icon("home", text: '控制中心', class: 'fa-fw fa-lg'), dashboard_path, class: "list-group-item" %>
+      <%= active_link_to fa_icon("book", text: '课程管理', class: 'fa-fw fa-lg'), courses_path, class: "list-group-item" %>
+      <%= active_link_to fa_icon("database", text: '文件管理', class: 'fa-fw fa-lg'), '/folders', class: "list-group-item" %>
+      <%= active_link_to fa_icon("cogs", text: '账号设置', class: 'fa-fw fa-lg'), edit_user_path(id: current_user.id), class: "list-group-item" %>
     </div>
-
-    
+  </div>
+  <%= link_to fa_icon("plus-square", text: '开设课程', class: 'fa-fw fa-lg'), '/courses/new', class: "btn btn-primary btn-block" %>
+</div>

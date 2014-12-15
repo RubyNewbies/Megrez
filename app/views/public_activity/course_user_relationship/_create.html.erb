@@ -6,7 +6,11 @@
           <div class="user-detail">
             <h5 class="handle">
               <%= link_to activity.owner.username, activity.owner if activity.owner %>
-              加入了课程
+              <% if activity.owner.creator_of_course?(activity.trackable.course_id) %>
+                创建了课程
+              <% else %>
+                加入了课程
+              <% end %>
             </h5>
           </div>
         </div>
