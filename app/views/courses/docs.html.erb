@@ -1,3 +1,4 @@
+<%= form_tag controller: "files", action: "operation_multiple" do %>
 <% if current_user.creator_of_course?(@course.id) -%>
   <span class="folder_menu"><%= fa_icon "folder" %> <%= button_to t(:create_a_new_folder), new_folder_folder_path(@folder), method: "get", class: "submit_to_link" %></span>
   <span class="folder_menu"><%= fa_icon "upload" %> <%= button_to t(:upload_a_file), new_folder_file_path(@folder), method: "get", class: "submit_to_link" %></span>
@@ -66,3 +67,4 @@
   <% end -%>
   </tbody>
 </table>
+<% end %>
