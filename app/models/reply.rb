@@ -5,6 +5,7 @@ class Reply < ActiveRecord::Base
   validates :source, length: { minimum: 1 }
 
   belongs_to  :topic
+  belongs_to  :user
 
   before_save :render_body
   after_save  :trigger_topic_update_time

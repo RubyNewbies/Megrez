@@ -1,3 +1,11 @@
-<div>
-  <%= r.body.html_safe %>
+<div clsas="row">
+  <div class="col-md-12">
+    <%= image_tag r.user.avatar, weight: 48, height: 48, class: 'pull-left reply-avatar' %>
+    <span class='reply-author'><%= link_to "@#{r.user.username}(#{r.user.realname})", profile_path(r.user.username) %></span><br />
+    <%= t :last_update_at %>
+    <span class='reply-time'><%= r.updated_at.strftime('%Y-%m-%d %H:%M') %></span>
+  </div>
+  <div class="col-md-11 col-md-offset-1">
+    <%= r.body.html_safe %>
+  </div>
 </div>

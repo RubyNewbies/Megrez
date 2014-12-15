@@ -603,6 +603,9 @@
   preview: Preview
   placeholder: Speak out here!
 
+  # replies/_reply
+  last_updated_at: Last updated at
+
   # topics
   forum: Forum
   new_forum: New Forum
@@ -615,6 +618,10 @@
   submit: Submit
   uploading: Submitting
   board_belong_to: Forum affiliated
+
+  # topics/_show
+  by: By
+  post_at: Post at
 
   # shared/_footer
   copyrights: ©2014 RubyNewbies Team

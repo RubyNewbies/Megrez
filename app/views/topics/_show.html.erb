@@ -3,14 +3,14 @@
     <%= image_tag(@topic.user.avatar, wight: 64, height: 64) %>
   </div>
   <h2><%= @topic.title %></h2>
-  <div>
-    <span class="topic-author"><%= @topic.user.username %></span> <span class="topic-time"><%= @topic.created_at %></span>
+  <div class="color-light-gray">
+    <%= t :by %><span class="topic-author"><%= link_to "@#{@topic.user.username}", profile_path(@topic.user.username) %></span><%= t :post_at %><span class="topic-time"><%= @topic.created_at.strftime('%Y-%m-%d %H:%M') %></span>
   </div>
 </div>
 <hr>
-
 <div><%= @topic.body.html_safe %></div>
-<div id="replies">
+<hr>
+<div class="row" id="replies">
   <% @topic.replies.each do |r| %>
     <%= render partial: 'replies/reply.html.erb', locals: {r: r} %>
   <% end %>

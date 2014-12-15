@@ -680,6 +680,9 @@ zh-CN:
   preview: 预览
   placeholder: 在这里畅所欲言
 
+  # replies/_reply
+  last_updated_at: 最后更新于
+
   # topics
   forum: 讨论空间
   new_forum: 新建讨论区
@@ -692,6 +695,10 @@ zh-CN:
   submit: 提交
   uploading: 上传中...
   board_belong_to: 所属讨论区
+
+  # topics/_show
+  by: 由
+  post_at: 发表于
 
   # shared/_footer
   copyrights: ©2014 RubyNewbies团队
