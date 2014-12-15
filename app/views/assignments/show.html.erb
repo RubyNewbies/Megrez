@@ -18,7 +18,7 @@
         var min = Math.floor(left / 60)
         left = left % 60
         if (left >= 0)
-          document.getElementById('countdown').innerHTML = day + "<%= t(:day) %>" + hour + "<%= t(:hour) %>" + min + "<%= t(:minute) %>" + left + "<%= t(:second) %>"
+          document.getElementById('countdown').innerHTML = day + " <%= t(:day) %> " + hour + " <%= t(:hour) %> " + min + " <%= t(:minute) %> " + left + " <%= t(:second) %>"
         else {
           document.getElementById('countdown').innerHTML = "<%= t(:finished) %>"
           document.getElementById('submit_file_link').style.display = 'none'

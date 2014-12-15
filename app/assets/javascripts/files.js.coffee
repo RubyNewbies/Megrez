@@ -25,6 +25,6 @@ jQuery ->
           data.context.find('.tick').show()
     stop: (e) ->
       folder = $('#target_folder_id').val()
-      window.history.back()
+      window.history.go(-1)
 
 

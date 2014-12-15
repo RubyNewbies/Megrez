@@ -473,10 +473,10 @@
   not_submitted: Not submitted
   submit_file: Submit files
   edit: Edit assignment
-  day: day(s)
-  hour: hour(s)
-  minute: minute(s)
-  second: second(s)
+  day: days
+  hour: hours
+  minute: minutes
+  second: seconds
 
   # assignments/submit
   is_submitting: "is submitting assignment: "
