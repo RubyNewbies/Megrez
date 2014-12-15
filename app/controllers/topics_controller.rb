@@ -15,8 +15,16 @@ class TopicsController < ApplicationController
 
   def create
     @topic = Topic.new(topic_params.merge user_id: current_user.id)
-    @node = Node.find_by_id(params[:node_id])
-    if @topic.save
+    @course = Course.find_by_id(params[:course_id])
+    @node = Node.find_by_id(topic_params[:node_id])
+    
+    if @course.nil? && @node.nil?
+      flash['error'] = '课程或讨论区不存在！'
+      respond_to do |respond|
+        respond.html { render 'topics/new.html.erb' }
+        respond.js   { render 'topics/new.js.erb' }
+      end
+    elsif @topic.save
       respond_to do |respond|
         respond.html { redirect_to @topic }
         respond.js   { render 'topics/show.js.erb' }

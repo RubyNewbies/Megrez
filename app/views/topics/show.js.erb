@@ -1,2 +1,3 @@
-history.pushState({}, '', "<%= request.url %>")
-$("#forum-content").html("<%= escape_javascript(render partial: 'topics/show.html.erb') %>")
+history.pushState({}, '', "<%= course_topic_path(course_id: @course.id, id: @topic.id) %>")
+$("#forum-sidebar").html("<%= j render partial: 'topics/sidebar.html.erb' %>");
+$("#forum-content").html("<%= j render partial: 'topics/show.html.erb' %>")

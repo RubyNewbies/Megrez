@@ -9,7 +9,7 @@ class Topic < ActiveRecord::Base
   belongs_to  :node
 
   before_save :render_body
-  after_save :send_notifications
+  #after_save :send_notifications
 
   # Credit for this regular expression
   # https://github.com/daqing/rabel/blob/master/app/models/notifiable.rb
