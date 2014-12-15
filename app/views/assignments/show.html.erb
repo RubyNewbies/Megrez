@@ -112,6 +112,7 @@
           <%= link_to t(:submit_file), submit_course_assignment_path(course_id: params[:course_id], id: params[:id]), id: "submit_file_link" %>
           <% if current_user.creator_of_course?(@course.id) -%>
             <%= link_to t(:edit), edit_course_assignment_path(course_id: params[:course_id], id: params[:id]) %>
+            <%= link_to t(:inspect), { controller: 'assignments', action: 'inspect' } %>
           <% end -%>
           <%= link_to t(:back), course_assignments_path(course_id: params[:course_id]) %>
         </div>

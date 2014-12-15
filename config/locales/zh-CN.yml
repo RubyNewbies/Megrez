@@ -554,6 +554,10 @@ zh-CN:
   month: 月
   second: 秒
   year: 年
+  inspect: 抄袭检测
+
+  # assignments/inspect
+  results: 检测结果
 
   # assignments/submit
   is_submitting: 正在提交作业：
@@ -761,3 +765,11 @@ zh-CN:
   # users/grade
   info: 学生信息
   score: 评分
+
+  #application_helper.rb
+  file_name: 文件名
+  percentage: 相似率
+  lines: 相似行数
+  submitter: 提交人
+  got_results_from: 结果地址：
+  no_results: 未发现相似文件

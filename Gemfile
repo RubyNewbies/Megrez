@@ -17,8 +17,9 @@ gem 'font-awesome-rails'
 gem 'sprockets-rails'
 gem 'sprockets'
 gem 'sass-rails'
-
 gem 'active_link_to'
+
+gem 'moss_ruby'
 
 group :development, :test do
   gem 'factory_girl_rails'

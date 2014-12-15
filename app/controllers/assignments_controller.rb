@@ -51,6 +51,18 @@ class AssignmentsController < ApplicationController
     @file = @target_folder.user_files.build
   end
 
+  def inspect
+    @course = Course.find(params[:course_id])
+    @assignment = Assignment.find(params[:id])
+    @assignment_folder = Folder.find_by(name: "Assignment:#{@assignment.title}", course_id: params[:course_id], is_assignment: true)
+    @files = []
+    @students = []
+    @assignment_folder.children.each do |student|
+      @files << student.user_files
+      @students << student.name
+    end
+  end
+
   def upload
     @assignment = Assignment.find(params[:id])
     @target_folder = Folder.find(params[:target_folder_id])

@@ -477,6 +477,10 @@
   hour: hours
   minute: minutes
   second: seconds
+  inspect: Inspect plagiarism
+
+  # assignments/inspect
+  results: Inspection Results
 
   # assignments/submit
   is_submitting: "is submitting assignment: "
@@ -674,3 +678,11 @@
   info: Student Information
   score: Scores
   send_email_notification: Send Email notification
+
+  #application_helper.rb
+  file_name: File name
+  percentage: Percentage
+  lines: Lines Matched
+  submitter: Submitter
+  got_results_from: Got results from
+  no_results: No matches found

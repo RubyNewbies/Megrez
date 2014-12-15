@@ -57,7 +57,7 @@ class FilesController < ApplicationController
     if (@file.reference_count == 0)
       @file.destroy
     end
-    redirect_to @folder
+    redirect_to :back
   end
 
   def recursive_add_folder(curr_dir, folder, container)

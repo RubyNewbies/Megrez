@@ -85,6 +85,7 @@ GEM
     mime-types (2.4.3)
     mini_portile (0.6.0)
     minitest (5.4.2)
+    moss_ruby (1.0.0)
     multi_json (1.10.1)
     nokogiri (1.6.3.1)
       mini_portile (= 0.6.0)
@@ -178,6 +179,7 @@ DEPENDENCIES
   font-awesome-rails
   jquery-fileupload-rails
   jquery-rails
+  moss_ruby
   nokogiri
   paperclip
   public_activity

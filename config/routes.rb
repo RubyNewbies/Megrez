@@ -37,6 +37,7 @@ Megrez::Application.routes.draw do
       member do
         get 'submit'
         post 'upload'
+        get 'inspect', controller: 'assignments', action: 'inspect'
       end
     end
 
