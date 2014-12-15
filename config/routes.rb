@@ -2,7 +2,7 @@ Megrez::Application.routes.draw do
 
   root 'static_pages#home'
 
-  get '/u/:username', controller: 'users', action: 'profile', as: 'user'
+  get '/u/:username', controller: 'users', action: 'profile', as: :profile
 
   get '/me', controller: 'users', action: 'me'
   get '/file_exists', :to => 'files#exists'

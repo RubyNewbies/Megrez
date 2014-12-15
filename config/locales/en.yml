@@ -589,10 +589,10 @@
   created_course: has created course
   joined_course: has joined course
   created_item: has created an item
-  days_ago: days ago
-  hours_ago: hours ago
-  minutes_ago: minutes ago
-  seconds_ago: seconds ago
+  days_ago: " days ago"
+  hours_ago: " hours ago"
+  minutes_ago: " minutes ago"
+  seconds_ago: " seconds ago"
 
   # replies/_quick
   edit: Edit

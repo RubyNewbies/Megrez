@@ -5,7 +5,7 @@
         <div class="message-head clearfix">
           <div class="user-detail">
             <h5 class="handle">
-              <%= link_to activity.owner.realname, activity.owner.username if activity.owner %>
+              <%= link_to activity.owner.realname, profile_path(activity.owner.username) if activity.owner %>
               <% if activity.owner.creator_of_course?(activity.trackable.course_id) %>
                 <%= t :created_course %>
               <% else %>

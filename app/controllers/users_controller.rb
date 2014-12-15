@@ -42,7 +42,7 @@ class UsersController < ApplicationController
   def update
     @user = current_user
     @user.update(user_params)
-    @user.update_attribute(:avatar, params[:user][:avatar])
+    @user.update_attribute(:avatar, params[:user][:avatar]) unless params[:user][:avatar].nil?
     @user.update_attribute(:preferred_lang, params[:user][:preferred_lang])
     redirect_to dashboard_path
   end
