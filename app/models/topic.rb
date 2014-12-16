@@ -2,6 +2,9 @@ class Topic < ActiveRecord::Base
 
   include TopicsHelper
 
+  include PublicActivity::Model
+  tracked owner: ->(controller, model) { controller && controller.current_user }
+
   validates :title, length: { in: 1..120  }
 
   has_many  :replies
