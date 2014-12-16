@@ -89,6 +89,16 @@ class CoursesController < ApplicationController
   def admin
   end
 
+  def info
+    @course = Course.find(params[:id])
+  end
+
+  def assignment_management
+    @course = Course.find(params[:id])
+    @assignments = Assignment.where(course_id: @course.id)
+    @students = @course.users
+  end
+
   def grade
     @course = Course.find(params[:id])
     @users = @course.users
@@ -103,6 +113,11 @@ class CoursesController < ApplicationController
   end
 
   def assmt
+  end
+
+  def edit
+    @course = Course.find(params[:id])
+    render 'edit.html.erb', layout: 'application'
   end
 
   def update

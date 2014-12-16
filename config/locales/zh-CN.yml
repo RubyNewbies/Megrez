@@ -751,6 +751,7 @@ zh-CN:
   second: 秒
   left_time: 剩余
   my_courses: 我的课程
+  at_course: 在课程
 
   # users/profile
   not_exist: 用户不存在！

@@ -1,0 +1,35 @@
+<div class="row">
+
+  <div class="col-md-3">
+    <%= render partial: 'courses/sidelist.html.erb', locals: {cid: params[:id]} %>
+  </div>
+
+  <div class="col-md-6">
+  <% @assignments.each do |assignment| %>
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <p class="panel-title"><%= assignment.title %></p>
+      </div>
+      <ul class="list-group">
+        <% @students.each do |student| %>
+          <% unless student.creator_of_course?(@course.id) %>
+            <li class="list-group-item">
+              <%= link_to student.realname, profile_path(student.username) %>
+              <% assignment_folder = Folder.find_by(name: "Assignment:#{assignment.title}", course_id: @course.id, is_assignment: true) %>
+              <% target_folder = Folder.find_by(name: current_user.username, parent_id: assignment_folder.id) %>
+              <% files = target_folder.user_files unless target_folder.nil? %>
+              <span class="badge">
+                <% unless @target_folder.nil? || @files.nil? %>
+                  <%= t :submitted %>
+                <% else %>
+                  <%= t :not_submitted %>
+                <% end %>
+              </span>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  </div>
+</div>
