@@ -11,7 +11,7 @@
               <% else %>
                 <%= t :joined_course %>
               <% end %>
-              <%= link_to @course.full_name, @course %>
+              <%= link_to @course.full_name, course_path(id: @course.id) %>
             </h5>
           </div>
         </div>

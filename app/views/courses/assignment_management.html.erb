@@ -1,0 +1,37 @@
+<div class="row">
+
+  <div class="col-md-3">
+    <%= render partial: 'courses/sidelist.html.erb', locals: {cid: params[:id]} %>
+  </div>
+
+  <div class="col-md-9">
+  <div class="panel-group" id="assignmentlist">
+  <% @assignments.each_with_index do |assignment, i| %>
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <p class="panel-title">
+          <a data-toggle="collapse" data-parent="#assignmentlist" href="#collapse<%= assignment.id %>" style="color:#fff">
+            <%= assignment.title %>
+          </a>
+          <span class="badge"><%= "#{@submitted_num[i]}/#{@total_num}" %></span>
+        </p>
+      </div>
+      <ul class="list-group collapse" id="collapse<%= assignment.id %>">
+        <% @users.each do |user| %>
+          <li class="list-group-item">
+            <%= image_tag user.avatar, width: 40, height: 40, class: 'img-rounded' %>
+            <%= link_to user.realname, profile_path(user.username) %>
+            <span class="badge">
+              <% if assignment.is_submitted_by?(user, @course) %>
+                <%= t :submitted %>
+              <% else %>
+                <%= t :not_submitted %>
+              <% end %>
+            </span>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  </div>
+</div>

@@ -25,7 +25,7 @@
             </thead>
             <tbody>
               <% @items.each_with_index do |sheet, index| %>
-                <%= render partial: 'list.html.erb', locals: {sheet: sheet, index: index, sub: false}, layout: false %>
+                <%= render partial: 'list.html.erb', locals: {sheet: sheet, index: index + 1, sub: false}, layout: false %>
                 <% if c = sheet.children %>
                   <% c.each do |s| %>
                     <%= render partial: 'list.html.erb', locals: {sheet: s, index: '', sub: true}, layout: false %>

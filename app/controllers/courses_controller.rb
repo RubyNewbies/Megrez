@@ -89,14 +89,34 @@ class CoursesController < ApplicationController
   def admin
   end
 
+  def info
+    @course = Course.find(params[:id])
+  end
+
+  def assignment_management
+    @course = Course.find(params[:id])
+    @assignments = Assignment.where(course_id: @course.id)
+    @users = @course.users - User.where(id: @course.creator_id)
+    @total_num = @users.size
+    @submitted_num = []
+    @assignments.each_with_index do |assignment, i|
+      @submitted_num[i] = 0
+      @users.each do |user|
+        if assignment.is_submitted_by?(user, @course)
+          @submitted_num[i] += 1
+        end
+      end
+    end
+  end
+
   def grade
     @course = Course.find(params[:id])
-    @users = @course.users
+    @users = @course.users - User.where(id: @course.creator_id)
   end
 
   def final
     @course = Course.find(params[:id])
-    @users = @course.users
+    @users = @course.users - User.where(id: @course.creator_id)
   end
 
   def wiki
@@ -105,9 +125,15 @@ class CoursesController < ApplicationController
   def assmt
   end
 
+  def edit
+    @course = Course.find(params[:id])
+    render 'edit.html.erb', layout: 'application'
+  end
+
   def update
+    @course = Course.find(params[:id])
     @course.update(course_params)
-    redirect_to @course
+    redirect_to info_course_path(id: @course.id)
   end
 
   def join

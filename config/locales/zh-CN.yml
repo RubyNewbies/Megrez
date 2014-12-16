@@ -678,6 +678,7 @@ zh-CN:
   hours_ago: 小时前
   minutes_ago: 分前
   seconds_ago: 秒前
+  at: 在
 
   # replies/_quick
   edit: 编辑
@@ -766,6 +767,7 @@ zh-CN:
   second: 秒
   left_time: 剩余
   my_courses: 我的课程
+  at_course: 在课程
 
   # users/profile
   not_exist: 用户不存在！
@@ -785,3 +787,4 @@ zh-CN:
   submitter: 提交人
   got_results_from: 结果地址：
   no_results: 未发现相似文件
+  score: 评分

@@ -8,31 +8,36 @@
         </a>
       </p>
     </div>
-    <div class="panel-collapse collapse in" id="collapseOne">
-      <table class="table">
-        <tr><td><span class="fa fa-fw fa-book"></span><a href="#"> <%= t :course_info %></a></td></tr>
-        <tr><td><span class="fa fa-fw fa-pencil"></span><a href="#"> <%= t :assignment_admin %></a></td></tr>
-        <tr><td><span class="fa fa-fw fa-list-alt"></span><a href="#"> <%= t :stat %></a></td></tr>
-        <tr><td><span class="fa fa-fw fa-remove"></span><a href="#"> <%= t :logoff %></a></td></tr>
-      </table>
-    </div>
+    <ul class="list-group collapse in" id="collapseOne">
+      <li class="list-group-item"><span class="fa fa-fw fa-book"></span><a href="<%= info_course_path(id: cid) %>"> <%= t :course_info %></a></li>
+      <% if current_user.creator_of_course?(cid) %>
+        <li class="list-group-item"><span class="fa fa-fw fa-pencil"></span><a href="<%= assignment_management_course_path(id: cid) %>"> <%= t :assignment_admin %></a></li>
+      <% end %>
+      <li class="list-group-item"><span class="fa fa-fw fa-list-alt"></span><a href="#"> <%= t :stat %></a></li>
+      <li class="list-group-item"><span class="fa fa-fw fa-remove"></span><a href="/logout" data-method="delete"> <%= t :logoff %></a></li>
+    </ul>
   </div>
-
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <p class="panel-title">
-        <a data-toggle="collapse" data-parent="#mainlist" href="#collapseTwo">
-          <span class="fa fa-fw fa-lg fa-sitemap"></span> <%= t :grades_admin %>
-        </a>
-      </p>
+  <% if current_user.creator_of_course?(cid) %>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <p class="panel-title">
+          <a data-toggle="collapse" data-parent="#mainlist" href="#collapseTwo">
+            <span class="fa fa-fw fa-lg fa-sitemap"></span> <%= t :grades_admin %>
+          </a>
+        </p>
+      </div>
+      <ul class="list-group collapse in" id="collapseTwo">
+        <li class="list-group-item"><span class="fa fa-fw fa-tasks"></span><a id="set-item" href="<%= course_items_path(course_id: cid) %>"> <%= t :set_items %></a></li>
+        <li class="list-group-item"><span class="fa fa-fw fa-flag"></span><a id="grade-student" href="<%= grade_course_path(id: cid) %>"> <%= t :grade %></a></li>
+        <li class="list-group-item"><span class="fa fa-fw fa-list"></span><a id="final-report" href="<%= final_course_path(id: cid) %>"> <%= t :see_final %></a></li>
+      </ul>
     </div>
-    <div class="panel-collapse collapse in" id="collapseTwo">
-      <table class="table">
-        <tr><td><span class="fa fa-fw fa-tasks"></span><a id="set-item" href="<%= course_items_path(course_id: cid) %>"> <%= t :set_items %></a></td></tr>
-        <tr><td><span class="fa fa-fw fa-flag"></span><a id="grade-student" href="<%= grade_course_path(id: cid) %>"> <%= t :grade %></a></td></tr>
-        <tr><td><span class="fa fa-fw fa-list"></span><a id="final-report" href="<%= final_course_path(id: cid) %>"> <%= t :see_final %></a></td></tr>
-      </table>
-    </div>
-  </div>
+  <% end %>
 
 </div>
+
+<% if current_user.creator_of_course?(cid) %>
+  <a href=<%= course_path(id: cid) %> class="btn btn-danger btn-block" data-method="delete" data-confirm='你真的打算删除此门课程？'><i class="fa fa-fw fa-times"></i> 删除课程</a></li>
+<% else %>
+  <a href=<%= leave_course_path(id: cid) %> class="btn btn-danger btn-block" data-method="delete" data-confirm='你真的打算退出此门课程？'><i class="fa fa-fw fa-times"></i> 退出选课</a></li>
+<% end %>
