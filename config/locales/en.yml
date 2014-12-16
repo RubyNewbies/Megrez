@@ -614,6 +614,7 @@
   # replies/_reply
   topic_author: "[Author]"
   last_updated_at: Last updated at
+  edit_reply: Edit Reply
 
   # topics
   forum: Forum
@@ -627,6 +628,7 @@
   submit: Submit
   uploading: Submitting
   board_belong_to: Forum affiliated
+  update_topic: Update
 
   # topics/_show
   by: By

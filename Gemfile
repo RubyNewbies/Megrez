@@ -66,3 +66,4 @@ gem 'jquery-fileupload-rails'
 gem 'rubyzip', '>= 1.0.0' # will load new rubyzip version
 gem 'zip-zip' # will load compatibility for old rubyzip API.
 
+gem 'mathjax-rails'

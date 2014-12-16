@@ -4,8 +4,13 @@
       <div class="bubble arrow-right">
         <span class='tail'>&nbsp;</span>
         <span class='reply-author'><%= link_to "@#{r.user.username}(#{r.user.realname})", profile_path(r.user.username) %></span> <%= t :topic_author %>
-      <span class='reply-time'> <%= t :last_updated_at %><%= r.updated_at.strftime('%Y-%m-%d %H:%M') %></span>
-        <%= r.body.html_safe %>
+        <div class="light-border">
+          <%= r.body.html_safe %>
+        </div>
+      <span class='reply-time'><%= fa_icon 'clock-o' %> <%= r.updated_at.strftime('%Y-%m-%d %H:%M') %></span>
+      <% if current_user.id == r.user.id %>
+        <%= link_to fa_icon('pencil', text: '编辑'), edit_reply_path(id: r.id), class: 'pull-right' %>
+      <% end %>
       </div>
     </div>
     <div class="pull-right" >
@@ -14,20 +19,25 @@
     </div>
   </div>
 <% else %>
-
-<div class="row">
-  <div class="col-md-1">
-    <a name="reply-<%= r.id %>"></a>
-    <%= image_tag r.user.avatar, width: 48, height: 48, class: 'reply-avatar' %>
-  </div>
-  <div class="col-md-11">
-    <div class="bubble arrow-left">
-      <span class='tail'>&nbsp;</span>
-      <span class='reply-author'><%= link_to "@#{r.user.username}(#{r.user.realname})", profile_path(r.user.username) %></span>
-    <span class='reply-time'> <%= t :last_updated_at %><%= r.updated_at.strftime('%Y-%m-%d %H:%M') %></span>
-      <%= r.body.html_safe %>
+  <div class="row">
+    <div class="col-md-1">
+      <a name="reply-<%= r.id %>"></a>
+      <%= image_tag r.user.avatar, width: 48, height: 48, class: 'reply-avatar' %>
+    </div>
+    <div class="col-md-11">
+      <div class="bubble arrow-left">
+        <span class='tail'>&nbsp;</span>
+        <span class='reply-author'><%= link_to "@#{r.user.username}(#{r.user.realname})", profile_path(r.user.username) %></span>
+        
+        <div class="light-border">
+          <%= r.body.html_safe %>
+        </div>
+      <span class='reply-time'><%= fa_icon 'clock-o' %> <%= r.updated_at.strftime('%Y-%m-%d %H:%M') %></span>
+      <% if current_user.id == r.user.id %>
+        <%= link_to fa_icon('pencil', text: '编辑'), edit_reply_path(id: r.id), class: 'pull-right' %>
+      <% end %>
+        
+      </div>
     </div>
   </div>
-</div>
-
 <% end %>

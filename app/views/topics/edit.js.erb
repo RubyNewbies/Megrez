@@ -1,0 +1,3 @@
+history.pushState({}, '', "<%= request.url %>")
+$("#forum-sidebar").html("<%= j render partial: 'topics/sidebar.html.erb' %>");
+$("#forum-content").html("<%= j render partial: 'topics/update_form.html.erb' %>")

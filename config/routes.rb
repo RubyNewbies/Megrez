@@ -1,5 +1,7 @@
 Megrez::Application.routes.draw do
 
+  mathjax 'mathjax'
+
   root 'static_pages#home'
 
   get '/u/:username', controller: 'users', action: 'profile', as: :profile
@@ -17,19 +19,19 @@ Megrez::Application.routes.draw do
   delete '/logout', controller: 'sessions', action: 'destroy'
 
   resources :activities
-
   resources :users
-  
   resources :values
-
   resources :assignfiles
+  resources :replies
 
   resources :courses do
 
     resources :nodes, path: '/forum/nodes'
     resources :topics, path: '/forum/topics' do
       member do 
-        post 'new_replies', controller: 'replies', action: 'create'
+        post  'new_replies', controller: 'replies', action: 'create'
+        #get   'edit_reply?repliy_id=:reply_id', controller: 'replies', action: 'edit', as: :edit_reply
+        #patch 'reply?reply_id=:reply_id', controller: 'replies', action: 'update', as: :update_reply
       end
     end
 

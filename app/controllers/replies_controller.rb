@@ -13,10 +13,27 @@ class RepliesController < ApplicationController
     end
   end
 
+  def edit
+    @reply = Reply.find(params[:id])
+  end
+
+  def update
+    @reply = Reply.find(params[:id])
+    if @reply.update_attributes(replies_update_params)
+      @topic = @reply.topic
+      @course = @topic.course
+      redirect_to course_topic_path(id: @topic.id, course_id: @course.id) + "#reply-#{@reply.id}"
+    end
+  end
+
   private
 
   def replies_params
     params.require(:reply).permit(:topic_id, :source)
+  end
+
+  def replies_update_params
+    params.require(:reply).permit(:source)
   end
 
 end

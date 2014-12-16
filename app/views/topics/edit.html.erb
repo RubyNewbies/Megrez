@@ -1,0 +1,19 @@
+<div class="row">
+
+  <!-- start sidebar -->
+  <div id="forum-sidebar" class="col-md-3 forum-sidebar-wrap">
+    
+    <%= render partial: 'topics/sidebar.html.erb' %>
+
+  </div>
+  <!-- end sidebar -->
+
+  <!-- start content -->
+  <div class="col-md-8 forum-content-wrap paper has-shadow">
+    <div id="forum-content" class="forum-content">
+      <%= render partial: 'topics/update_form.html.erb' %>
+    </div>
+  </div>
+  <!-- end content -->
+
+</div>

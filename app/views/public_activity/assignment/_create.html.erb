@@ -1,4 +1,4 @@
-<% if activity.trackable.course_id == @course.id %>
+<% if activity.trackable && activity.trackable.course_id == @course.id %>
   <div class="qa-message-list" id="wallmessages">
     <div class="message-item" id="m16">
       <div class="message-inner">

@@ -696,6 +696,7 @@ zh-CN:
   # replies/_reply
   topic_author: 【楼主】
   last_updated_at: 最后更新于
+  edit_reply: 编辑回复
 
   # topics
   forum: 讨论空间
@@ -709,6 +710,7 @@ zh-CN:
   submit: 提交
   uploading: 上传中...
   board_belong_to: 所属讨论区
+  update_topic: 更新
 
   # topics/_show
   by: 由

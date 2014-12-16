@@ -1,3 +1,4 @@
 history.pushState({}, '', "<%= course_topic_path(course_id: @course.id, id: @topic.id) %>")
 $("#forum-sidebar").html("<%= j render partial: 'topics/sidebar.html.erb' %>");
 $("#forum-content").html("<%= j render partial: 'topics/show.html.erb' %>")
+MathJax.Hub.Typeset()
