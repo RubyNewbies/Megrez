@@ -9,14 +9,13 @@ class Reply < ActiveRecord::Base
 
   before_save :render_body
   after_save  :notify_topic_author
-  after_save  :trigger_topic_update_time
+  after_create  :trigger_topic_update_time
 
   def render_body
     self.body = markdown(source).html_safe
   end
 
   def trigger_topic_update_time
-    topic = topic()
     if topic
       topic.update_attribute(:updated_at, Time.now)
     end

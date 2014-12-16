@@ -1,4 +1,5 @@
 history.pushState({}, '', "<%= course_topic_path + "#reply-#{@reply.id}" %>")
 $("#replies").append("<%= j render partial: 'reply.html.erb', locals: {r: @reply, topic_author: topic_author} %>")
+$("#forum-sidebar").html("<%= j render partial: 'topics/sidebar.html.erb' %>");
 $("textarea#content_source").val("") 
 MathJax.Hub.Typeset()

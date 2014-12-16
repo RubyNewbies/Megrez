@@ -7,7 +7,11 @@ class Node < ActiveRecord::Base
 
   belongs_to :course
   
-  has_many  :topics, -> { order "updated_at DESC" }
+  #has_many  :topics, -> { order "updated_at DESC" }
+
+  def topics
+    Topic.where(node_id: id).order("updated_at DESC")
+  end
 
   def children
     Node.where(father_id: id)

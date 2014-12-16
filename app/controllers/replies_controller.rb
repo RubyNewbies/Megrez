@@ -5,6 +5,8 @@ class RepliesController < ApplicationController
   def create
     @reply = Reply.new(replies_params.merge user_id: current_user.id)
     @topic = Topic.find(replies_params[:topic_id])
+    @node  = @topic.node
+    @course = @node.course
     if @reply.save
       respond_to do |respond|
         respond.html

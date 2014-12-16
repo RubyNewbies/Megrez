@@ -2,7 +2,11 @@ module TopicsHelper
 
   class HTMLwithPygments < Redcarpet::Render::HTML
     def block_code(code, language)
-      Pygments.highlight(code, lexer: language)
+      if language =~ /mathjax/i
+        "<script type=\"math/tex; mode=display\">#{code}</script>"
+      else
+        Pygments.highlight(code, lexer: language)
+      end
     end
 
     def codespan(code)
