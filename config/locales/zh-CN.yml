@@ -590,6 +590,7 @@ zh-CN:
   # courses/_sidelist
   overview: 总览
   course_info: 课程信息
+  course_announcement: 课程公告
   assignment_admin: 作业管理
   stat: 统计信息
   logoff: 登出
@@ -801,3 +802,8 @@ zh-CN:
   number_of_students_enrolled: 选课人数
   number_of_assignments: 已布置作业数
   number_of_posts: 发表主题数
+
+  #announcements/index
+  new_announcement: 新公告
+  edit_announcement: 编辑
+  delete_announcement: 删除

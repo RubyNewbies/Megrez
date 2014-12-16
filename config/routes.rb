@@ -1,17 +1,5 @@
 Megrez::Application.routes.draw do
 
-  get 'announcements/index'
-
-  get 'announcements/new'
-
-  get 'announcements/create'
-
-  get 'announcements/edit'
-
-  get 'announcements/update'
-
-  get 'announcements/destroy'
-
   root 'static_pages#home'
 
   get '/u/:username', controller: 'users', action: 'profile', as: :profile
@@ -54,6 +42,7 @@ Megrez::Application.routes.draw do
     end
 
     resources :items, path: '/admin/items'
+    resources :announcements, path: '/admin/announcements'
 
     member do
       get 'home', as: :home

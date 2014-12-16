@@ -50,6 +50,7 @@ class CoursesController < ApplicationController
 
   def home
     @activities = PublicActivity::Activity.order("created_at desc")
+    @announcements = Announcement.where(course_id: params[:id]).order("created_at desc")
   end
 
   def destroy
