@@ -478,10 +478,10 @@
   hour: hours
   minute: minutes
   second: seconds
-  inspect: Inspect plagiarism
+  inspect: Plagiarism checking
 
   # assignments/inspect
-  results: Inspection Results
+  results: Check Results
 
   # assignments/submit
   is_submitting: "is submitting assignment: "

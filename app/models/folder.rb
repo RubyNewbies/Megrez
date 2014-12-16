@@ -6,7 +6,7 @@ class Folder < ActiveRecord::Base
 
   attr_accessor :is_copied_folder
 
-  validates_uniqueness_of :name, :scope => :parent_id
+  #validates_uniqueness_of :name, :scope => :parent_id
   validates_presence_of :name
 
   before_save :check_for_parent

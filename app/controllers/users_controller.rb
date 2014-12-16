@@ -20,7 +20,7 @@ class UsersController < ApplicationController
 
   def profile 
     @user = User.where(username: params[:username]).first
-    @enrolled_courses = @user.courses
+    @enrolled_courses = @user.courses unless @user.nil?
     @activities = PublicActivity::Activity.order("created_at desc")
   end
 

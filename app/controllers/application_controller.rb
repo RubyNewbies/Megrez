@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
     if current_user.nil?
       lang = I18n.default_locale
     elsif current_user.preferred_lang.nil?
-      lang = 'en'
+      lang = 'zh-CN'
     else
       lang = current_user.preferred_lang
     end

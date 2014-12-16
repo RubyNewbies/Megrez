@@ -1,7 +1,7 @@
 <div class="row">
   <%= image_tag current_user.avatar, width: 250, height: 250, class: 'img-rounded' %>
   <hr>
-  <h3><%= current_user.username %></h3>
+  <h3><%= current_user.realname %>(<%= current_user.username %>)</h3>
   <h5><span class="fa fa-fw fa-envelope"></span> <%= current_user.email %></h5>
   <h5><span class="fa fa-fw fa-clock-o"></span> <%= t(:joined_on) %> <%= DateTime.parse(current_user.created_at.localtime.to_s).strftime('%Y-%m-%d').to_s %></h5>
   <hr>
