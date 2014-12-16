@@ -27,6 +27,10 @@ group :development, :test do
   gem 'better_errors'
 end
 
+group :production do
+  gem 'pg'
+end
+
  # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks                                                                                       |  Rakefile
  gem 'turbolinks'
 
