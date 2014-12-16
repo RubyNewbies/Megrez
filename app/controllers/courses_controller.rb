@@ -144,6 +144,7 @@ class CoursesController < ApplicationController
   def update
     @course = Course.find(params[:id])
     @course.update(course_params)
+    @course.update_attribute(:icon, params[:course][:icon]) unless params[:course][:icon].nil?
     redirect_to info_course_path(id: @course.id)
   end
 

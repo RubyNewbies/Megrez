@@ -6,7 +6,9 @@ class Course < ActiveRecord::Base
   has_many :users, through: :course_user_relationships
 
   has_many :nodes
-
+  has_attached_file :icon, styles: { medium: "220x220>", thumb: "100x100>" }, default_url: "icon/books8.png"
+  validates_attachment_content_type :icon, :content_type => /\Aimage/
+  do_not_validate_attachment_file_type :icon
   def creator
     User.find(user_id)
   end
