@@ -1,5 +1,17 @@
 Megrez::Application.routes.draw do
 
+  get 'announcements/index'
+
+  get 'announcements/new'
+
+  get 'announcements/create'
+
+  get 'announcements/edit'
+
+  get 'announcements/update'
+
+  get 'announcements/destroy'
+
   root 'static_pages#home'
 
   get '/u/:username', controller: 'users', action: 'profile', as: :profile
