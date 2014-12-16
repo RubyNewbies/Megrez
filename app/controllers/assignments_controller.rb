@@ -43,7 +43,7 @@ class AssignmentsController < ApplicationController
     @course = Course.find(params[:course_id])
     @assignment = Assignment.find(params[:id])
     @assignment_folder = Folder.find_by(name: "Assignment:#{@assignment.title}", course_id: params[:course_id], is_assignment: true)
-    @target_folder = Folder.find_by(name: current_user.username, parent_id: @assignment_folder.id)
+    @target_folder = Folder.find_by(name: current_user.username, parent_id: @assignment_folder.id) unless @assignment_folder.nil?
     if @target_folder.nil?
       @target_folder = Folder.create(name: current_user.username, parent_id: @assignment_folder.id, is_assignment: false)
       @target_folder.save!

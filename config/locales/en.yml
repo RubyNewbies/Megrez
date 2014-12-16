@@ -222,6 +222,7 @@
   submit: Submit
   search: Search
   filter: Filter
+  megrez: Megrez
   root_folder: Root Folder
 
   your_changes_were_saved: Your changes were saved successfully.
@@ -337,11 +338,11 @@
   remember_me: Remember me
   sign_in: Sign in
 
-  #share_links/index
+  # share_links/index
   shared_by: Shared by
   unshare: Unshare
 
-  #share_links/new
+  # share_links/new
   this_share_link: this share link
   share_file: Share file
   you_are_about_to_share_the_following_file: You are about to share the following file
@@ -370,29 +371,29 @@
   settings: Settings
   sign_out: Sign out
 
-  #shared/_menu
+  # shared/_menu
   folders: Folders
   users: Users
   shared_files: Shared files
 
-  #users/_form
+  # users/_form
   member_of_these_groups: Member of these groups
   confirm_password: Confirm password
 
-  #users/index
+  # users/index
   create_a_new_user: Create a new user
   active_users: Active users
   invited_users: Invited users
   expiration_date: Expiration date
   extend_expiration_date: Extend expiration date
 
-  #users/new
+  # users/new
   new_user: New user
 
-  #admins/controller
+  # admins/controller
   admin_user_created_sucessfully: The admin user was created successfully. You can now sign in.
 
-  #application_controller
+  # application_controller
   no_permissions_for_this_type: "You don't have %{method} permissions for %{type}."
 
   # clipboard_controller
@@ -499,9 +500,10 @@
   desc_placeholder: Brief description for your course.
   staff: Staff
   join: Join this course
+  courses_list: Courses List
   course_creator: Lecturer
 
-  # course/_nav
+  # courses/_nav
   home: Course Homepage
   docs: Documentation
   forum: Forum
@@ -511,18 +513,19 @@
   submit: Open this course
   admin: Administration
 
-  # course/_sidelist
+  # courses/_sidelist
   overview: Overview
-  course_info: Course information
-  assignment_admin: Assignment management
+  course_info: Course Information
+  assignment_admin: Assignment Management
   stat: Statistics
-  logoff: Log out
+  logoff: Log Out
   grades_admin: Scores
-  set_items: Configure score items
+  set_items: Configure Score Items
   grade: Scoring
-  see_final: View reports
+  course_announcement: Course Announcement
+  see_final: View Reports
 
-  # course/grade
+  # courses/grade
   nr: No.
   username: User Name
   realname: Real Name
@@ -531,18 +534,18 @@
   edit: Edit
   send_email_notification: Send email notification
 
-  # course/forum
+  # courses/forum
   forum: Forum
   new_board: New board
   new_post: New post
 
-  # course/member
+  # courses/member
   staff: Staff
   student: Students
   remove_this_student: Remove Student
   sure_to_remove_student: Are you sure to remove this student?
 
-  # course/final
+  # courses/final
   nr: No.
   username: User Name
   realname: Real Name
@@ -691,6 +694,7 @@
   email: Email
   avatar: Avatar
   submit_user: Submit
+  preferred_language: Preferred Language
 
   # users/dashboard
   assignment_due: An assignment is due soon
@@ -710,7 +714,7 @@
 
   # message
   send_pm: Send PM
-  leave_a_message_for_you: leave a message for you.
+  leave_a_message_for_you: left a message for you.
 
   #application_helper.rb
   file_name: File name
