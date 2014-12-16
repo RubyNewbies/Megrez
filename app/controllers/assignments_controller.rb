@@ -11,7 +11,7 @@ class AssignmentsController < ApplicationController
 
   def show
     @assignment = Assignment.find(params[:id])
-    @assignment = Assignment.find(params[:id])
+    @course = Course.find(params[:course_id])
     @assignment_folder = Folder.find_by(name: "Assignment:#{@assignment.title}", course_id: params[:course_id], is_assignment: true)
     @target_folder = Folder.find_by(name: current_user.username, parent_id: @assignment_folder.id)
     @files = @target_folder.user_files unless @target_folder.nil?
