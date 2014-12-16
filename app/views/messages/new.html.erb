@@ -12,19 +12,30 @@
       
     </div>
     <div class="col-md-9">
-      <div class="panel panel-success">
-        <div class="panel-heading" style="margin-bottom: 5px;">
+      <% if @user.id == current_user.id %>
+        <div class="panel panel-danger">
+          <div class="panel-heading" style="margin-bottom: 5px">
+            <p class="panel-title">禁止</p>
+          </div>
+          <div>
+            不能给自己留言！
+          </div>
+        </div>
+      <% else %>
+        <div class="panel panel-success">
+          <div class="panel-heading" style="margin-bottom: 5px;">
             <p class="panel-title">给<%= @user.realname %>留言</p>
+          </div>
+          <div id="personal_messages">
+            <% @messages.each do |m| %>
+              <%= render partial: 'messages/message.html.erb', locals: {m: m} %>
+            <% end %>
+          </div>
+          <div>
+            <%= render partial: 'messages/quick.html.erb' %>
+          </div>
         </div>
-        <div id="personal_messages">
-          <% @messages.each do |m| %>
-            <%= render partial: 'messages/message.html.erb', locals: {m: m} %>
-          <% end %>
-        </div>
-        <div>
-          <%= render partial: 'messages/quick.html.erb' %>
-        </div>
-      </div>
+      <% end %>
     </div>
   </div>
 <% end %>

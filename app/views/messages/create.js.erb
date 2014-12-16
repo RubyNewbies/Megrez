@@ -1,1 +1,2 @@
 $("div#personal_messages").append("<%= j render partial: 'messages/message.html.erb', locals: {m: @message} %>")
+$("textarea#pm-content").val("")

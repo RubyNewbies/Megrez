@@ -1,8 +1,13 @@
 <div class="well bs-component">
   <%= form_for @message, remote: true do |f| %>
     <%= f.hidden_field :receiver_id, value: @user.id %>
-    <%= f.text_area :content, id: 'pm-content' %>
-
-    <%= f.submit t(:send_pm) %>
+    <div class="row">
+      <div class="col-md-10">
+        <%= f.text_area :content, id: 'pm-content', rows: 5, style:"width: 100%" %>
+      </div>
+      <div class="col-md-2">
+        <%= f.submit t(:send_pm), class: 'btn btn-success btn-block', disable_with: 'sending...' %>    
+      </div>
+    </div>
   <% end %>
 </div>
