@@ -73,6 +73,7 @@ Megrez::Application.routes.draw do
       get 'final', path: '/admin/final'
       post 'join', as: :join
       delete 'leave', as: :leave
+      delete 'remove/:username', action: 'remove' , as: :remove
       get 'grade', controller: 'users', path: '/admin/grade/:user_id'
     end
 

@@ -3,7 +3,7 @@
 <% else %>
   <div class="row">
     <div class="col-md-3">
-      <%= image_tag @user.avatar, width: 200, height: 200 %>
+      <%= link_to image_tag(@user.avatar, width: 200, height: 200), profile_path(username: @user.username) %>
       <h2><%= @user.realname %></h2>
       <%= fa_icon 'user' %>&nbsp;&nbsp;<%= @user.username %><br>
       <%= fa_icon 'envelope' %>&nbsp;&nbsp;<%= link_to @user.email, "mailto:#{@user.email}" %><br>

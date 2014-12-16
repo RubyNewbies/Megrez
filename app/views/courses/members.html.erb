@@ -1,29 +1,26 @@
 <div class="row">
   <% @staff, @students = @members.partition {|e| e.creator_of_course?(params[:id]) } %>
-  
   <div class="row">
     <h2 class="text-center"><%= t :staff %></h2>
     <% @staff.each do |m| %>
       <div class="col-md-2 text-center bs-componet">
-        <div><%= image_tag m.avatar, height: 128, weight: 128, class: 'circle' %></div>
+        <div><%= link_to (image_tag m.avatar, height: 128, weight: 128, class: 'circle'), profile_path(m.username)%></div>
         <div><%= link_to m.realname, profile_path(m.username) %></div>
       </div>
     <% end %>
   </div>
-
-  
   <div class="row">
-    
-  <h2 class="text-center"><%= t :student %></h2>
-  <% @students.each do |m| %>
-    <div class="col-md-2 text-center bs-componet">
-      <div><%= image_tag m.avatar, height: 128, weight: 128, class: 'circle' %></div>
-      <div><%= link_to m.realname, profile_path(m.username) %></div>
-      <div>
-  <% if current_user.creator_of_course?(@course.id) %>
-    <%= link_to '移出选课', '#', class: 'btn btn-danger' %>
-  <% end %></div>
-    </div>
-  <% end %>
+    <h2 class="text-center"><%= t :student %></h2>
+    <% @students.each do |m| %>
+      <div class="col-md-2 text-center bs-componet">
+        <div><%= link_to (image_tag m.avatar, height: 128, weight: 128, class: 'circle'), profile_path(m.username) %></div>
+        <div><%= link_to m.realname, profile_path(m.username) %></div>
+        <div>
+          <% if current_user.creator_of_course?(@course.id) %>
+            <%= link_to t(:remove_this_student), remove_course_path(username: m.username), class: 'btn btn-danger', method: 'delete', data: {confirm: t(:sure_to_remove_student)} %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>
