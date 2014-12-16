@@ -96,6 +96,7 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
       mime-types
+    pg (0.17.1)
     posix-spawn (0.3.9)
     public_activity (1.4.2)
       actionpack (>= 3.0.0)
@@ -185,6 +186,7 @@ DEPENDENCIES
   moss_ruby
   nokogiri
   paperclip
+  pg
   public_activity
   pygments.rb
   rails (= 4.1.6)
