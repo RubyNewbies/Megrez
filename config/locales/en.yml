@@ -594,14 +594,17 @@
   title: Delete Forum
 
   # public_activity
-  issued_a_new_assignment: has issued a new assignment
-  created_course: has created course
-  joined_course: has joined course
-  created_item: has created an item
+  issued_a_new_assignment: issued a new assignment
+  created_course: created course
+  joined_course: joined course
+  created_item: created an item
+  created_node: created a forum
   days_ago: " days ago"
   hours_ago: " hours ago"
   minutes_ago: " minutes ago"
   seconds_ago: " seconds ago"
+  at: at
+  in_course: in course
 
   # replies/_quick
   edit: Edit
