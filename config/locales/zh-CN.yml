@@ -621,6 +621,8 @@ zh-CN:
   # courses/member
   staff: 教职员工
   student: 学生
+  remove_this_student: 移除学生
+  sure_to_remove_student: 确定将学生从选课中移除？
 
   # courses/final
   nr: 序号

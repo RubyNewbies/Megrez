@@ -1,8 +1,6 @@
 <div><h3 class="text-center no-margin"><%= t :staff %></h3></div>
 <div>
-<a href="" class="circle">
-  <%= image_tag @course.creator.avatar, width: 120, height: 120, class: 'img-responsive center-block' %>
-</a>
+  <%= link_to image_tag(@course.creator.avatar, width: 120, height: 120, class: 'img-responsive center-block circle'), profile_path(@course.creator.username) %>
 </div>
 <div>
   <h3 class="text-center"><%= link_to @course.creator.realname, profile_path(@course.creator.username) %></h3>

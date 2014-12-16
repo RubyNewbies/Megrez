@@ -163,6 +163,16 @@ class CoursesController < ApplicationController
     end
   end
 
+  def remove
+    user = User.find_by_username(params[:username])
+    if user
+      user.leave_out_course(params[:id])
+      redirect_to members_course_path(@course)
+    else
+      redirect_to members_course_path(@course), error: I18n.t(:user_joined_yet)
+    end
+  end
+
   private
 
   def course_params

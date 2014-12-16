@@ -538,12 +538,16 @@
   # course/member
   staff: Staff
   student: Students
+  remove_this_student: Remove Student
+  sure_to_remove_student: Are you sure to remove this student?
 
   # course/final
   nr: No.
   username: User Name
   realname: Real Name
   grades: Scores
+
+
 
   # items
   name: Name
