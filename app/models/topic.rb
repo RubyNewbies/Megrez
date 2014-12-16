@@ -4,12 +4,12 @@ class Topic < ActiveRecord::Base
 
   validates :title, length: { in: 1..120  }
 
-  has_one   :user
   has_many  :replies
+  belongs_to  :user
   belongs_to  :node
 
   before_save :render_body
-  after_save :send_notifications
+  #after_save :send_notifications
 
   # Credit for this regular expression
   # https://github.com/daqing/rabel/blob/master/app/models/notifiable.rb

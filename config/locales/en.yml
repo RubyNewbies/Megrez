@@ -534,6 +534,10 @@
   new_board: New board
   new_post: New post
 
+  # course/member
+  staff: Staff
+  student: Students
+
   # course/final
   nr: No.
   username: User Name
@@ -603,6 +607,10 @@
   preview: Preview
   placeholder: Speak out here!
 
+  # replies/_reply
+  topic_author: "[Author]"
+  last_updated_at: Last updated at
+
   # topics
   forum: Forum
   new_forum: New Forum
@@ -615,6 +623,10 @@
   submit: Submit
   uploading: Submitting
   board_belong_to: Forum affiliated
+
+  # topics/_show
+  by: By
+  post_at: Post at
 
   # shared/_footer
   copyrights: ©2014 RubyNewbies Team

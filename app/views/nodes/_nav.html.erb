@@ -1,6 +1,6 @@
 <a href=<%= forum_course_path(id: params[:course_id]) %> class="btn btn-default"><i class="fa fa-fw fa-lg fa-home"></i></a>
 
-<% if @node.id.nil? %>
+<% if @node.nil? %>
   <%= link_to t(:forum), forum_course_path(id: params[:course_id]), class: 'btn btn-default' %>
 <% else %>
   <% if @node.father %>

@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   do_not_validate_attachment_file_type :avatar
 
   has_many  :created_courses, class_name: 'Course'
+  has_many  :topics
 
   has_many  :courses, through: :course_user_relationships
   has_many  :course_user_relationships, dependent: :destroy

@@ -1,9 +1,18 @@
-<h2><%= @topic.title %></h2>
+<div>
+  <div class="user-avatar pull-right">
+    <%= image_tag(@topic.user.avatar, width: 64, height: 64) %>
+  </div>
+  <h2><%= @topic.title %></h2>
+  <div class="color-light-gray">
+    <%= t :by %><span class="topic-author"><%= link_to "@#{@topic.user.username}", profile_path(@topic.user.username) %></span><%= t :post_at %><span class="topic-time"><%= @topic.created_at.strftime('%Y-%m-%d %H:%M') %></span>
+  </div>
+</div>
 <hr>
-<div><%= @topic.body.html_safe %></div>
+<div id="forum-topic-content"><%= @topic.body.html_safe %></div>
+<hr>
 <div id="replies">
   <% @topic.replies.each do |r| %>
-    <%= render partial: 'replies/reply.html.erb', locals: {r: r} %>
+    <%= render partial: 'replies/reply.html.erb', locals: {r: r, topic_author: @topic.user.id} %>
   <% end %>
 </div>
 

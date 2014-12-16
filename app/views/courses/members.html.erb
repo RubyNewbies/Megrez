@@ -1,10 +1,29 @@
-<!--To be replaced
-<ul class="card-on">
-  <% @members.each do |m| %>
-    <li>
-      <%= image_tag m.avatar, height: 100, width: 100 %><br>
-      <%= link_to m.realname, profile_path(m.username) %>
-    </li>
+<div class="row">
+  <% @staff, @students = @members.partition {|e| e.creator_of_course?(params[:id]) } %>
+  
+  <div class="row">
+    <h2 class="text-center"><%= t :staff %></h2>
+    <% @staff.each do |m| %>
+      <div class="col-md-2 text-center bs-componet">
+        <div><%= image_tag m.avatar, height: 128, weight: 128, class: 'circle' %></div>
+        <div><%= link_to m.realname, profile_path(m.username) %></div>
+      </div>
+    <% end %>
+  </div>
+
+  
+  <div class="row">
+    
+  <h2 class="text-center"><%= t :student %></h2>
+  <% @students.each do |m| %>
+    <div class="col-md-2 text-center bs-componet">
+      <div><%= image_tag m.avatar, height: 128, weight: 128, class: 'circle' %></div>
+      <div><%= link_to m.realname, profile_path(m.username) %></div>
+    </div>
   <% end %>
-<ul>
--->
+
+
+  </div>
+
+
+</div>

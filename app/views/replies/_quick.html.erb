@@ -1,6 +1,6 @@
 <div class="well bs-component">
 
-<form action=<%= new_replies_course_topic_path %> method='POST' data-remote="true">
+<form action=<%= new_replies_course_topic_path(id: @topic.id, course_id: @course.id) %> method='POST' data-remote="true">
   <input type="hidden" name="reply[topic_id]" value=<%= params[:id] %>>
   <ul class="nav nav-tabs">
     <li class="active"><a href="#content_edit" data-toggle="tab" aria-expanded="false"><%= t :edit %></a></li>

@@ -1,3 +1,3 @@
-history.pushState({}, '', "<%= request.url %>")
-$("#replies").append("<%= j render partial: 'reply.html.erb', locals: {r: @reply} %>")
+history.pushState({}, '', "<%= course_topic_path + "#reply-#{@reply.id}" %>")
+$("#replies").append("<%= j render partial: 'reply.html.erb', locals: {r: @reply, topic_author: topic_author} %>")
 $("textarea#content_source").val("") 

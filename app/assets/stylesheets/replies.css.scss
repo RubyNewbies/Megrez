@@ -4,3 +4,76 @@ textarea#content_source {
 	width: 100%;
 	max-width: 100%;
 }
+
+$shadow_radius: 6px;
+$nose_size: 12px;
+$shadow: 0 1px $shadow_radius #B2B2B2;
+$border:  1px solid #bbb;
+
+.bubble {
+    background-color: #F2F2F2;
+    border-radius:    5px;
+    border:           $border;
+    box-shadow:       $shadow;
+    display:          block;
+    padding:          10px 18px;
+    margin:           1em ($shadow_radius + $nose_size);
+    margin-top:       0px;
+    position:         relative;
+    vertical-align:   top;
+	max-width:        500px;
+}
+
+.tail {
+    position: absolute;
+    height:  ($shadow_radius + $nose_size);
+    width:   ($shadow_radius + $nose_size);
+    overflow: hidden;
+
+    &:before {
+        border:            $border;
+        background-color:  #F2F2F2;
+        box-shadow:        $shadow;
+        content:           "\00a0";
+
+        display:           block;
+        position:          absolute;
+        top:               0px;
+        height:            $nose_size;
+        width:             $nose_size;
+    }
+}
+
+
+.bubble.arrow-left {
+    text-align: left;
+
+    .tail {
+        top:      $nose_size;
+        left:   -($shadow_radius + $nose_size);
+
+        &:before {
+            left:              $nose_size;
+            -webkit-transform: skewX( -45deg );
+            -moz-transform:    skewX( -45deg );
+            -o-transform:      skewX( -45deg );
+        }
+    }
+}
+
+
+.bubble.arrow-right {
+    text-align: left;
+    
+    .tail {
+        top:      $nose_size;
+        right:   -($shadow_radius + $nose_size);
+
+        &:before {
+            right:              $nose_size;
+            -webkit-transform: skewX( 45deg );
+            -moz-transform:    skewX( 45deg );
+            -o-transform:      skewX( 45deg );
+        }
+    }
+}
