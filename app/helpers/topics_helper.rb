@@ -4,6 +4,16 @@ module TopicsHelper
     def block_code(code, language)
       Pygments.highlight(code, lexer: language)
     end
+
+    def codespan(code)
+      if code[0] == "$" && code[-1] == "$"
+        code.gsub!(/^\$/,'')
+        code.gsub!(/\$$/,'')
+        "<script type=\"math/tex\">#{code}</script>"
+      else
+        "<code>#{code}</code>"
+      end
+    end
   end
 
   def markdown(text)

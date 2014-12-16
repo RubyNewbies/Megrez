@@ -25,6 +25,10 @@ class Topic < ActiveRecord::Base
     mentioned_names.map { |name| User.where(username: name).first }.compact
   end
 
+  def course
+    Course.find(node.id)
+  end
+
   private
 
   def send_notifications

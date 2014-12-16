@@ -606,6 +606,7 @@
   # replies/_reply
   topic_author: "[Author]"
   last_updated_at: Last updated at
+  edit_reply: Edit Reply
 
   # topics
   forum: Forum
