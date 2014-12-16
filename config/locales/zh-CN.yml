@@ -798,6 +798,7 @@ zh-CN:
 
   # messages
   send_pm: 发送消息
+  leave_a_message_for_you: 给你发了一封私信。
 
   # application_helper.rb
   file_name: 文件名

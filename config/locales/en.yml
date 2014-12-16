@@ -705,6 +705,7 @@
 
   # message
   send_pm: Send PM
+  leave_a_message_for_you: leave a message for you.
 
   #application_helper.rb
   file_name: File name

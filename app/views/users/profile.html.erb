@@ -8,7 +8,7 @@
       <%= fa_icon 'user' %>&nbsp;&nbsp;<%= @user.username %><br>
       <%= fa_icon 'envelope' %>&nbsp;&nbsp;<%= link_to @user.email, "mailto:#{@user.email}" %><br>
       <%= fa_icon 'clock-o' %>&nbsp;&nbsp;<%= t(:joined_on) %>&nbsp;<%= @user.created_at.strftime('%Y-%m-%d') %><br>
-      <%= fa_icon 'send' %>&nbsp;&nbsp;<%= link_to t(:leave_message), '#' %>
+      <%= fa_icon 'send' %>&nbsp;&nbsp;<%= link_to t(:leave_message), new_pm_path(username: @user.username) %>
       
     </div>
     <div class="col-md-9">

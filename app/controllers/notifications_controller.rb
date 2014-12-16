@@ -10,14 +10,14 @@ class NotificationsController < ApplicationController
   end
 
   def go
-    @notifiaction = Notification.find(params[:id])
-    @notifiaction.update_attribute(:unread, false)
-    redirect_to @notifiaction.target_url
+    @notification = Notification.find(params[:id])
+    @notification.update_attribute(:unread, false)
+    redirect_to @notification.target_url
   end
 
   def ignore
-    @notifiaction = Notification.find(params[:id])
-    @notifiaction.update_attribute(:unread, false)
+    @notification = Notification.find(params[:id])
+    @notification.update_attribute(:unread, false)
     
     respond_to do |respond|
       respond.js
@@ -25,8 +25,8 @@ class NotificationsController < ApplicationController
   end
 
   def mark_all
-    @notifiactions = Notification.where(user_id: current_user.id, unread: true)
-    @notifiactions.update_all(unread: false)
+    @notifications = Notification.where(user_id: current_user.id, unread: true)
+    @notifications.update_all(unread: false)
 
     respond_to do |respond|
       respond.js

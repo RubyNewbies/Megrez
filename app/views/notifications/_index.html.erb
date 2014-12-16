@@ -7,7 +7,7 @@
           <li><%= t :no_unread_notification %></li>
         <% else %>
           <% @notifications.each do |n| %>
-            <li data-reply-id=<%= n.id %>><p><%= n.content.html_safe %> <%= link_to t(:view_notification), go_notification_path(n) %><%= link_to t(:ignore_notification), ignore_notification_path(n), remote: true %></p></li>
+            <li data-notification-id=<%= n.id %>><p><%= n.content.html_safe %> <%= link_to t(:view_notification), go_notification_path(n), class: 'simple-margin' %><%= link_to t(:ignore_notification), ignore_notification_path(n), remote: true, class: 'simple-margin' %></p></li>
           <% end %>
         <% end %>
       </div>

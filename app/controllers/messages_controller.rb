@@ -10,7 +10,15 @@ class MessagesController < ApplicationController
 
   def create
     @message = Message.new(message_params.merge sender_id: current_user.id)
+    receiver_id = message_params[:receiver_id]
     if @message.save
+      user = User.find_by_id(receiver_id)
+      by = ActionController::Base.helpers.link_to "@#{current_user.username}(#{current_user.realname})",
+           profile_path(current_user.username)
+      target_url = new_pm_path(username: current_user.username)
+      notification = "#{by} #{t :leave_a_message_for_you}"
+
+      Notification.create(user_id: receiver_id, content: notification, target_url: target_url)
       respond_to do |respond|
         respond.js
       end
