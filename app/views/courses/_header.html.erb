@@ -1,8 +1,13 @@
 <% if @course %>
-  <% if @course.english_name.present? %>
-    <h2 class="class-full-name"><%= @course.full_name_with_creator_name %></h2>
-    <h3 class="course-english-name"><%= @course.english_name %></h1>
-  <% else %>
-    <h2 class="course-single-name"><%= @course.full_name %></h2>
-  <% end %>
+  <div class="col-md-10">
+    <% if @course.english_name.present? %>
+      <h2 class="class-full-name"><%= @course.full_name_with_creator_name %></h2>
+      <h3 class="course-english-name"><%= @course.english_name %></h1>
+    <% else %>
+      <h2 class="course-single-name"><%= @course.full_name %></h2>
+    <% end %>
+  </div>
+  <div class="col-md-2">
+    <%= image_tag(@course.icon, height: 100, width: 100, class: 'circle') %>
+  </div>
 <% end %>

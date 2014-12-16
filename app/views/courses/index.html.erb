@@ -1,10 +1,13 @@
 <div class="row">
-  
-  <% @courses.each_with_index do |c, i| %>
-      <div class="well bs-component">
-      <div><%= link_to c.full_name, c %></div>
-      <div><%= c.english_name %></div>
-      </div>
-  <% end %>
-
+  <h2 class="text-center"><%= t :courses_list %></h2>
+  <div class="row well">
+    <% @courses.each_with_index do |c, i| %>
+        <div class="col-md-2 text-center bs-component">
+          <div><%= link_to image_tag(c.icon, height: 75, width: 75, class: 'circle'), c %></div>
+          <div><%= link_to c.full_name, c %></div>
+          <div><%= c.english_name %></div>
+          <%= link_to "#{t(:course_creator)}: #{c.creator.realname}", profile_path(c.creator.username) %>
+        </div>
+    <% end %>
+  </div>
 </div>

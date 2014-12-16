@@ -499,6 +499,7 @@
   desc_placeholder: Brief description for your course.
   staff: Staff
   join: Join this course
+  course_creator: Lecturer
 
   # course/_nav
   home: Course Homepage

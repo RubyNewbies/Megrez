@@ -576,6 +576,9 @@ zh-CN:
   desc_placeholder: 简要课程描述。
   staff: 教职人员
   join: 加入课程
+  icon: 图标
+  courses_list: 课程列表
+  course_creator: 主讲教师
 
   # courses/_nav
   home: 课程主页

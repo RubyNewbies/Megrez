@@ -9,7 +9,7 @@
 
     <%= f.text_field :key, label: t(:key), placeholder: t(:key_placeholder) %>
     <%= f.text_area :description, label: t(:description), id: 'course_description', placeholder: t(:desc_placeholder) %>
-
+    <%= f.file_field :icon, label: t(:icon) %>
     <%= f.submit class: 'btn btn-primary pull-right', value: t(:submit) %>
 
   </fieldset>

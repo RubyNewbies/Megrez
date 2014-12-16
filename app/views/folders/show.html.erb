@@ -114,7 +114,7 @@
     </div>
     </div>
     <% end %>
-    <%= will_paginate @files %>
+    <%= will_paginate @files unless @files.empty? %>
     <% if current_user.is_admin? -%>
     <div id="permissions" style="display:none;">
       <%= render 'permissions/form' %>
