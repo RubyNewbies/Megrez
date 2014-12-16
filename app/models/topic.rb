@@ -17,13 +17,13 @@ class Topic < ActiveRecord::Base
   MENTION_REGEXP = /@([a-zA-Z0-9_\-\p{han}]+)/u
 
   def render_body
-    self.body = self.source
+    self.body = self.source.clone
     self.body.gsub!(MENTION_REGEXP) do |match|
       if u = User.find_by_username(match[1..-1])
         ActionController::Base.helpers.link_to match, profile_path(username: match[1..-1])
       end
     end
-    self.body = markdown(source).html_safe
+    self.body = markdown(body).html_safe
   end
 
   def mentioned_users
