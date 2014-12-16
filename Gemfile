@@ -1,11 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.1.6'
-
-gem 'sqlite3'
-
 gem 'coffee-rails'
-
 gem 'autoprefixer-rails'
 
 # Bootstrap resources
@@ -25,6 +21,8 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'binding_of_caller'
   gem 'better_errors'
+
+  gem 'sqlite3'
 end
 
 group :production do
