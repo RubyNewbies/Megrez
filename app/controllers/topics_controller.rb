@@ -37,6 +37,17 @@ class TopicsController < ApplicationController
     end
   end
 
+  def edit
+    @topic = Topic.find(params[:id])
+    @course = Course.find_by_id(params[:course_id])
+    @node = @topic.node
+
+    respond_to do |respond|
+      respond.html
+      respond.js
+    end
+  end
+
   def index
     @topics = Topic.where
   end
@@ -54,6 +65,10 @@ class TopicsController < ApplicationController
   end
 
   def update
+    @topic = Topic.find(params[:id])
+    if @topic.update_attributes(topic_params)
+      redirect_to course_topic_path(id: @topic.id)
+    end
   end
 
   private

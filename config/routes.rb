@@ -1,5 +1,7 @@
 Megrez::Application.routes.draw do
 
+  mathjax 'mathjax'
+
   root 'static_pages#home'
 
   get '/u/:username', controller: 'users', action: 'profile', as: :profile

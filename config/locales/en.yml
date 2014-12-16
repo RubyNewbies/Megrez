@@ -619,6 +619,7 @@
   submit: Submit
   uploading: Submitting
   board_belong_to: Forum affiliated
+  update_topic: Update
 
   # topics/_show
   by: By

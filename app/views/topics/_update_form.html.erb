@@ -1,0 +1,20 @@
+  <%= bootstrap_form_for(@topic, url: course_topic_path, layout: :horizontal) do |f| %>
+    <fieldset>
+      <legend><%= t :new_post %></legend>
+
+      <%= f.hidden_field :course_id, value: params[:course_id] %>
+
+      <%= f.text_field :title, label: t(:title), class: 'form-control', placeholder: t(:title_placeholder) %>
+
+      <%= f.select :node_id, build_node_select_values(@course), { label: t(:board_belong_to), selected: @topic.node.id }, { class: 'selectpicker' } %>
+
+      <%= f.text_area :source, label: t(:content), class: 'form-control', placeholder: t(:content_placeholder), rows: 8 %>
+
+      <div class="btn-group btn-group-justified">
+        <%= link_to (fa_icon 'arrow-circle-left', text: " #{t :back}", class: 'fa-fw'), 'javascript:window.history.backward();', class: 'btn btn-default btn-block' %>
+        <%= link_to (fa_icon 'arrow-circle-right', text: "#{t :update_topic} ", class: 'fa-fw', right: true), course_topic_path, id: 'add_topic', class: 'btn btn-block btn-default', method: 'PATCH' %>
+      </div>
+    </fieldset>
+  <% end %>
+
+  

@@ -5,7 +5,9 @@
   <h2><%= @topic.title %></h2>
   <div class="color-light-gray">
     <%= t :by %><span class="topic-author"><%= link_to "@#{@topic.user.username}", profile_path(@topic.user.username) %></span><%= t :post_at %><span class="topic-time"><%= @topic.created_at.strftime('%Y-%m-%d %H:%M') %></span>
+    <%= link_to fa_icon('pencil', text: '编辑'), edit_course_topic_path, remote: true %>
   </div>
+  
 </div>
 <hr>
 <div id="forum-topic-content"><%= @topic.body.html_safe %></div>
