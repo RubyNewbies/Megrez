@@ -55,9 +55,10 @@
           <hr>
           <p style="white-space:pre-line"><%= @assignment.description %></p>
           <hr>
-          <% unless @target_folder.nil? || @files.nil? %>
-            <p><%= t(:submitted) %></p>
-            <p><%= t(:submissions) %></p>
+          <% if @assignment.is_submitted_by?(current_user, @course) %>
+            <h3><%= t(:submitted) %></h3>
+            <br>
+            <h4><%= t(:submissions) %></h4>
             <%= form_tag controller: "files", action: "operation_multiple" do %>
             
             <span class="folder_menu" id="download_multiple" style="display: none">
@@ -106,12 +107,13 @@
             </table>
             <% end %>
           <% else %>
-            <p><%= t(:not_submitted) %></p>
+            <h3><%= t(:not_submitted) %></h3>
           <% end %>
           <hr>
           <%= link_to t(:submit_file), submit_course_assignment_path(course_id: params[:course_id], id: params[:id]), id: "submit_file_link" %>
           <% if current_user.creator_of_course?(@course.id) -%>
             <%= link_to t(:edit), edit_course_assignment_path(course_id: params[:course_id], id: params[:id]) %>
+            <%= link_to t(:inspect), { controller: 'assignments', action: 'inspect' } %>
           <% end -%>
           <%= link_to t(:back), course_assignments_path(course_id: params[:course_id]) %>
         </div>

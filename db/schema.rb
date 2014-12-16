@@ -30,6 +30,13 @@ ActiveRecord::Schema.define(version: 20141216092611) do
   add_index "activities", ["recipient_id", "recipient_type"], name: "index_activities_on_recipient_id_and_recipient_type"
   add_index "activities", ["trackable_id", "trackable_type"], name: "index_activities_on_trackable_id_and_trackable_type"
 
+  create_table "announcements", force: true do |t|
+    t.text     "content"
+    t.integer  "course_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "assignfiles", force: true do |t|
     t.integer  "assignment_id"
     t.integer  "user_id"

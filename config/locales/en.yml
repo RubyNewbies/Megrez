@@ -435,6 +435,7 @@
   # courses_controller
   deleted_successfully: Successfully deleted.
   not_joined_yet: You have not yet joined this course.
+  not_creator: You do not have the permission to delete this course.
 
   # nodes_controller
   deleted_successfully: Successfully deleted forum.
@@ -477,6 +478,10 @@
   hour: hours
   minute: minutes
   second: seconds
+  inspect: Inspect plagiarism
+
+  # assignments/inspect
+  results: Inspection Results
 
   # assignments/submit
   is_submitting: "is submitting assignment: "
@@ -501,7 +506,7 @@
   forum: Forum
   assign: Assignments
   wiki: Wiki
-  staff: Staff
+  members: Members
   submit: Open this course
   admin: Administration
 
@@ -697,3 +702,11 @@
 
   # message
   send_pm: Send PM
+
+  #application_helper.rb
+  file_name: File name
+  percentage: Percentage
+  lines: Lines Matched
+  submitter: Submitter
+  got_results_from: Got results from
+  no_results: No matches found

@@ -8,6 +8,8 @@
               <%= link_to activity.owner.realname, profile_path(activity.owner.username) if activity.owner %>
               <%= t :issued_a_new_assignment %>
               <%= link_to activity.trackable.title, course_assignment_path(course_id: activity.trackable.course_id, id: activity.trackable.id) %>
+              <%= t :at %>
+              <%= link_to @course.full_name, course_path(id: @course.id) %>
             </h5>
           </div>
         </div>

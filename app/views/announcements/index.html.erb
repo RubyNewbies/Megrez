@@ -1,0 +1,23 @@
+<div class="row">
+
+  <div class="col-md-3">
+    <%= render partial: 'courses/sidelist.html.erb', locals: {cid: params[:course_id]} %>
+  </div>
+
+  <div class="col-md-9">
+    <% @announcements.each do |announcement| %>
+      <div class="well">
+        <%= announcement.content %>
+        <% if current_user.creator_of_course?(params[:course_id]) %>
+          <br>
+          <%= link_to fa_icon("eraser", text: t(:edit_announcement), class: 'fa-fw'), edit_course_announcement_path(course_id: params[:course_id], id: announcement.id) %>
+          <%= link_to fa_icon("trash", text: t(:delete_announcement), class: 'fa-fw'), course_announcement_path(course_id: params[:course_id], id: announcement.id), method: :delete %>
+        <% end %>
+      </div>
+    <% end %>
+    <% if current_user.creator_of_course?(params[:course_id]) %>
+      <hr>
+      <%= link_to fa_icon("pencil", text: t(:new_announcement), class: 'fa-fw'), new_course_announcement_path(course_id: params[:course_id]) %>
+    <% end %>
+  </div>
+</div>

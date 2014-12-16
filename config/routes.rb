@@ -51,10 +51,12 @@ Megrez::Application.routes.draw do
       member do
         get 'submit'
         post 'upload'
+        get 'inspect', controller: 'assignments', action: 'inspect'
       end
     end
 
     resources :items, path: '/admin/items'
+    resources :announcements, path: '/admin/announcements'
 
     member do
       get 'home', as: :home
@@ -64,12 +66,16 @@ Megrez::Application.routes.draw do
       get 'members', as: :members
       get 'admin', as: :admin
       get 'wiki', as: :wiki
+      get 'info', path: '/admin/info'
+      get 'assignment_management', path: '/admin/assignment_management'
+      get 'statistics', path: '/admin/statistics'
       get 'grade', path: '/admin/grade'
       get 'final', path: '/admin/final'
       post 'join', as: :join
       delete 'leave', as: :leave
       get 'grade', controller: 'users', path: '/admin/grade/:user_id'
     end
+
   end
 
   resources :clipboard, :only => [:create, :destroy] do

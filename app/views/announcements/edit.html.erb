@@ -1,0 +1,14 @@
+<div class="row">
+
+  <div class="col-md-3">
+    <%= render partial: 'courses/sidelist.html.erb', locals: {cid: params[:course_id]} %>
+  </div>
+
+  <div class="col-md-9">
+    <%= bootstrap_form_for @announcement, url: course_announcement_path(course_id: params[:course_id], id: params[:id]), layout: :horizontal do |f| %>
+      <legend><h2 class="text-center"><%= t :edit_announcement %></h2></legend>
+      <%= f.text_area :content, label: t(:content), class: 'form-control' %>
+      <%= f.submit t(:submit), class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>

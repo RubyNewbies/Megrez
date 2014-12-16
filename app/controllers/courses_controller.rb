@@ -50,15 +50,19 @@ class CoursesController < ApplicationController
 
   def home
     @activities = PublicActivity::Activity.order("created_at desc")
+    @announcements = Announcement.where(course_id: params[:id]).order("created_at desc")
   end
 
   def destroy
     if check_permission
+      user_folder = Folder.find_by_name(current_user.username)
+      @course_folder = Folder.find_by(name: "(Course folder)#{@course.full_name}", parent_id: user_folder.id)
       @course.delete
-      @f.destroy
+      @course_folder.destroy
       # Should send some email or message to notify?
       redirect_to '/', success: I18n.t(:deleted_successfully)
     else
+      redirect_to @course, error: I18n.t(:not_creator)
     end
   end
 
@@ -89,14 +93,41 @@ class CoursesController < ApplicationController
   def admin
   end
 
+  def info
+    @course = Course.find(params[:id])
+  end
+
+  def assignment_management
+    @course = Course.find(params[:id])
+    @assignments = Assignment.where(course_id: @course.id)
+    @users = @course.users - User.where(id: @course.creator_id)
+    @total_num = @users.size
+    @submitted_num = []
+    @assignments.each_with_index do |assignment, i|
+      @submitted_num[i] = 0
+      @users.each do |user|
+        if assignment.is_submitted_by?(user, @course)
+          @submitted_num[i] += 1
+        end
+      end
+    end
+  end
+
+  def statistics
+    @course = Course.find(params[:id])
+    @assignments = Assignment.where(course_id: @course.id)
+    @posts = Topic.where(params[:id])
+    @users = @course.users - User.where(id: @course.creator_id)
+  end
+
   def grade
     @course = Course.find(params[:id])
-    @users = @course.users
+    @users = @course.users - User.where(id: @course.creator_id)
   end
 
   def final
     @course = Course.find(params[:id])
-    @users = @course.users
+    @users = @course.users - User.where(id: @course.creator_id)
   end
 
   def wiki
@@ -105,9 +136,15 @@ class CoursesController < ApplicationController
   def assmt
   end
 
+  def edit
+    @course = Course.find(params[:id])
+    render 'edit.html.erb', layout: 'application'
+  end
+
   def update
+    @course = Course.find(params[:id])
     @course.update(course_params)
-    redirect_to @course
+    redirect_to info_course_path(id: @course.id)
   end
 
   def join
@@ -144,8 +181,8 @@ class CoursesController < ApplicationController
   end
 
   def check_permission
-    true
-    # current_user.id == creator.id
+    @course = Course.find(params[:id])
+    current_user.id == @course.creator.id
   end
   
 end

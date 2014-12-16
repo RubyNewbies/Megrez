@@ -510,6 +510,7 @@ zh-CN:
   # courses_controller
   deleted_successfully: 成功删除。
   not_joined_yet: 你还没有加入此课程。
+  not_creator: 无权删除课程。
 
   # nodes_controller
   deleted_successfully: '删除讨论区成功！'
@@ -554,6 +555,10 @@ zh-CN:
   month: 月
   second: 秒
   year: 年
+  inspect: 抄袭检测
+
+  # assignments/inspect
+  results: 检测结果
 
   # assignments/submit
   is_submitting: 正在提交作业：
@@ -572,19 +577,20 @@ zh-CN:
   staff: 教职人员
   join: 加入课程
 
-  # course/_nav
+  # courses/_nav
   home: 课程主页
   docs: 课件资料
   forum: 讨论专区
   assign: 课程作业
   wiki: 课程维基
-  staff: 成员
+  members: 成员
   admin: 课程管理
   submit: 开设课程
 
-  # course/_sidelist
+  # courses/_sidelist
   overview: 总览
   course_info: 课程信息
+  course_announcement: 课程公告
   assignment_admin: 作业管理
   stat: 统计信息
   logoff: 登出
@@ -592,8 +598,10 @@ zh-CN:
   set_items: 设置分数项
   grade: 评分
   see_final: 查看报表
+  delete_course: 删除课程
+  leave_course: 退出选课
 
-  # course/grade
+  # courses/grade
   nr: 序号
   username: 用户名
   realname: 姓名
@@ -602,16 +610,19 @@ zh-CN:
   edit: 评分
   send_email_notification: 发送邮件通知
 
-  # course/forum
+  # courses/forum
   forum: 讨论专区
   new_board: 新建分区
   new_post: 发布新帖
 
-  # course/member
+  # admin/info
+  description: 课程描述
+
+  # courses/member
   staff: 教职员工
   student: 学生
 
-  # course/final
+  # courses/final
   nr: 序号
   username: 用户名
   realname: 姓名
@@ -674,6 +685,7 @@ zh-CN:
   hours_ago: 小时前
   minutes_ago: 分前
   seconds_ago: 秒前
+  at: 在
 
   # replies/_quick
   edit: 编辑
@@ -769,6 +781,7 @@ zh-CN:
   second: 秒
   left_time: 剩余
   my_courses: 我的课程
+  at_course: 在课程
 
   # users/profile
   not_exist: 用户不存在！
@@ -783,3 +796,24 @@ zh-CN:
 
   # messages
   send_pm: 发送消息
+
+  # application_helper.rb
+  file_name: 文件名
+  percentage: 相似率
+  lines: 相似行数
+  submitter: 提交人
+  got_results_from: 结果地址：
+  no_results: 未发现相似文件
+  score: 评分
+
+  # courses/statistics
+  item: 项目
+  data: 数据
+  number_of_students_enrolled: 选课人数
+  number_of_assignments: 已布置作业数
+  number_of_posts: 发表主题数
+
+  #announcements/index
+  new_announcement: 新公告
+  edit_announcement: 编辑
+  delete_announcement: 删除

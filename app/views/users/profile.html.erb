@@ -17,7 +17,11 @@
         <% @enrolled_courses.each do |course| %>
           <% @course = course %>
           <% @activities.each do |activity| %>
-            <% if activity.owner_id == current_user.id %>
+<<<<<<< HEAD
+            <% if activity.owner == @user %>
+=======
+            <% if activity.owner_id == @user.id %>
+>>>>>>> d5f57ba7bcdf6ed9eb28e58929372efad123dd53
               <%= render_activity activity %>
             <% end %>
           <% end %>

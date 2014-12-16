@@ -4,24 +4,7 @@
     <%= render partial: 'courses/sidelist.html.erb', locals: {cid: params[:id]} %>
   </div>
 
-  <!-- 
-    <div class="col-md-2">
-      <ul class="nav nav-pills nav-stacked">
-          <%= active_link_to fa_icon('home', text: ' 课程信息', class: 'fa-fw fa-lg'), home_course_path(@course), wrap_tag: :li %>
-
-          <hr>
-
-          <% if current_user.id == @course.creator.id %>
-            <li><a href=<%= course_path(@course) %> class="btn btn-danger" data-method="delete" data-confirm='你真的打算删除此门课程？'><i class="fa fa-fw fa-times"></i> 删除课程</a></li>
-          <% else %>
-            <li><a href=<%= leave_course_path(@course) %> class="btn btn-danger" data-method="delete" data-confirm='你真的打算退出此门课程？'><i class="fa fa-fw fa-times"></i> 退出选课</a></li>
-          <% end %>
-
-      </ul>
-
-    </div> -->
   <div class="col-md-9">
-    <div class="form-content"></div>
   </div>
 </div>
 

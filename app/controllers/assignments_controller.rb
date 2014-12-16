@@ -11,7 +11,7 @@ class AssignmentsController < ApplicationController
 
   def show
     @assignment = Assignment.find(params[:id])
-    @assignment = Assignment.find(params[:id])
+    @course = Course.find(params[:course_id])
     @assignment_folder = Folder.find_by(name: "Assignment:#{@assignment.title}", course_id: params[:course_id], is_assignment: true)
     @target_folder = Folder.find_by(name: current_user.username, parent_id: @assignment_folder.id)
     @files = @target_folder.user_files unless @target_folder.nil?
@@ -49,6 +49,18 @@ class AssignmentsController < ApplicationController
       @target_folder.save!
     end
     @file = @target_folder.user_files.build
+  end
+
+  def inspect
+    @course = Course.find(params[:course_id])
+    @assignment = Assignment.find(params[:id])
+    @assignment_folder = Folder.find_by(name: "Assignment:#{@assignment.title}", course_id: params[:course_id], is_assignment: true)
+    @files = []
+    @students = []
+    @assignment_folder.children.each do |student|
+      @files << student.user_files
+      @students << student.name
+    end
   end
 
   def upload
