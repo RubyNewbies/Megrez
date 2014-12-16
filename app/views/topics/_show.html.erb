@@ -6,7 +6,7 @@
   <div class="color-light-gray">
     <%= t :by %><span class="topic-author"><%= link_to "@#{@topic.user.username}", profile_path(@topic.user.username) %></span><%= t :post_at %><span class="topic-time"><%= @topic.created_at.strftime('%Y-%m-%d %H:%M') %></span>
     <% if current_user.id == @topic.user.id %>
-      <%= link_to fa_icon('pencil', text: '编辑'), edit_course_topic_path, remote: true %>
+      <%= link_to fa_icon('pencil', text: '编辑'), edit_course_topic_path(course_id: @topic.node.course.id, id: @topic.id), remote: true %>
     <% end %>
   </div>
   
