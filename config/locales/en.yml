@@ -604,6 +604,7 @@
   placeholder: Speak out here!
 
   # replies/_reply
+  topic_author: "[Author]"
   last_updated_at: Last updated at
 
   # topics

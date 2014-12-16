@@ -1,6 +1,6 @@
 <div>
   <div class="user-avatar pull-right">
-    <%= image_tag(@topic.user.avatar, wight: 64, height: 64) %>
+    <%= image_tag(@topic.user.avatar, width: 64, height: 64) %>
   </div>
   <h2><%= @topic.title %></h2>
   <div class="color-light-gray">
@@ -8,11 +8,11 @@
   </div>
 </div>
 <hr>
-<div><%= @topic.body.html_safe %></div>
+<div id="forum-topic-content"><%= @topic.body.html_safe %></div>
 <hr>
-<div class="row" id="replies">
+<div id="replies">
   <% @topic.replies.each do |r| %>
-    <%= render partial: 'replies/reply.html.erb', locals: {r: r} %>
+    <%= render partial: 'replies/reply.html.erb', locals: {r: r, topic_author: @topic.user.id} %>
   <% end %>
 </div>
 
