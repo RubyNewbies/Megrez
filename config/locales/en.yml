@@ -607,6 +607,7 @@
   topic_author: "[Author]"
   last_updated_at: Last updated at
   edit_reply: Edit Reply
+  replied_you: "%s replied you in %s"
 
   # topics
   forum: Forum

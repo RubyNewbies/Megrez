@@ -9,12 +9,21 @@ class ApplicationController < ActionController::Base
   # before_action :require_admin_in_system
   # before_action :require_login
   before_action :set_locale
+  before_action :get_unreaded_message
    
   helper_method :clipboard, :current_user, :signed_in?, :permitted_params
 
   # def current_user
   #   @current_user ||= User.find_by_id(session[:user_id])
   # end
+
+  def get_unreaded_message
+    if current_user
+      @notifications = Notification.where(user_id: current_user.id, unread: true)
+      puts "!" * 10
+      puts @notifications
+    end
+  end
 
   protected
 

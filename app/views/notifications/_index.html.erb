@@ -1,0 +1,13 @@
+<li class="dropdown">
+  <a class="dropdown-toggle <%= @notifications.empty? ? '' : 'btn-danger' %>" data-toggle="dropdown" href="#" id="message"><i class="fa fa-twitch fa-lg"></i></a>
+  <ul class="dropdown-menu" aria-labelledby="download">
+    <div style="width: 250px; padding: 10px;">
+    <% @notifications.each do |n| %>
+      <li><p><%= n.content.html_safe %></p></li>
+    <% end %>
+    
+    <hr>
+    <%= link_to '全部忽略', '#', class: 'pull-right' %>
+    </div>
+  </ul>
+</li>

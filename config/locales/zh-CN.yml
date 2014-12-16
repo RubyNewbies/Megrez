@@ -684,6 +684,7 @@ zh-CN:
   topic_author: 【楼主】
   last_updated_at: 最后更新于
   edit_reply: 编辑回复
+  replied_you: "%s在%s中回复了您"
 
   # topics
   forum: 讨论空间

@@ -34,6 +34,11 @@
 	overflow: scroll;
 }
 
+.unread-message {
+	background-color: red;
+}
+
+
 .search {float:right;}
 body { padding: 0px; margin: 0px; background-color: rgb(225,225,225); }
 body, input { font-family: Arial; font-size: 13pt; }

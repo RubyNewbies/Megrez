@@ -1,6 +1,7 @@
 class Reply < ActiveRecord::Base
 
   include TopicsHelper
+  include Rails.application.routes.url_helpers
 
   validates :source, length: { minimum: 1 }
 
@@ -24,10 +25,15 @@ class Reply < ActiveRecord::Base
   private
 
   def notify_topic_author
-    # unless user.id == topic.user.id
-    #   hash = user_id: topic.user.id, content: ''
-    #   Notification.create()
-    # end
+    unless user.id == topic.user.id
+      url = course_topic_path(id: topic.id, course_id: topic.node.course_id) + "#reply-#{id}"
+      link = "<a href=\"#{url}\">#{topic.title}</a>"
+      user_url = ActionController::Base.helpers.link_to "@#{user.username}(#{user.realname})", profile_path(user.username)
+      message = "#{user_url} 在 #{link} 中回复了你"
+      Notification.create(user_id: topic.user.id, content: message)
+      puts "-"*20
+      puts "Notification Created!"
+    end
   end
 
 end

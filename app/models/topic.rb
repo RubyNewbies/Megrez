@@ -37,7 +37,7 @@ class Topic < ActiveRecord::Base
     mentioned_users.each do |user|
       notification = "#{user_url}在#{title}中提到了你。"
       puts "Create notification: " + notification
-      Notification.create(user, notification)
+      Notification.create(user_id: topic.user.id, content: notification)
     end
   end
 

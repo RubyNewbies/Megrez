@@ -7,13 +7,9 @@
 
         <% if current_user %>
           <ul class="nav navbar-nav navbar-right">
-            <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="message"><i class="fa fa-twitch fa-lg"></i></a>
-              <ul class="dropdown-menu" aria-labelledby="download">
-                <li><a href=""><%= t(:no_messages) %></a></li>
-              </ul>
-            </li>
 
+            <%= render partial: 'notifications/index.html.erb' %>
+            
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="download"><strong><%= current_user.username %></strong><span class="caret"></span></a>
               <ul class="dropdown-menu" aria-labelledby="download">
