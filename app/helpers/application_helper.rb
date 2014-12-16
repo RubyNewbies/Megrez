@@ -55,7 +55,7 @@ module ApplicationHelper
                 </tr></thead>"
         ret += "<tbody>"
         match.each do |file|
-          ret += "<tr><th>#{file[:filename]}</th><th>#{file_hash[file[:filename]]}</th><th>#{file[:pct]}%</th></tr>"
+          ret += "<tr><th>#{file[:filename].split('/')[-1]}</th><th>#{file_hash[file[:filename]]}</th><th>#{file[:pct]}%</th></tr>"
         end
         ret += "</tbody></table>"
       end
