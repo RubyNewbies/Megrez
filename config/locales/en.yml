@@ -435,6 +435,7 @@
   # courses_controller
   deleted_successfully: Successfully deleted.
   not_joined_yet: You have not yet joined this course.
+  not_creator: You do not have the permission to delete this course.
 
   # nodes_controller
   deleted_successfully: Successfully deleted forum.

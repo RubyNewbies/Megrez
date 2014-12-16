@@ -1,0 +1,31 @@
+<div class="row">
+
+  <div class="col-md-3">
+    <%= render partial: 'courses/sidelist.html.erb', locals: {cid: params[:id]} %>
+  </div>
+
+  <div class="col-md-9">
+    <table class="table table-striped table-hover ">
+      <thead>
+        <tr>
+          <th><%= t :item %></th>
+          <th><%= t :data %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= t :number_of_students_enrolled %></td>
+          <td><%= @assignments.size %></td>
+        </tr>
+        <tr>
+          <td><%= t :number_of_assignments %></td>
+          <td><%= @assignments.size %></td>
+        </tr>
+        <tr>
+          <td><%= t :number_of_posts %></td>
+          <td><%= @posts.size %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

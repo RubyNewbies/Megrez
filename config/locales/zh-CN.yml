@@ -510,6 +510,7 @@ zh-CN:
   # courses_controller
   deleted_successfully: 成功删除。
   not_joined_yet: 你还没有加入此课程。
+  not_creator: 无权删除课程。
 
   # nodes_controller
   deleted_successfully: '删除讨论区成功！'
@@ -576,7 +577,7 @@ zh-CN:
   staff: 教职人员
   join: 加入课程
 
-  # course/_nav
+  # courses/_nav
   home: 课程主页
   docs: 课件资料
   forum: 讨论专区
@@ -586,7 +587,7 @@ zh-CN:
   admin: 课程管理
   submit: 开设课程
 
-  # course/_sidelist
+  # courses/_sidelist
   overview: 总览
   course_info: 课程信息
   assignment_admin: 作业管理
@@ -596,8 +597,10 @@ zh-CN:
   set_items: 设置分数项
   grade: 评分
   see_final: 查看报表
+  delete_course: 删除课程
+  leave_course: 退出选课
 
-  # course/grade
+  # courses/grade
   nr: 序号
   username: 用户名
   realname: 姓名
@@ -606,16 +609,19 @@ zh-CN:
   edit: 评分
   send_email_notification: 发送邮件通知
 
-  # course/forum
+  # courses/forum
   forum: 讨论专区
   new_board: 新建分区
   new_post: 发布新帖
 
-  # course/member
+  # admin/info
+  description: 课程描述
+
+  # courses/member
   staff: 教职员工
   student: 学生
 
-  # course/final
+  # courses/final
   nr: 序号
   username: 用户名
   realname: 姓名
@@ -780,7 +786,7 @@ zh-CN:
   info: 学生信息
   score: 评分
 
-  #application_helper.rb
+  # application_helper.rb
   file_name: 文件名
   percentage: 相似率
   lines: 相似行数
@@ -788,3 +794,10 @@ zh-CN:
   got_results_from: 结果地址：
   no_results: 未发现相似文件
   score: 评分
+
+  # courses/statistics
+  item: 项目
+  data: 数据
+  number_of_students_enrolled: 选课人数
+  number_of_assignments: 已布置作业数
+  number_of_posts: 发表主题数

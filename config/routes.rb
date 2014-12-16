@@ -53,6 +53,7 @@ Megrez::Application.routes.draw do
       get 'wiki', as: :wiki
       get 'info', path: '/admin/info'
       get 'assignment_management', path: '/admin/assignment_management'
+      get 'statistics', path: '/admin/statistics'
       get 'grade', path: '/admin/grade'
       get 'final', path: '/admin/final'
       post 'join', as: :join

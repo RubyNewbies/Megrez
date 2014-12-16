@@ -6,6 +6,7 @@
 
   <div class="col-md-9">
     <legend><h2><%= @course.full_name %> <%= @course.english_name %></h2></legend>
+    <h5><%= t(:description, scope: [:courses]) %></h5>
     <%= @course.description.html_safe %>
     <hr>
     <% if current_user.creator_of_course?(params[:id]) %>

@@ -54,11 +54,14 @@ class CoursesController < ApplicationController
 
   def destroy
     if check_permission
+      user_folder = Folder.find_by_name(current_user.username)
+      @course_folder = Folder.find_by(name: "(Course folder)#{@course.full_name}", parent_id: user_folder.id)
       @course.delete
-      @f.destroy
+      @course_folder.destroy
       # Should send some email or message to notify?
       redirect_to '/', success: I18n.t(:deleted_successfully)
     else
+      redirect_to @course, error: I18n.t(:not_creator)
     end
   end
 
@@ -107,6 +110,13 @@ class CoursesController < ApplicationController
         end
       end
     end
+  end
+
+  def statistics
+    @course = Course.find(params[:id])
+    @assignments = Assignment.where(course_id: @course.id)
+    @posts = Topic.where(params[:id])
+    @users = @course.users - User.where(id: @course.creator_id)
   end
 
   def grade
@@ -170,8 +180,8 @@ class CoursesController < ApplicationController
   end
 
   def check_permission
-    true
-    # current_user.id == creator.id
+    @course = Course.find(params[:id])
+    current_user.id == @course.creator.id
   end
   
 end
