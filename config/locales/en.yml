@@ -700,6 +700,15 @@
   # users/dashboard
   assignment_due: An assignment is due soon
   view_details: View details
+  to_deadline: is due
+  creator: Creator
+  member: Member
+  hour: hours
+  minute: minutes
+  second: seconds
+  left_time: has
+  my_courses: My Courses
+  at_course: in course
 
   # users/profile
   not_exist: User does not exist!
