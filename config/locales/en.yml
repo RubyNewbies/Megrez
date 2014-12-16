@@ -640,6 +640,11 @@
   dashboard: Dashboard
   logout: Log out
 
+  view_notification: View
+  ignore_notification: Ignore
+  ignore_all_notifications: Ignore All
+  no_unread_notification: No unread notiication.
+
   # static_pages/home
   site_title: "Megrez - HIT Interactive Online Learning Platform"
   slogan: "HIT Interactive Online Learning Platform"

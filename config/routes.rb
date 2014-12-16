@@ -18,15 +18,20 @@ Megrez::Application.routes.draw do
 
   delete '/logout', controller: 'sessions', action: 'destroy'
 
-  get 'notifications/mark', controller: 'notifications', action: 'mark_all_as_read'
-  get 'notifications/readed', controller: 'notifications', action: 'readed'
-
   resources :activities
   resources :users
   resources :values
   resources :assignfiles
   resources :replies
-  resources :notifications
+  resources :notifications do
+    collection do
+      get 'mark_all', controller: 'notifications', action: 'mark_all'
+    end
+    member do
+      get 'go', controller: 'notifications', action: 'go'
+      get 'ignore', controller: 'notifications', action: 'ignore'
+    end
+  end
 
   resources :courses do
 

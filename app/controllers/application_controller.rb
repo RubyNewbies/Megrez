@@ -20,8 +20,6 @@ class ApplicationController < ActionController::Base
   def get_unreaded_message
     if current_user
       @notifications = Notification.where(user_id: current_user.id, unread: true)
-      puts "!" * 10
-      puts @notifications
     end
   end
 

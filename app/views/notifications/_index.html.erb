@@ -2,12 +2,18 @@
   <a class="dropdown-toggle <%= @notifications.empty? ? '' : 'btn-danger' %>" data-toggle="dropdown" href="#" id="message"><i class="fa fa-twitch fa-lg"></i></a>
   <ul class="dropdown-menu" aria-labelledby="download">
     <div style="width: 250px; padding: 10px;">
-    <% @notifications.each do |n| %>
-      <li><p><%= n.content.html_safe %></p></li>
-    <% end %>
-    
-    <hr>
-    <%= link_to '全部忽略', '#', class: 'pull-right' %>
+      <div id="notifications">
+        <% if @notifications.empty? %>
+          <li><%= t :no_unread_notification %></li>
+        <% else %>
+          <% @notifications.each do |n| %>
+            <li data-reply-id=<%= n.id %>><p><%= n.content.html_safe %> <%= link_to t(:view_notification), go_notification_path(n) %><%= link_to t(:ignore_notification), ignore_notification_path(n), remote: true %></p></li>
+          <% end %>
+        <% end %>
+      </div>
+      
+      <hr class="tight-margin">
+      <%= link_to t(:ignore_all_notifications), mark_all_notifications_path, class: 'pull-right', remote: true %>
     </div>
   </ul>
 </li>

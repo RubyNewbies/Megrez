@@ -716,6 +716,10 @@ zh-CN:
   create_course: 开设课程
   dashboard: 控制中心
   logout: 退出
+  view_notification: 查看
+  ignore_notification: 忽略
+  ignore_all_notifications: 忽略全部
+  no_unread_notification: 所有消息已处理。
 
   # static_pages/home
   site_title: "乐学网 - 哈工大交互式网络教学平台"
