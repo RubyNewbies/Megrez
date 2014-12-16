@@ -1,0 +1,30 @@
+<% if @user.nil? %>
+  <%= t :not_exist %>
+<% else %>
+  <div class="row">
+    <div class="col-md-3">
+      <%= image_tag @user.avatar, width: 200, height: 200 %>
+      <h2><%= @user.realname %></h2>
+      <%= fa_icon 'user' %>&nbsp;&nbsp;<%= @user.username %><br>
+      <%= fa_icon 'envelope' %>&nbsp;&nbsp;<%= link_to @user.email, "mailto:#{@user.email}" %><br>
+      <%= fa_icon 'clock-o' %>&nbsp;&nbsp;<%= t(:joined_on) %>&nbsp;<%= @user.created_at.strftime('%Y-%m-%d') %><br>
+      <%= fa_icon 'send' %>&nbsp;&nbsp;<%= link_to t(:leave_message), '#' %>
+      
+    </div>
+    <div class="col-md-9">
+      <div class="panel panel-success">
+        <div class="panel-heading" style="margin-bottom: 5px;">
+            <p class="panel-title">给<%= @user.realname %>留言</p>
+        </div>
+        <div id="personal_messages">
+          <% @messages.each do |m| %>
+            <%= render partial: 'messages/message.html.erb', locals: {m: m} %>
+          <% end %>
+        </div>
+        <div>
+          <%= render partial: 'messages/quick.html.erb' %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

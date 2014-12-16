@@ -780,3 +780,6 @@ zh-CN:
   # users/grade
   info: 学生信息
   score: 评分
+
+  # messages
+  send_pm: 发送消息

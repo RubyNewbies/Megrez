@@ -5,6 +5,7 @@ Megrez::Application.routes.draw do
   root 'static_pages#home'
 
   get '/u/:username', controller: 'users', action: 'profile', as: :profile
+  get '/u/:username/pm', controller: 'messages', action: 'new', as: :new_pm
 
   get '/me', controller: 'users', action: 'me'
   get '/file_exists', :to => 'files#exists'
@@ -32,6 +33,8 @@ Megrez::Application.routes.draw do
       get 'ignore', controller: 'notifications', action: 'ignore'
     end
   end
+
+  resources :messages
 
   resources :courses do
 

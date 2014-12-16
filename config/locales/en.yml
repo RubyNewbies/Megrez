@@ -694,3 +694,6 @@
   info: Student Information
   score: Scores
   send_email_notification: Send Email notification
+
+  # message
+  send_pm: Send PM
