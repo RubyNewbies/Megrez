@@ -96,17 +96,17 @@ class CoursesController < ApplicationController
   def assignment_management
     @course = Course.find(params[:id])
     @assignments = Assignment.where(course_id: @course.id)
-    @students = @course.users
+    @users = @course.users - User.where(id: @course.creator_id)
   end
 
   def grade
     @course = Course.find(params[:id])
-    @users = @course.users
+    @users = @course.users - User.where(id: @course.creator_id)
   end
 
   def final
     @course = Course.find(params[:id])
-    @users = @course.users
+    @users = @course.users - User.where(id: @course.creator_id)
   end
 
   def wiki
@@ -121,8 +121,9 @@ class CoursesController < ApplicationController
   end
 
   def update
+    @course = Course.find(params[:id])
     @course.update(course_params)
-    redirect_to @course
+    redirect_to info_course_path(id: @course.id)
   end
 
   def join

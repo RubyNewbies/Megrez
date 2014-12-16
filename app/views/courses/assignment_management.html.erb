@@ -4,29 +4,34 @@
     <%= render partial: 'courses/sidelist.html.erb', locals: {cid: params[:id]} %>
   </div>
 
-  <div class="col-md-6">
+  <div class="col-md-9">
+  <div class="panel-group" id="assignmentlist">
   <% @assignments.each do |assignment| %>
     <div class="panel panel-primary">
       <div class="panel-heading">
-        <p class="panel-title"><%= assignment.title %></p>
+        <p class="panel-title">
+          <a data-toggle="collapse" data-parent="#assignmentlist" href="#collapse<%= assignment.id %>" style="color:#fff">
+            <%= assignment.title %>
+          </a>
+          <span class="badge">15/20</span>
+        </p>
       </div>
-      <ul class="list-group">
-        <% @students.each do |student| %>
-          <% unless student.creator_of_course?(@course.id) %>
-            <li class="list-group-item">
-              <%= link_to student.realname, profile_path(student.username) %>
-              <% assignment_folder = Folder.find_by(name: "Assignment:#{assignment.title}", course_id: @course.id, is_assignment: true) %>
-              <% target_folder = Folder.find_by(name: current_user.username, parent_id: assignment_folder.id) %>
-              <% files = target_folder.user_files unless target_folder.nil? %>
-              <span class="badge">
-                <% unless @target_folder.nil? || @files.nil? %>
-                  <%= t :submitted %>
-                <% else %>
-                  <%= t :not_submitted %>
-                <% end %>
-              </span>
-            </li>
-          <% end %>
+      <ul class="list-group collapse" id="collapse<%= assignment.id %>">
+        <% @users.each do |user| %>
+          <li class="list-group-item">
+            <%= image_tag user.avatar, width: 40, height: 40, class: 'img-rounded' %>
+            <%= link_to user.realname, profile_path(user.username) %>
+            <% assignment_folder = Folder.find_by(name: "Assignment:#{assignment.title}", course_id: @course.id, is_assignment: true) %>
+            <% target_folder = Folder.find_by(name: current_user.username, parent_id: assignment_folder.id) %>
+            <% files = target_folder.user_files unless target_folder.nil? %>
+            <span class="badge">
+              <% unless @target_folder.nil? || @files.nil? %>
+                <%= t :submitted %>
+              <% else %>
+                <%= t :not_submitted %>
+              <% end %>
+            </span>
+          </li>
         <% end %>
       </ul>
     </div>
