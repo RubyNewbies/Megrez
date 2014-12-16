@@ -15,15 +15,33 @@
       <tbody>
         <tr>
           <td><%= t :number_of_students_enrolled %></td>
-          <td><%= @users.nil? ? 0 : @users.size %></td>
+          <td>
+            <% if @users.nil? -%>
+              0
+            <% else -%>
+              <%= @users.size %>
+            <% end -%>
+          </td>
         </tr>
         <tr>
           <td><%= t :number_of_assignments %></td>
-          <td><%= @assignments.nil? ? 0 : @assignments.size %></td>
+          <td>
+            <% if @assignments.nil? -%>
+              0
+            <% else -%>
+              <%= @assignments.size %>
+            <% end -%>
+          </td>
         </tr>
         <tr>
           <td><%= t :number_of_posts %></td>
-          <td><%= @posts.nil? ? 0 : @posts.size %></td>
+          <td>
+            <% if @posts.nil? -%>
+              0
+            <% else -%>
+              <%= @posts.size %>
+            <% end -%>
+          </td>
         </tr>
       </tbody>
     </table>
