@@ -607,6 +607,7 @@
   joined_course: joined course
   created_item: created an item
   created_node: created a forum
+  created_topic: created a new post
   days_ago: " days ago"
   hours_ago: " hours ago"
   minutes_ago: " minutes ago"

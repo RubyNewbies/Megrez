@@ -1,5 +1,5 @@
 class UserFile < ActiveRecord::Base
-  has_attached_file :attachment
+  has_attached_file :attachment, :restricted_characters => RESTRICTED_CHARACTERS
   do_not_validate_attachment_file_type :attachment
 
   belongs_to :folder
