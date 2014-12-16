@@ -128,7 +128,6 @@ class User < ActiveRecord::Base
 
   def join_in_course(course_id)
     course_user_relationships.create(course_id: course_id, user_id: id)
-    course_folder = Folder.find(course_id)
   end
 
   def leave_out_course(course_id)

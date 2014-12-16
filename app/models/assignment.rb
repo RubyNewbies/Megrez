@@ -33,7 +33,7 @@ class Assignment < ActiveRecord::Base
     assignment_folder = Folder.find_by(name: "Assignment:#{self.title}", course_id: course.id, is_assignment: true)
     target_folder = Folder.find_by(name: student.username, parent_id: assignment_folder.id)
     files = target_folder.user_files unless target_folder.nil?
-    !(files.empty? || files.nil? || target_folder.nil?)
+    !(target_folder.nil? || files.nil? || files.empty?)
   end
 
 end

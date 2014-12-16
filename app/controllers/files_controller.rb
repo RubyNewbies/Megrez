@@ -93,12 +93,12 @@ class FilesController < ApplicationController
       @current_folder = @folders[0].parent
     end
     if params[:form_1][:download_multiple] then
-      if @files.length == 1 && !@folders then
+      if @files && @files.length == 1 && !@folders then
         @file = @files[-1]
         send_file @file.attachment.path, :filename => @file.attachment_file_name
         return true
       end
-      zipfile_name = "#{Rails.root}/tmp/#{current_user.name}####{DateTime.current.to_s(:number)}.zip"
+      zipfile_name = "#{Rails.root}/tmp/#{current_user.username}####{DateTime.current.to_s(:number)}.zip"
       Zip::File.open(zipfile_name, Zip::File::CREATE) do |zipfile|
         if @files then
           @files.each do |file|

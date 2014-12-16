@@ -7,6 +7,7 @@
       <legend><%= t :personal_information %></legend>
       <%= f.text_field :username, label: t(:username) %>
       <%= f.text_field :realname, label: t(:realname) %>
+      <%= f.password_field :password, label: t(:password) %>
       <%= f.text_field :email, label: t(:email) %>
       <%= f.file_field :avatar, label: t(:avatar) %>
       <%= f.select :preferred_lang, [["English", "en"], ["中文（简体）", "zh-CN"]], { label: t(:preferred_language) }, { class: 'selectpicker'} %>
