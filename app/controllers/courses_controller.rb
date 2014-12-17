@@ -116,7 +116,7 @@ class CoursesController < ApplicationController
   def statistics
     @course = Course.find(params[:id])
     @assignments = Assignment.where(course_id: @course.id)
-    @posts = Topic.where(params[:id])
+    @posts = Topic.where(course_id: params[:id])
     @users = @course.users - User.where(id: @course.creator_id)
   end
 

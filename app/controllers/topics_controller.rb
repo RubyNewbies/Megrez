@@ -14,7 +14,7 @@ class TopicsController < ApplicationController
   end
 
   def create
-    @topic = Topic.new(topic_params.merge user_id: current_user.id)
+    @topic = Topic.new(topic_params.merge(user_id: current_user.id, course_id: params[:course_id]))
     @course = Course.find_by_id(params[:course_id])
     @node = Node.find_by_id(topic_params[:node_id])
     

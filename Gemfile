@@ -1,8 +1,10 @@
 source 'https://rubygems.org'
 
+ruby '2.0.0'
 gem 'rails', '4.1.6'
 gem 'coffee-rails'
 gem 'autoprefixer-rails'
+gem 'rails_12factor'
 
 # Bootstrap resources
 gem 'bootstrap-sass'
@@ -26,6 +28,7 @@ group :development, :test do
 end
 
 group :production do
+  gem 'thin'
   gem 'pg'
 end
 
