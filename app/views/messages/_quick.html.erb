@@ -3,7 +3,7 @@
     <%= f.hidden_field :receiver_id, value: @user.id %>
     <div class="row">
       <div class="col-md-10">
-        <%= f.text_area :content, id: 'pm-content', rows: 5, style:"width: 100%" %>
+        <%= f.text_area :content, id: 'pm-content', rows: 5, style:"width: 100%; max-width: 100%" %>
       </div>
       <div class="col-md-2">
         <%= f.submit t(:send_pm), class: 'btn btn-success btn-block', disable_with: 'sending...' %>    
