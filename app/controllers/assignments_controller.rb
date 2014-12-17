@@ -19,6 +19,9 @@ class AssignmentsController < ApplicationController
   end
 
   def destroy
+    @assignment = Assignment.find(params[:id])
+    @assignment_folder = Folder.find_by(name: "Assignment:#{@assignment.title}", course_id: params[:course_id], is_assignment: true)
+    @assignment_folder.destroy
   end
 
   def edit
@@ -27,7 +30,9 @@ class AssignmentsController < ApplicationController
 
   def update
     @assignment = Assignment.find(params[:id])
+    @assignment_folder = Folder.find_by(name: "Assignment:#{@assignment.title}", course_id: params[:course_id], is_assignment: true)
     @assignment.update!(assignment_params)
+    @assignment_folder.update_attributes(name: "Assignment:#{@assignment.title}")
     redirect_to course_assignment_path(course_id: params[:course_id], id: params[:id])
   end
 
